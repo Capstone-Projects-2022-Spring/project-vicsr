@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'VICSR_Server.apps.VicsrServerConfig',
+    'AccountManagement',
+    'DocumentManagement',
+    'VocabularyManagement'
 ]
 
 MIDDLEWARE = [
