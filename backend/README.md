@@ -13,8 +13,8 @@ When setting up the development environment, a virtual environment should be use
 
 
 ### Database
-The VICSR Database is implemented with PostgresSQL. The live database will be hosted on Heroku, but for development requires installation on the developer's local machine. Follow instructions for your OS [here](https://www.postgresqltutorial.com/postgresql-getting-started/).
+The VICSR Database is implemented with PostgreSQL. The live database will be hosted on Heroku, but for development requires installation on the developer's local machine. Follow instructions for your OS [here](https://www.postgresqltutorial.com/postgresql-getting-started/).  Heroku supports version 13 by default.
 
-After PostgresSQL is installed, roughly follow this [article](https://stackpython.medium.com/how-to-start-django-project-with-a-database-postgresql-aaa1d74659d8) to set up a new database named <i>vicsr_local</i>. The settings.py file is already configured, but the user should add their password in the password field.
+After PostgreSQL is installed, roughly follow this [article](https://stackpython.medium.com/how-to-start-django-project-with-a-database-postgresql-aaa1d74659d8) to set up a new database named <i>vicsr_local</i>. The settings.py file is already configured, but the user should add their password in the password field.
 
 From then onward, the models.py folder is used to build the base structure of classes/tables in the database. In PyCharm, go to <i>tools -> Run manage.py Task </i> and run the command <i>makemigrations 'appname' </i> to build table(s) within the Django project. After, run the command <i>migrate 'appname'</i> to move to local database.
