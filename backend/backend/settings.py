@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-8^7w6ev*8si#736h2ao1i!6lmufk&760ws9#imt$+8hzl!tnkf
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'http://localhost:3000'
+    'http://localhost:3000',
+    '127.0.0.1'
 ]
 
 
@@ -85,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'vicsr_local',
         'USER': 'postgres',
-        'PASSWORD': 'password',
+        'PASSWORD': 'colella',
         'HOST': '127.0.0.1',
         'PORT': '5432'
     }
