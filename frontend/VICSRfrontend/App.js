@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {TextInput, StyleSheet, Text, View } from 'react-native';
+import {TextInput, StyleSheet, Text, View, Image } from 'react-native';
 
 
 const HelloWorldApp = () => {
@@ -11,6 +11,8 @@ const HelloWorldApp = () => {
     return (
         //Basically the head of the document
         <View style={styles.container}>
+            {/*Logo Image*/}
+            <Image style={styles.image} source={require("./assets/elephant.png")} />
             {/* Header Text */}
             <Text>Please login below</Text>
             {/* A new view(like a div) associated with a new stylesheet */}
@@ -43,6 +45,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
    },
+
+    image: {
+      height: 300,
+      width: 200,
+      marginBottom: 40,
+    },
+
     inputView: {
         backgroundColor: "#FFC0CB",
         borderRadius: 30,
