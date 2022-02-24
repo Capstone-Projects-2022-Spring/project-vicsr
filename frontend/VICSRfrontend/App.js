@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {TextInput, StyleSheet, Text, View, Image } from 'react-native';
+import {TextInput, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 
 const HelloWorldApp = () => {
@@ -21,7 +21,7 @@ const HelloWorldApp = () => {
               <TextInput
                 style={styles.TextInput}
                 placeholder="Email."
-                placeholderTextColor="#003f5c"
+                placeholderTextColor="#0c0203"
                 onChangeText={(email) => setEmail(email)}
               />
             </View>
@@ -29,11 +29,22 @@ const HelloWorldApp = () => {
               <TextInput
                 style={styles.TextInput}
                 placeholder="Password."
-                placeholderTextColor="#003f5c"
+                placeholderTextColor="#0c0203"
                 secureTextEntry={true}
                 onChangeText={(password) => setPassword(password)}
               />
             </View>
+
+            {/* Touchable components to act as buttons, can be tied to an action, also is properly animated to show press down */}
+            {/* Forgot password and login buttons */}
+            <TouchableOpacity>
+                <Text style={styles.forgot_button}>Forgot Password?</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.loginBtn}>
+                <Text style={styles.loginText}>LOGIN</Text>
+            </TouchableOpacity>
+
         </View>
       )
 }
@@ -45,6 +56,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
    },
+
+    forgot_button: {
+        height: 30,
+        marginBottom: 30,
+        color: "#0c0203"
+    },
 
     image: {
       height: 300,
@@ -60,6 +77,19 @@ const styles = StyleSheet.create({
         marginBottom: 20,
 
         alignItems: "center",
+    },
+    loginBtn: {
+        width:"80%",
+        borderRadius:25,
+        height:50,
+        alignItems:"center",
+        justifyContent:"center",
+        marginTop:40,
+        backgroundColor:"#e85f76",
+    },
+
+    loginText: {
+      color: "#0c0203"
     },
 
     TextInput: {
