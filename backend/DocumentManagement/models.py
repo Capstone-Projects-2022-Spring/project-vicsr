@@ -10,28 +10,26 @@ from django.contrib.auth.models import User
 # Deck List
 
 class Document(models.Model):
+    MODE_CHOICES = [
+        ('TRL', 'Translation'),
+        ('DEF', 'Definition')
+    ]
     owner_id = models.ForeignKey(User, on_delete=models.CASCADE)
     filename = models.CharField(max_length=30)
-    date_added = models.DateTimeField(auto_now_add=True)
     #need to review file further, and need to check how to get file size
     file = models.FileField()
     size = models.IntegerField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    mode = models.CharField(max_length=3, choices=MODE_CHOICES)
     language = models.CharField(max_length=50)
+    trans_language = models.CharField(max_length=50, blank=True)
+
+    def __str__(self):
+        return self.filename
 
 
-""" commenting out -- not relevant for milestone 1 and may need reworking 
-leaving as starting point when returning
-
-# may need to move this to vocab management
-class DocumentWords(models.Model):
-    generated_by = models.ForeignKey(Document, on_delete=models.CASCADE)
-    word = models.CharField(max_length=65)
-    ##coordinates from tesseract - may want to change
-    left = models.IntegerField()
-    top = models.IntegerField()
-    width = models.IntegerField()
-    height = models.IntegerField()
-    """
 
 
-# class DocumentList(models.Model):
+
+
+
