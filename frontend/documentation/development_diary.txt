@@ -7,3 +7,5 @@ Entry 2
 - imported components from folder
 - initilized the objects amnd tags that deal with navigation
 - Needed to run this https://reactnavigation.org/docs/troubleshooting/#im-getting-an-error-unable-to-resolve-module-after-updating-to-the-latest-version to run on the simulator
+
+- Navigator wasn't working, just rebooted and cleared cache and that did the trick

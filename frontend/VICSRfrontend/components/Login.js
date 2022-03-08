@@ -1,8 +1,13 @@
 
-import React from 'react';
+import React, {useState} from 'react';
 import {TextInput, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
-function Login() {
+function Login({navigation}) {
+
+    //These are the variables which hold
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     return(
         //Basically the head of the document
         <View style={styles.container}>
@@ -39,7 +44,8 @@ function Login() {
             <TouchableOpacity style={styles.loginBtn}>
                 <Text style={styles.loginText}>LOGIN</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.loginBtn}>
+
+            <TouchableOpacity style={styles.loginBtn}  onPress={() => navigation.navigate('Register')}>
                 <Text style={styles.loginText}>Register an Account</Text>
             </TouchableOpacity>
 
