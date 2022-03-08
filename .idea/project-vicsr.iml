@@ -14,8 +14,8 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/backend/.idea" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/backend/venv" />
+      <sourceFolder url="file://$MODULE_DIR$/backend-vicsr/.idea" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/backend-vicsr/venv" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="inheritedJdk" />

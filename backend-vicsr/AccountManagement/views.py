@@ -5,7 +5,6 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from rest_framework.generics import CreateAPIView
-from backend.AccountManagement.serializers import AccountSerializer
 from .serializers import AccountSerializer
 from rest_framework.response import Response
 from rest_framework import status
