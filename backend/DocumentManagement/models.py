@@ -17,8 +17,8 @@ class Document(models.Model):
     owner_id = models.ForeignKey(User, on_delete=models.CASCADE)
     filename = models.CharField(max_length=30)
     # need to review file further, and need to check how to get file size
-    file = models.FileField().upload_to('docs/')
-    image = models.ImageField().upload_to('images/', null=True, blank=True)
+    file = models.FileField(upload_to='docs/')
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
     size = models.IntegerField()
     date_added = models.DateTimeField(auto_now_add=True)
     mode = models.CharField(max_length=3, choices=MODE_CHOICES)

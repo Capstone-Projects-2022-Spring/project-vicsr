@@ -5,5 +5,5 @@ from .models import Document
 class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Document
-        fields = ('owner id', 'filename', 'file', 'image', 'size',
+        fields = ('owner_id', 'filename', 'file', 'image', 'size',
                   'date_added', 'mode', 'language', 'trans_language')

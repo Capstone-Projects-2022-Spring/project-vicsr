@@ -3,7 +3,7 @@ from .models import Document
 
 
 class DocumentAdmin(admin.ModelAdmin):
-    list_display = ('owner id', 'filename', 'file', 'size',
+    list_display = ('owner_id', 'filename', 'file', 'image', 'size',
                     'date_added', 'mode', 'language', 'trans_language')
 
 
