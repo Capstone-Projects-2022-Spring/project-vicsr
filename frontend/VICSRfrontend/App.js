@@ -44,6 +44,9 @@ const HelloWorldApp = () => {
             <TouchableOpacity style={styles.loginBtn}>
                 <Text style={styles.loginText}>LOGIN</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.loginBtn}>
+                <Text style={styles.loginText}>Register an Account</Text>
+            </TouchableOpacity>
 
         </View>
       )
