@@ -1,0 +1,3 @@
+Entry 1 - Mar 8
+- Using this page to help implement navigation through the app https://reactnative.dev/docs/navigation#react-navigation
+- TODO: figure out questions about cocoapods and how that works
