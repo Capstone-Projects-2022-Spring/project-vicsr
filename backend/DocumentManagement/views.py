@@ -1,12 +1,15 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.response import Response
 from .models import Document
 from .serializers import DocumentSerializer
 from django.core.files.storage import FileSystemStorage
+from rest_framework.views import APIView
 
 
 # Create your views here.
-class DocumentViewSet(viewsets.ModelViewSet):
+class DocumentView(APIView):
 
     # need serializer and related functionality still (add, delete, rename, etc.)
     # need to also figure out how to just return specific users documents
@@ -16,19 +19,13 @@ class DocumentViewSet(viewsets.ModelViewSet):
     # basically returns the document list
     queryset = Document.objects.all()
 
+    parser_classes = (MultiPartParser, FormParser)
 
-def upload(request):
-    if request.method == 'POST':
-        # the document name from the front end will go in the brackets
-        uploaded_file = request.FILES['']
-        print("File name: " + uploaded_file.name + ", Size: " + uploaded_file.size)
-        fs = FileSystemStorage()
-        fs.save(uploaded_file.name, uploaded_file)
-    # return render(request, 'App.js')
-
-
-def document_list(request):
-    documents = Document.objects.all()
-
-    # this can pass document lists to the front end I believe
-    # return render(request, "App.js", {'documents: ', documents})
+    def upload(self, request, *args, **kwargs):
+        document_serializer = DocumentSerializer(data=request.data)
+        if document_serializer.is_valid():
+            document_serializer.save()
+            return Response(document_serializer.data,
+                            status=status.HTTP_201_CREATED)
+        else:
+            return Response(document_serializer.errors, status=status.HTTP_400_BAD_REQUEST)

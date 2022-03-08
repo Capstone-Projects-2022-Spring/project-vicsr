@@ -21,15 +21,10 @@ from rest_framework import routers
 from django.conf import settings
 from django.conf.urls.static import static
 
-
-# router = routers.DefaultRouter()
-# router.register(r'Document', views.DocumentViewSet, 'document')
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('api/', include(router.urls)),
-    # path('upload/', views.upload, name='upload'),
-    path('', include('AccountManagement.urls')),
+    path('account/', include('AccountManagement.urls')),
+    path('docs/', include('DocumentManagement.urls'))
 ]
 
 if settings.DEBUG:

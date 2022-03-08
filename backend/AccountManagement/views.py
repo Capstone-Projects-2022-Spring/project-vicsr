@@ -1,47 +1,36 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from django.contrib.auth.models import User, auth
+from django.contrib.auth import get_user_model
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from rest_framework.generics import CreateAPIView
+from backend.AccountManagement.serializers import AccountSerializer
+from .serializers import AccountSerializer
+from rest_framework.response import Response
+from rest_framework import status
 
 
 # Create your views here.
+class AccountAPIView(CreateAPIView):
+    serializer_class = AccountSerializer
+    queryset = get_user_model().objects.all()
 
+    def register(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
 
-def register(request):
+        # create authentication token
 
-    if request.method =='POST':
-        email = request.POST['email']
-        username = request.POST['username']
-        password = request.POST['password']
-        confirmPassword = request.POST['confirmPassword']
+        return Response(
+            {**serializer.data},
+            # {**serializer.data, **token data}
+            status=status.HTTP_201_CREATED,
+            headers=headers
+        )
 
-        user = User.objects.create_user()(username=username, email=email, password=password, confirmPassword=confirmPassword)
-        user.save()
-        return redirect('/documentView')
-
-    return render(request, 'register.html')
-
-
-def login(request):
-
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-
-        user = auth.authenticate(username=username, password=password)
-
-        if user is not None:
-            auth.login(request, user)
-            return redirect('/documentView')
-        else:
-            messages.info(request, "Username or password is invalid")
-            return redirect("/login")
-
-    else:
-        return render(request, 'login.html')
-
-
-def documentView(request):
-
-    return render(request, 'documentView.html')
+    def logout(self, request, format=None):
+        # delete user token, something like: request.user.auth_token.delete()
+        return Response(status=status.HTTP_200_OK)

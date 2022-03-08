@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+# using django user model, don't need to create own
 
 # Account related models/functionality
 
