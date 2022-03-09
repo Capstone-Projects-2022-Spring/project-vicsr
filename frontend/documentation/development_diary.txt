@@ -17,3 +17,11 @@ Entry 2 - Mar 8 - Bri
 - The PDF renders
 - TODO: Get PDF to load, make prettier
 - Other people should try to run the frontend on their machines
+
+Entry 3 - Mar 8 - Bri
+- branching off a branch to keep working: https://stackoverflow.com/questions/34301568/git-branch-off-a-branch
+- Added Floating button and modal to upload or add documents
+- Should probably be re-factored and cleaned up but it works for now
+- TODO: push this branch and merge it cCORRECTLY
+- TODO: Add screenshots to github
+- TODO: Write up more for README
