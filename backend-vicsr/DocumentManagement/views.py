@@ -29,3 +29,7 @@ class DocumentView(APIView):
                             status=status.HTTP_201_CREATED)
         else:
             return Response(document_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        document = Document.objects.get(pk)
+        document.file.delete(save=True)
