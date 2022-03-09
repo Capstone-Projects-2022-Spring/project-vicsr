@@ -11,3 +11,4 @@ Entry 2
 - Navigator wasn't working, just rebooted and cleared cache and that did the trick
 
 - Now quickly iterated on Registration page, able to navigate to it
+
