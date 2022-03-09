@@ -20,3 +20,5 @@ Entry 2 - Mar 8 - Bri
 
 Entry 3 - Mar 8 - Bri
 - branching off a branch to keep working: https://stackoverflow.com/questions/34301568/git-branch-off-a-branch
+- Added Floating button and modal to upload or add documents
+- Should probably be re-factored and cleaned up but it works for now
