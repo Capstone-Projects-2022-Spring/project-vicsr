@@ -48,6 +48,10 @@ function Login({navigation}) {
             <TouchableOpacity style={styles.loginBtn}  onPress={() => navigation.navigate('Register')}>
                 <Text style={styles.loginText}>Register an Account</Text>
             </TouchableOpacity>
+            
+            <TouchableOpacity onPress={() => navigation.navigate("DocumentView")}>
+                <Text style={styles.my_debug}>[dev] skip to main screen</Text>
+            </TouchableOpacity>
 
         </View>
     );
@@ -102,6 +106,11 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 10,
         marginLeft: 20,
+    },
+    my_debug: {
+        height: 30,
+        marginBottom: 30,
+        color: "#0c0203"
     }
 });
 
