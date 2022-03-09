@@ -23,3 +23,5 @@ Entry 3 - Mar 8 - Bri
 - Added Floating button and modal to upload or add documents
 - Should probably be re-factored and cleaned up but it works for now
 - TODO: push this branch and merge it cCORRECTLY
+- TODO: Add screenshots to github
+- TODO: Write up more for README
