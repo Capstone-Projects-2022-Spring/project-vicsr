@@ -12,3 +12,5 @@ Entry 2
 
 - Now quickly iterated on Registration page, able to navigate to it
 
+- Document view page prototype made
+- Follow this instructions to install pdf viewer: https://www.npmjs.com/package/react-native-pdf
