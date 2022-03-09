@@ -1,8 +1,8 @@
-Entry 1 - Mar 8
+Entry 1 - Mar 8 - Bri
 - Using this page to help implement navigation through the app https://reactnative.dev/docs/navigation#react-navigation
 - TODO: figure out questions about cocoapods and how that works
 
-Entry 2
+Entry 2 - Mar 8 - Bri
 - Worked to refactor files into two apps to facilitate dedicating App.js to the NavigationContainer
 - imported components from folder
 - initilized the objects amnd tags that deal with navigation
@@ -14,3 +14,6 @@ Entry 2
 
 - Document view page prototype made
 - Follow this instructions to install pdf viewer: https://www.npmjs.com/package/react-native-pdf
+- The PDF renders
+- TODO: Get PDF to load, make prettier
+- Other people should try to run the frontend on their machines

@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import Pdf from "react-native-pdf";
 
 const DATA = [
     {
@@ -26,6 +27,10 @@ const Item = ({ item, onPress, backgroundColor, textColor }) => (
 function DocumentView({navigation}){
     //vars to keep track of pressed or not pressed
     const [selectedId, setSelectedId] = useState(null);
+
+    //variable to put PDF url in
+    const source = { uri: 'http://samples.leanpub.com/thereactnativebook-sample.pdf', cache: true };
+
 
     //Function to render the item(from item object)
     const renderItem = ({ item }) => {
@@ -54,6 +59,7 @@ function DocumentView({navigation}){
               />
             </View>
             <View style={styles.my_canvas}>
+                <Pdf source={source} />
 
             </View>
 
