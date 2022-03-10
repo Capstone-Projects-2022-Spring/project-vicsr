@@ -1,3 +1,5 @@
-
+/backend/.idea/
 venv/
 /backend/backend/settings.py
+*.pyc
+backend-vicsr/.idea/
