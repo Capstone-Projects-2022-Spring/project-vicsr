@@ -1,0 +1,27 @@
+Entry 1 - Mar 8 - Bri
+- Using this page to help implement navigation through the app https://reactnative.dev/docs/navigation#react-navigation
+- TODO: figure out questions about cocoapods and how that works
+
+Entry 2 - Mar 8 - Bri
+- Worked to refactor files into two apps to facilitate dedicating App.js to the NavigationContainer
+- imported components from folder
+- initilized the objects amnd tags that deal with navigation
+- Needed to run this https://reactnavigation.org/docs/troubleshooting/#im-getting-an-error-unable-to-resolve-module-after-updating-to-the-latest-version to run on the simulator
+
+- Navigator wasn't working, just rebooted and cleared cache and that did the trick
+
+- Now quickly iterated on Registration page, able to navigate to it
+
+- Document view page prototype made
+- Follow this instructions to install pdf viewer: https://www.npmjs.com/package/react-native-pdf
+- The PDF renders
+- TODO: Get PDF to load, make prettier
+- Other people should try to run the frontend on their machines
+
+Entry 3 - Mar 8 - Bri
+- branching off a branch to keep working: https://stackoverflow.com/questions/34301568/git-branch-off-a-branch
+- Added Floating button and modal to upload or add documents
+- Should probably be re-factored and cleaned up but it works for now
+- TODO: push this branch and merge it cCORRECTLY
+- TODO: Add screenshots to github
+- TODO: Write up more for README
