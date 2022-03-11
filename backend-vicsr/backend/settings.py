@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
     'rest_framework',
     'rest_framework.authtoken',
     'AccountManagement',
@@ -134,20 +135,31 @@ USE_I18N = True
 
 USE_TZ = True
 
+#AWS S3 static
+AWS_ACCESS_KEY_ID = os.environ['AWS_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_KEY']
+AWS_STORAGE_BUCKET_NAME = 'vicsr-storage'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'static'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+DEFAULT_FILE_STORAGE = 'backend.storage_backends.MediaStorage'
+
 STATIC_URL = 'static/'
+"""MEDIA_ROOT = [BASE_DIR/'media']
+MEDIA_URL = '/media/'"""
 
-MEDIA_ROOT = [BASE_DIR/'media']
 
-MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
