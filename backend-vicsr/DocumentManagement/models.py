@@ -1,5 +1,7 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
+
 
 
 # Create your models here.
@@ -14,7 +16,7 @@ class Document(models.Model):
         ('TRL', 'Translation'),
         ('DEF', 'Definition')
     ]
-    owner_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     filename = models.CharField(max_length=30)
     # need to review file further, and need to check how to get file size
     file = models.FileField(upload_to='files/')
