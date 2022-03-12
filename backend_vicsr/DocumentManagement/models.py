@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
-from backend.storage_backends import MediaStorage
+from backend_vicsr.backend.storage_backends import MediaStorage
 
 
 
@@ -20,7 +20,7 @@ class Document(models.Model):
     owner_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     filename = models.CharField(max_length=30)
     file = models.FileField(storage=MediaStorage())
-    size = models.IntegerField()
+    #size = models.IntegerField()
     date_added = models.DateTimeField(auto_now_add=True)
     mode = models.CharField(max_length=3, choices=MODE_CHOICES)
     language = models.CharField(max_length=50)
