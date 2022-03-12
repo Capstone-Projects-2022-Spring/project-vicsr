@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import DocumentList from './components/DocumentList.js'
 
@@ -10,21 +9,16 @@ function App() {
   ]
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-
-        <DocumentList documents = {fake_documents} />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <div className="row1">
+        <h>Welcome to VICSR</h>
+      </div>
+      <header className="row2">
+        <div className="documentList">
+          <DocumentList documents = {fake_documents} />
+        </div>
+        <div className="canvas">
+          <iframe title="test-pdf" src= "https://www.germansociety.org/wp-content/uploads/2022/01/ApplicationForm2022.pdf"/>
+        </div>
       </header>
     </div>
   );

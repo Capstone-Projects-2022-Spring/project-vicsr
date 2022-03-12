@@ -1,23 +1,29 @@
-import {FixedSizeList as List} from "react-window"
+import FlatList from "flatlist-react"
+
+import "./DocumentList.css"
 
 function DocumentList(props){
   const docs = props.documents;
   return(
-    <List
-      height={150}
-      itemCount={1000}
-      itemSize={35}
-      width={300}
-    >
-      {Row}
-    </List>
+      <ul className="no-bullets">
+          <FlatList
+            list={docs}
+            renderItem={renderDocumentItem}
+            renderWhenEmpty={() => <div>List is empty!</div>}
+          />
+      </ul>
   )
 
 }
 
-const Row = ({ index, style, title, URL }) => (
-  <div style={style}>{title}</div>
-);
-
+function renderDocumentItem(document, idx){
+  return (
+      <li key={idx}>
+          <div className="documentListCard">
+              <b>{document.Title}</b>
+          </div>
+      </li>
+  );
+}
 
 export default DocumentList
