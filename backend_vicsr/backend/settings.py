@@ -150,11 +150,11 @@ USE_TZ = True
     os.path.join(BASE_DIR, 'static'),
 ]"""
 
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_ID')
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'vicsr-storage'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
+AWS_DEFAULT_ACL = 'public-read'
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
