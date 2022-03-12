@@ -1,6 +1,8 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from backend.storage_backends import MediaStorage
+
 
 
 # Create your models here.
@@ -15,7 +17,7 @@ class Document(models.Model):
         ('TRL', 'Translation'),
         ('DEF', 'Definition')
     ]
-    owner_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     filename = models.CharField(max_length=30)
     file = models.FileField(storage=MediaStorage())
     size = models.IntegerField()

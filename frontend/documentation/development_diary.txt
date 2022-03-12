@@ -25,3 +25,15 @@ Entry 3 - Mar 8 - Bri
 - TODO: push this branch and merge it cCORRECTLY
 - TODO: Add screenshots to github
 - TODO: Write up more for README
+
+
+Entry 4 - Mar 9 - Bri - Meeting w/ Ian
+- Figured out more with pod (package manager)
+- Virtual environment is all held withing proj directory
+- npm and pip are other package managers
+- gradle TODO: pay attention to this too
+- Whenever we add a package, make a commit JUST FOR THAT
+- TODO: tell teammates about package stuff
+- TODO: Will take a long time to implement ios sideloading so we can test app on iphone
+- TODO: Make script to build all dependencies
+- CI server
