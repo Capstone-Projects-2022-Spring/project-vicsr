@@ -13,7 +13,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
 
-        <DocumentList documents = {fake_documents} ></DocumentList>
+        <DocumentList documents = {fake_documents} />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
