@@ -1,0 +1,51 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.row1{
+  background-color: #00008B;
+  color: white;
+  min-height: 40px;
+  text-align: center;
+}
+
+.row2 {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.documentList{
+  alignment: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.canvas{
+  background-color: white;
+  flex: 10;
+}
+
+.loginModalContent{
+  display: flex;
+  flex-direction: row;
+}
+
+.loginSide{
+  flex: 1;
+}
+
+.registerSide{
+  flex: 1;
+}
+
+.closeModalBtn{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

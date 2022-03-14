@@ -1,0 +1,13 @@
+.no-bullets{
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+.documentListCard{
+  height: 180px;
+  width: 110px;
+  background: beige;
+  color: black;
+  border: thick black;
+}
