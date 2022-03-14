@@ -1,6 +1,9 @@
 import React from "react"
 import './App.css';
 import DocumentList from './components/DocumentList.js'
+import Login from './components/views/auth/Login.js'
+import Register from './components/views/auth/Register.js'
+import Logout from './components/views/auth/Logout.js'
 import Modal from 'react-modal'
 
 //setup for LoginModal
@@ -54,6 +57,8 @@ function App() {
         >
             <div className="loginModalContent">
                 <div className="loginSide">
+
+                    <Logout />
 
                 </div>
                 <div className="registerSide">
