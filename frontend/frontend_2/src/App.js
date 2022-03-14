@@ -84,9 +84,9 @@ function App() {
                 <button onClick={openLoginModal}>Login or Register</button>
             </div>
             <header className="row2">
-                <div className="documentList">
+                {token && <div className="documentList">
                     <DocumentList documents = {fake_documents} />
-                </div>
+                </div>}
                 <div className="canvas">
                     <iframe title="test-pdf" src= "https://www.germansociety.org/wp-content/uploads/2022/01/ApplicationForm2022.pdf"/>
                 </div>
