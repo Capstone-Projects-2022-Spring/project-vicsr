@@ -24,7 +24,7 @@ class Document(models.Model):
     filename = models.CharField(max_length=30)
     file = models.FileField(storage=MediaStorage())
     # size = models.IntegerField()
-    # date_added = models.DateTimeField(auto_now_add=True)
+    date_added = models.DateTimeField(auto_now_add=True)
     mode = models.CharField(max_length=3, choices=MODE_CHOICES)
     language = models.CharField(max_length=50)
     trans_language = models.CharField(max_length=50, blank=True)

@@ -52,19 +52,3 @@ class DocumentView(APIView):
     def delete(self, request, pk, *args, **kwargs):
         Document.objects.get(pk=pk).delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-"""
-    def upload(self, request, *args, **kwargs):
-        document_serializer = DocumentSerializer(data=request.data)
-        if document_serializer.is_valid():
-            document_serializer.save()
-            return Response(document_serializer.data,
-                            status=status.HTTP_201_CREATED)
-        else:
-            return Response(document_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk):
-        document = Document.objects.get(pk)
-        document.file.delete(save=True)
-"""

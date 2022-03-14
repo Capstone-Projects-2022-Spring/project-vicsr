@@ -6,8 +6,6 @@ class DocumentAdmin(admin.ModelAdmin):
     # list_display = ('owner_id', 'filename', 'file',
     #                'date_added', 'mode', 'language', 'trans_language')
 
-    list_display = ('filename', 'file',
-                    'mode', 'language', 'trans_language')
 """
 
 # Register your models here.

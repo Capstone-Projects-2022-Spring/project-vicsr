@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+from .config import AWS_ID, AWS_KEY
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -152,8 +154,8 @@ USE_TZ = True
     os.path.join(BASE_DIR, 'static'),
 ]"""
 
-AWS_ACCESS_KEY_ID = 'backend.config.AWS_ID'
-AWS_SECRET_ACCESS_KEY = 'backend.config.AWS_KEY'
+AWS_ACCESS_KEY_ID = AWS_ID
+AWS_SECRET_ACCESS_KEY = AWS_KEY
 AWS_STORAGE_BUCKET_NAME = 'vicsr-storage'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_DEFAULT_ACL = 'public-read'
