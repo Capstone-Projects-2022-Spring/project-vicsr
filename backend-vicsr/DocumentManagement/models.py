@@ -1,9 +1,12 @@
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
-from backend_vicsr.backend.storage_backends import MediaStorage
+# from backend-vicsr.backend.storage_backends import MediaStorage
+import sys
+from backend.storage_backends import MediaStorage
 
 
+# from project-vicsr.backend-vicsr.backend.storage_backends import MediaStorage
 
 # Create your models here.
 
@@ -20,18 +23,11 @@ class Document(models.Model):
     owner_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     filename = models.CharField(max_length=30)
     file = models.FileField(storage=MediaStorage())
-    #size = models.IntegerField()
-    date_added = models.DateTimeField(auto_now_add=True)
+    # size = models.IntegerField()
+    # date_added = models.DateTimeField(auto_now_add=True)
     mode = models.CharField(max_length=3, choices=MODE_CHOICES)
     language = models.CharField(max_length=50)
     trans_language = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
         return self.filename
-
-
-
-
-
-
-

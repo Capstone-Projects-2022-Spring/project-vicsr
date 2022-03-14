@@ -63,8 +63,10 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
-        'rest_framework.permissions.IsAdminUser'
-    )
+        'rest_framework.permissions.IsAdminUser',
+        # 'rest_framework.authentication.SessionAuthentication',
+    ),
+
 }
 
 MIDDLEWARE = [
@@ -150,8 +152,8 @@ USE_TZ = True
     os.path.join(BASE_DIR, 'static'),
 ]"""
 
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_KEY')
+AWS_ACCESS_KEY_ID = 'backend.config.AWS_ID'
+AWS_SECRET_ACCESS_KEY = 'backend.config.AWS_KEY'
 AWS_STORAGE_BUCKET_NAME = 'vicsr-storage'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_DEFAULT_ACL = 'public-read'
