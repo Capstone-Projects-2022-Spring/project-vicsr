@@ -10,6 +10,16 @@ import Modal from 'react-modal'
 // necessary to include according to: https://reactcommunity.org/react-modal/accessibility/
 Modal.setAppElement('#root');
 
+//variables and setup for authentication / login
+function setToken(userToken){
+
+}
+
+function getToken(){
+
+}
+
+//variables and setup for Modal
 const customLoginModalStyles = {
     content: {
         top: '50%',
@@ -45,6 +55,11 @@ function App() {
         {URL: "www.wqdwqojdfqdwwqdwdwd.com", Title: "German HW 2"},
         {URL: "www.dqwdikcdw.com", Title: "German HW 3"}
     ]
+
+    //token for authentication
+    const token = getToken()
+
+    //below here we can check if there is a token or not, and render components conditionally based on that
 
     return (
         <div id = "root" className="App">
