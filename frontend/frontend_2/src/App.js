@@ -12,7 +12,7 @@ Modal.setAppElement('#root');
 
 //variables and setup for authentication / login
 function setToken(userToken){
-
+    sessionStorage.setItem('token', JSON.stringify(userToken));
 }
 
 function getToken(){
@@ -42,7 +42,6 @@ function App() {
 
     function afterOpenLoginModal() {
         // references are now sync'd and can be accessed.
-        subtitle.style.color = '#f00';
     }
 
     function closeLoginModal() {
@@ -72,9 +71,7 @@ function App() {
         >
             <div className="loginModalContent">
                 <div className="loginSide">
-
-                    <Login />
-
+                    <Login setToken={setToken}/>
                 </div>
                 <div className="registerSide">
                     <Register/>
