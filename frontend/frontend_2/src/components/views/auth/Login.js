@@ -23,9 +23,8 @@ const Login = ({setToken}) => {
 
     //function which triggers when login button is clicked
     const onSubmit = async e => {
-        //what does this do?
+        //prevent page reload
         e.preventDefault();
-
 
         const token = await loginUser({email, password});
         //on successful grabbing of the token, call setToken from props
