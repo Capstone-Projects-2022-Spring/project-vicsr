@@ -22,26 +22,9 @@ const Login = () => {
             password: password
         };
 
-        fetch('http://127.0.0.1:8000/api/v1/users/auth/login/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.key) {
-                    localStorage.clear();
-                    localStorage.setItem('token', data.key);
-                    window.location.replace('http://localhost:3000/dashboard');
-                } else {
-                    setEmail('');
-                    setPassword('');
-                    localStorage.clear();
-                    setErrors(true);
-                }
-            });
+        //login logic/talking to server goes here
+
+
     };
 
     return (

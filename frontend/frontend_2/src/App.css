@@ -30,3 +30,22 @@
   background-color: white;
   flex: 10;
 }
+
+.loginModalContent{
+  display: flex;
+  flex-direction: row;
+}
+
+.loginSide{
+  flex: 1;
+}
+
+.registerSide{
+  flex: 1;
+}
+
+.closeModalBtn{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

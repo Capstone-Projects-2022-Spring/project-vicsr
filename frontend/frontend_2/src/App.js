@@ -58,14 +58,14 @@ function App() {
             <div className="loginModalContent">
                 <div className="loginSide">
 
-                    <Logout />
+                    <Login />
 
                 </div>
                 <div className="registerSide">
-
+                    <Register/>
                 </div>
             </div>
-            <button onClick={closeLoginModal}>close</button>
+            <button className="closeModalBtn" onClick={closeLoginModal}>close</button>
         </Modal>
             <div className="row1">
                 <h1>Welcome to VICSR</h1>
