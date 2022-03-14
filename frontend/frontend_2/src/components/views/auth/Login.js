@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 const Login = ({setToken}) => {
     const [email, setEmail] = useState('');
@@ -7,17 +7,10 @@ const Login = ({setToken}) => {
     const [errors, setErrors] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        if (localStorage.getItem('token') !== null) {
-            window.location.replace('http://localhost:3000/dashboard');
-        } else {
-            setLoading(false);
-        }
-    }, []);
-
     //function to send credentials and take behavior from the server
     //from https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications for now
     async function loginUser(credentials) {
+        //login logic/talking to server goes here
         return fetch('http://localhost:8080/login', {
             method: 'POST',
             headers: {
@@ -35,11 +28,8 @@ const Login = ({setToken}) => {
 
 
         const token = await loginUser({email, password});
+        //on successful grabbing of the token, call setToken from props
         setToken(token);
-
-        //login logic/talking to server goes here
-
-
     };
 
     return (
@@ -72,5 +62,10 @@ const Login = ({setToken}) => {
         </div>
     );
 };
+
+//logic to ensure that setToken prop is required
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
+}
 
 export default Login;
