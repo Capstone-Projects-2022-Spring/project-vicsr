@@ -55,7 +55,7 @@ INSTALLED_APPS = [
 
     'AccountManagement',
     'DocumentManagement',
-    'VocabularyManagement'
+    'VocabularyManagement',
 ]
 
 REST_FRAMEWORK = {

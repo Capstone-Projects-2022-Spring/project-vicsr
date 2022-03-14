@@ -1,12 +1,7 @@
 from django.conf import settings
 from django.db import models
-from django.contrib.auth.models import User
-# from backend-vicsr.backend.storage_backends import MediaStorage
-import sys
 from backend.storage_backends import MediaStorage
 
-
-# from project-vicsr.backend-vicsr.backend.storage_backends import MediaStorage
 
 # Create your models here.
 
