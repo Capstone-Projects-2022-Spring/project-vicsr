@@ -10,8 +10,7 @@ from rest_framework.authentication import TokenAuthentication, SessionAuthentica
 
 
 # Create your views here.
-# class DocumentView(APIView):
-class DocumentView(APIView):
+class DocumentView(viewsets.ModelViewSet):
 
     permission_classes = (IsAuthenticated,)
     authentication_classes = (TokenAuthentication, )
@@ -26,6 +25,8 @@ class DocumentView(APIView):
     model = Document
     serializer_class = DocumentSerializer
 
+
+"""
     parser_classes = (MultiPartParser, FormParser)
     http_method_names = ['get', 'post', 'patch', 'delete']
 
@@ -35,7 +36,7 @@ class DocumentView(APIView):
         except Document.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
-    def get(self, request, pk, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         docs = Document.objects.all()
         serializer = DocumentSerializer(docs)
         return Response(serializer.data)
@@ -48,6 +49,9 @@ class DocumentView(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
     def delete(self, request, pk, *args, **kwargs):
         Document.objects.get(pk=pk).delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_204_NO_CONTENT) 
+
+"""
