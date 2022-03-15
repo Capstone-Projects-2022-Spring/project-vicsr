@@ -1,6 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from "prop-types";
+import './auth.css';
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+
+async function registerUser(credentials) {
+    //login logic/talking to server goes here
+
+    return fetch('https://vicsr-api-test.herokuapp.com/api/users/auth/register/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
+    })
+        .then(data => data.json())
+};
+
+export default function Register( {setToken} ) {
   const [email, setEmail] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
@@ -8,14 +26,14 @@ const Register = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (localStorage.getItem('token') !== null) {
-      window.location.replace('http://localhost:3000/dashboard');
+    if (sessionStorage.getItem('token') !== null) {
+      window.location.replace("http://vicsr.herokuapp.com/docs/");
     } else {
       setLoading(false);
     }
   }, []);
 
-  const onSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     const user = {
@@ -24,65 +42,47 @@ const Register = () => {
       password2: password2
     };
 
-    fetch('http://127.0.0.1:8000/api/v1/users/auth/register/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(user)
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.key) {
-          localStorage.clear();
-          localStorage.setItem('token', data.key);
-          window.location.replace('http://localhost:3000/dashboard');
+    // const token = await registerUser ( { email, password1, password2 });
+    const token = await registerUser (user);
+    console.log("token in register: " + token.key)
+    setToken(token.key);
+
+    if(token.key){
+            window.location.replace("http://vicsr.herokuapp.com/docs/");
         } else {
-          setEmail('');
-          setPassword1('');
-          setPassword2('');
-          localStorage.clear();
-          setErrors(true);
+            setEmail('');
+            setPassword1('');
+            setPassword2('');
+            setErrors(true);
         }
-      });
-  };
+    }
 
   return (
-    <div>
-      {loading === false && <h1>Register</h1>}
+    <div className="register-wrapper">
+      {loading === false && <h1>Register with VICSR</h1>}
       {errors === true && <h2>Cannot register with provided credentials</h2>}
-      <form onSubmit={onSubmit}>
-        <label htmlFor='email'>Email address:</label> <br />
-        <input
-          name='email'
-          type='email'
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
-        />{' '}
-        <br />
-        <label htmlFor='password1'>Password:</label> <br />
-        <input
-          name='password1'
-          type='password'
-          value={password1}
-          onChange={e => setPassword1(e.target.value)}
-          required
-        />{' '}
-        <br />
-        <label htmlFor='password2'>Confirm password:</label> <br />
-        <input
-          name='password2'
-          type='password'
-          value={password2}
-          onChange={e => setPassword2(e.target.value)}
-          required
-        />{' '}
-        <br />
-        <input type='submit' value='Register' />
-      </form>
+      {loading === false && <form onSubmit={handleSubmit}>
+            <label>
+                <p>Email</p>
+                <input type="email" name='email' value={email} onChange={e => setEmail(e.target.value)} />
+            </label> <br />
+            <label>
+                <p>Password</p>
+                <input type="password" name='password1' value={password1} onChange={e => setPassword1(e.target.value)} />
+            </label> <br />
+            <label>
+                <p>Confirm Password</p>
+                <input type="password" name='password2' value={password2} onChange={e => setPassword2(e.target.value)} />
+            </label> <br />
+            <div>
+                <br />
+                <button type="submit" onSubmit={registerUser} >Register</button>
+            </div>
+      </form>}
     </div>
   );
 };
 
-export default Register;
+Register.propTypes = {
+  setToken: PropTypes.func.isRequired
+};

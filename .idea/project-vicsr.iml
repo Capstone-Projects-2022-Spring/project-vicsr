@@ -3,10 +3,10 @@
   <component name="FacetManager">
     <facet type="django" name="Django">
       <configuration>
-        <option name="rootFolder" value="$MODULE_DIR$/backend-vicsr" />
+        <option name="rootFolder" value="$MODULE_DIR$/backend_vicsr" />
         <option name="settingsModule" value="backend/settings.py" />
         <option name="manageScript" value="manage.py" />
-        <option name="environment" value="&lt;map/&gt;" />
+        <option name="environment" value="&lt;map&gt;&#10;  &lt;entry&gt;&#10;    &lt;string&gt;AWS_ID&lt;/string&gt;&#10;    &lt;string&gt;AKIAW3OAJDCXEME4KYXM&lt;/string&gt;&#10;  &lt;/entry&gt;&#10;  &lt;entry&gt;&#10;    &lt;string&gt;AWS_KEY&lt;/string&gt;&#10;    &lt;string&gt;KSWkC8XVVM/CtiQbccBLizV4cmCgW0k5UmwrFcNT&lt;/string&gt;&#10;  &lt;/entry&gt;&#10;&lt;/map&gt;" />
         <option name="doNotUseTestRunner" value="false" />
         <option name="trackFilePattern" value="migrations" />
       </configuration>
@@ -19,7 +19,7 @@
       <excludeFolder url="file://$MODULE_DIR$/backend/venv" />
       <excludeFolder url="file://$MODULE_DIR$/backend-vicsr/venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.9 (venv)" jdkType="Python SDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">

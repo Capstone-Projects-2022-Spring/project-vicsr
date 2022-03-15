@@ -4,8 +4,8 @@ const Logout = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (localStorage.getItem('token') == null) {
-      window.location.replace('http://localhost:3000/login');
+    if (sessionStorage.getItem('token') == null) {
+      window.location.replace("http://vicsr.herokuapp.com/login");
     } else {
       setLoading(false);
     }
@@ -14,18 +14,18 @@ const Logout = () => {
   const handleLogout = e => {
     e.preventDefault();
 
-    fetch('http://127.0.0.1:8000/api/v1/users/auth/logout/', {
+    fetch('https://vicsr-api-test.herokuapp.com/api/users/auth/logout/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Token ${localStorage.getItem('token')}`
+        Authorization: `Token ${sessionStorage.getItem('token')}`
       }
     })
       .then(res => res.json())
       .then(data => {
         console.log(data);
-        localStorage.clear();
-        window.location.replace('http://localhost:3000/login');
+        sessionStorage.clear();
+        window.location.replace("http://vicsr.herokuapp.com/login");
       });
   };
 
