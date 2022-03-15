@@ -25,11 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-8^7w6ev*8si#736h2ao1i!6lmufk&760ws9#imt$+8hzl!tnkf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
 
 ALLOWED_HOSTS = [
     'http://localhost:3000',
     '127.0.0.1'
+    'https://vicsr-test.herokuapp.com/'
 ]
 
 
