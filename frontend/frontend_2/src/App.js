@@ -6,6 +6,7 @@ import useToken from './useToken';
 import Login from './components/views/auth/Login';
 import Register from './components/views/auth/Register';
 import Logout from './components/views/auth/Logout'
+import FlashcardView from './components/views/FlashCardView'
 
 function App() {
     const { token, setToken } = useToken();
@@ -29,6 +30,7 @@ function App() {
                     <Route path="/login" element={<Login token/>}></Route>
                     <Route path="/logout" element={<Logout />}></Route>
                     <Route path="/docs" element={<DocumentView />}></Route>
+                    <Route path="/flashcards" element={<FlashcardView />}></Route>
                 </Routes>
         </div>
     );

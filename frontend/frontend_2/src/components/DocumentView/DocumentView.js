@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import DocumentList from '../DocumentList.js'
 import DocumentModal from './DocumentModal'
 import Logout from '../views/auth/Logout'
+import {Link} from "react-router-dom";
 
 //Variables for the document list component
 const fake_documents = [
@@ -40,6 +41,8 @@ export default function DocumentView() {
 
             </div>
         </header>
+
+        <Link to='/flashcards'>Go to flashcard view</Link>
     </div>
     );
 }

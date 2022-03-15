@@ -8,7 +8,7 @@ function DocumentList(props){
 
   const addDocument = e => {
 
-    return fetch('http://127.0.0.1:8000/api/docs/', {
+    return fetch('https://vicsr-api-test.herokuapp.com/api/docs/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ function DocumentList(props){
 
   let documents = []
   const getDocuments = e => {
-    return fetch('http://127.0.0.1:8000/api/docs/', {
+    return fetch('https://vicsr-api-test.herokuapp.com/api/docs/', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -32,6 +32,7 @@ function DocumentList(props){
       .then(data => {
         console.log(data);
         documents = data;
+        console.log(documents)
       });
   }
 
@@ -53,10 +54,10 @@ function DocumentList(props){
               <div className="mb-4">
                 <button className="btn btn-primary" onClick={getDocuments}> Add Document </button>
               </div>
-              <ul className="list-group list-group-flush border-top-0">
+              <ul className="no-bullets">
 
                 <FlatList
-                    list={docs}
+                    list={documents}
                     renderItem={renderDocumentItem}
                     renderWhenEmpty={() => <div>List is empty!</div>}
                 />
