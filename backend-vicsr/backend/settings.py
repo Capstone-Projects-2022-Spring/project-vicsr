@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'http://localhost:3000',
-    '127.0.0.1'
+    '127.0.0.1',
 ]
 
 

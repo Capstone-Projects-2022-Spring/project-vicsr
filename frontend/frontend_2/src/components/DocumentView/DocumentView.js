@@ -19,7 +19,7 @@ export default function DocumentView() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        window.location.replace("http://localhost:3000/logout");
+        window.location.replace("http://vicsr.herokuapp.com/logout");
     }
 
     return(

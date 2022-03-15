@@ -26,7 +26,7 @@ export default function Login( {setToken} ) {
 
     useEffect(() => {
         if(sessionStorage.getItem('token') !== null) {
-            window.location.replace("http://localhost:3000/docs");
+            window.location.replace("http://vicsr.herokuapp.com/docs/");
         } else {
             setLoading(false);
         }
@@ -38,7 +38,7 @@ export default function Login( {setToken} ) {
         setToken(token.key);
         console.log("token in login.js: " + token.key)
         if(token.key){
-            window.location.replace("http://localhost:3000/docs");
+            window.location.replace("http://vicsr.herokuapp.com/docs/");
         } else {
             setEmail('');
             setPassword('');
