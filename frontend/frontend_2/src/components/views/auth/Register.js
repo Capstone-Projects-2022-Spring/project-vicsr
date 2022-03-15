@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 async function registerUser(credentials) {
     //login logic/talking to server goes here
 
-    return fetch('http://127.0.0.1:8000/api/users/auth/register/', {
+    return fetch('https://vicsr-api-test.herokuapp.com/api/users/auth/register/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -76,7 +76,7 @@ export default function Register( {setToken} ) {
             </label> <br />
             <div>
                 <br />
-                <button type="submit">Register</button>
+                <button type="submit" onSubmit={registerUser} >Register</button>
             </div>
       </form>}
     </div>

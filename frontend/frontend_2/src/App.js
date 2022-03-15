@@ -12,18 +12,24 @@ function App() {
     console.log("token in app.js: " + token)
 
     if(!token) {
-        return <Login setToken={setToken} />
+        return(
+            <div className="wrapper">
+                <Login setToken={setToken}/>
+                    <Routes>
+                        <Route path="/register" element={<Register setToken={setToken}/>}></Route>
+                    </Routes>
+            </div>
+        );
     }
     return (
         <div className="wrapper">
             <h1>Welcome to VICSR!</h1>
                 <Routes>
-                    <Route path="/register" element={<Register token/>}></Route>
+                    <Route path="/register" element={<Register setToken={setToken}/>}></Route>
                     <Route path="/login" element={<Login token/>}></Route>
                     <Route path="/logout" element={<Logout />}></Route>
                     <Route path="/docs" element={<DocumentView />}></Route>
                 </Routes>
-
         </div>
     );
 }

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+/*import React, { Component } from "react";
 import {
   Button,
   Modal,
@@ -107,4 +107,4 @@ export default class DocumentModal extends Component {
       </Modal>
     );
   }
-}
+}*/

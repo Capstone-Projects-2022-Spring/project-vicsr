@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 async function loginUser(credentials) {
     //login logic/talking to server goes here
-    return fetch('http://127.0.0.1:8000/api/users/auth/login/', {
+    return fetch('https://vicsr-api-test.herokuapp.com/api/users/auth/login/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

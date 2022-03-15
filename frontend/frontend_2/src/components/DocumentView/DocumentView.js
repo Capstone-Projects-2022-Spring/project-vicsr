@@ -18,7 +18,7 @@ export default function DocumentView() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        window.location.replace("http://localhost:3000/docs");
+        window.location.replace("http://localhost:3000/logout");
     }
 
     return(
