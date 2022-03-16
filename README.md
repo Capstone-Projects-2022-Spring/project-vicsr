@@ -14,3 +14,6 @@ VISCR facilitates foreign language and special subject vocabulary learning in tw
 * Bryan Oberholtzer
 * Cecily Devaney
 * Songyuan Huang
+
+## Releases
+[v1.0](https://github.com/Capstone-Projects-2022-Spring/project-vicsr/releases/tag/v1.0)
