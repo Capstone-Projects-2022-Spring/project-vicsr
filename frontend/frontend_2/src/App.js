@@ -7,6 +7,7 @@ import Login from './components/views/auth/Login';
 import Register from './components/views/auth/Register';
 import Logout from './components/views/auth/Logout'
 import FlashcardView from './components/views/FlashCardView'
+import FlashcardOptions from './components/views/FlashcardView/FlashcardOptions.js'
 import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
                     <Route path="/logout" element={<Logout />}></Route>
                     <Route path="/docs" element={<DocumentView />}></Route>
                     <Route path="/flashcards" element={<FlashcardView />}></Route>
+                    <Route path="/flashcards/options" element={<FlashcardOptions />}></Route>
                 </Routes>
         </div>
     );
