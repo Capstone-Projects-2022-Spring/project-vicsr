@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import DocumentView from './components/DocumentView/DocumentView';
+import DocumentView from './components/views/DocumentView/DocumentView';
 import useToken from './useToken';
 import Login from './components/views/auth/Login';
 import Register from './components/views/auth/Register';

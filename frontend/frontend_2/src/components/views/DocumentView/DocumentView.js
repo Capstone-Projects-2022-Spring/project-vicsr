@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import DocumentList from '../DocumentList.js'
+import DocumentList from '../../sidebars/DocumentList.js'
 import DocumentModal from './DocumentModal'
-import Logout from '../views/auth/Logout'
+import Logout from '../auth/Logout'
 import {Link} from "react-router-dom";
 
 //Variables for the document list component

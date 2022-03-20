@@ -1,6 +1,6 @@
 import React from "react"
 import './App.css';
-import DocumentList from './components/DocumentList.js'
+import DocumentList from './components/sidebars/DocumentList.js'
 import Login from './components/views/auth/Login.js'
 import Register from './components/views/auth/Register.js'
 import Logout from './components/views/auth/Logout.js'
