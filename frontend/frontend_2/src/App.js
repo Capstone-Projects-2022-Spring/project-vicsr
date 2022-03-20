@@ -7,6 +7,7 @@ import Login from './components/views/auth/Login';
 import Register from './components/views/auth/Register';
 import Logout from './components/views/auth/Logout'
 import FlashcardView from './components/views/FlashCardView'
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
     const { token, setToken } = useToken();

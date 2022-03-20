@@ -1,10 +1,15 @@
 import FlatList from "flatlist-react"
+import Button from "react-bootstrap/Button";
 
-import "./DocumentList.css"
+//import "./DocumentList.css"
 
 
 function DocumentList(props){
-  const docs = props.documents;
+  const docs = [
+        {URL: "www.wqdwqojdfnqwd.com", Title: "German HW"},
+        {URL: "www.wqdwqojdfqdwwqdwdwd.com", Title: "German HW 2"},
+        {URL: "www.dqwdikcdw.com", Title: "German HW 3"}
+    ];
 
   const addDocument = e => {
 
@@ -32,40 +37,25 @@ function DocumentList(props){
       .then(data => {
         console.log(data);
         documents = data;
-        console.log(documents)
+        console.log(documents);
+        return documents;
       });
   }
-
+  let docsToLoad = getDocuments();
   return(
-
-//      <ul className="no-bullets">
-//          <FlatList
-//            list={docs}
-//            renderItem={renderDocumentItem}
-//            renderWhenEmpty={() => <div>List is empty!</div>}
-//          />
-//      </ul>
 
     <main className="container">
         <h1 className="text-white text-uppercase text-center my-4">Document List</h1>
-        <div className="row">
-          <div className="col-sm-6 col-sm-10 mx-auto p-0">
-            <div className="card p-3">
-              <div className="mb-4">
-                <button className="btn btn-primary" onClick={getDocuments}> Add Document </button>
-              </div>
-              <ul className="no-bullets">
-
+        <Button variant="warning" onClick={addDocument}>Add Document</Button>
+        <div className="mb-4">
+        </div>
+            <ul className="no-bullets">
                 <FlatList
-                    list={documents}
+                    list={docs}
                     renderItem={renderDocumentItem}
                     renderWhenEmpty={() => <div>List is empty!</div>}
                 />
-
-              </ul>
-            </div>
-          </div>
-        </div>
+            </ul>
       </main>
 
   );
@@ -77,7 +67,7 @@ function renderDocumentItem(document, idx){
       <li key={idx}>
           <div className="documentListCard">
             <span>
-                <b>file: {document.filename}</b>
+                <b>file: {document.Title}</b>
             </span>
             <span>
                 <button className="btn btn-danger"> Delete </button>

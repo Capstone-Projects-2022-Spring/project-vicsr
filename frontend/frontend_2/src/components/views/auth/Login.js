@@ -4,6 +4,8 @@ import './auth.css';
 import { Link } from "react-router-dom";
 import Register from './Register.js'
 import { useNavigate } from "react-router-dom";
+import {LinkContainer} from "react-router-bootstrap"
+import Button from "react-bootstrap/Button";
 
 
 async function loginUser(credentials) {
@@ -75,7 +77,9 @@ export default function Login( {setToken} ) {
             <br />
             <nav>
                 <li>
-                    <Link to='/register'>No account? Register here! </Link>
+                    <LinkContainer to="/register">
+                        <Button>Register</Button>
+                    </LinkContainer>
                 </li>
             </nav>
         </div>
