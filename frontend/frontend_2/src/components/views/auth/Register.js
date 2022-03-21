@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 import './auth.css';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { API_URL, REACT_URL } from './../../../config'
 
 
 async function registerUser(credentials) {
     //login logic/talking to server goes here
 
-    return fetch('https://vicsr-api-test.herokuapp.com/api/users/auth/register/', {
+    return fetch('${API_URL}/api/users/auth/register/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -27,7 +28,7 @@ export default function Register( {setToken} ) {
 
   useEffect(() => {
     if (sessionStorage.getItem('token') !== null) {
-      window.location.replace("http://vicsr.herokuapp.com/docs/");
+      window.location.replace('${REACT_URL}/docs/');
     } else {
       setLoading(false);
     }
@@ -48,7 +49,7 @@ export default function Register( {setToken} ) {
     setToken(token.key);
 
     if(token.key){
-            window.location.replace("http://vicsr.herokuapp.com/docs/");
+            window.location.replace('${REACT_URL}/docs/');
         } else {
             setEmail('');
             setPassword1('');

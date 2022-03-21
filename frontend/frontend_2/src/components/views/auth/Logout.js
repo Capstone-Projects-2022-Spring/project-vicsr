@@ -1,11 +1,12 @@
 import React, { useState, useEffect, Fragment } from 'react';
+import { API_URL, REACT_URL } from './../../../config'
 
 const Logout = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (sessionStorage.getItem('token') == null) {
-      window.location.replace("http://vicsr.herokuapp.com/login");
+      window.location.replace('${REACT_URL}/login');
     } else {
       setLoading(false);
     }
@@ -14,7 +15,7 @@ const Logout = () => {
   const handleLogout = e => {
     e.preventDefault();
 
-    fetch('https://vicsr-api-test.herokuapp.com/api/users/auth/logout/', {
+    fetch('${API_URL}/api/users/auth/logout/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,7 +26,7 @@ const Logout = () => {
       .then(data => {
         console.log(data);
         sessionStorage.clear();
-        window.location.replace("http://vicsr.herokuapp.com/login");
+        window.location.replace('${REACT_URL}/login');
       });
   };
 
