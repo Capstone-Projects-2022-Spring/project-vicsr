@@ -9,6 +9,9 @@ export default function FlashCardView(){
             <div className="flashcard">
                 <p>Content here</p>
             </div>
+            <form>
+                <button>Press this</button>
+            </form>
         </div>
     )
 }
