@@ -30,7 +30,8 @@ export default function Login( {setToken} ) {
 
     useEffect(() => {
         if(sessionStorage.getItem('token') !== null) {
-            window.location.replace('${REACT_URL}/docs/');
+            let windowString = REACT_URL+ '/docs/'
+            window.location.replace(windowString);
         } else {
             setLoading(false);
         }
@@ -42,7 +43,8 @@ export default function Login( {setToken} ) {
         setToken(token.key);
         console.log("token in login.js: " + token.key)
         if(token.key){
-            window.location.replace('${REACT_URL}/docs/');
+            let onSubmitString = REACT_URL+ '/docs/'
+            window.location.replace(onSubmitString);
         } else {
             setEmail('');
             setPassword('');
