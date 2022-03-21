@@ -20,7 +20,8 @@ export default function DocumentView() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        window.location.replace('${REACT_URL}/logout');
+        let docViewHandleSubmitString = REACT_URL + "/logout"
+        window.location.replace(docViewHandleSubmitString);
     }
 
     return(

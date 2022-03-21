@@ -15,7 +15,9 @@ function DocumentList(props){
 
   const addDocument = e => {
 
-    return fetch('${API_URL}/api/docs/add/', {
+
+    let docListAddDocAPIstring = API_URL + "/api/docs/add/"
+    return fetch(docListAddDocAPIstring, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -28,7 +30,8 @@ function DocumentList(props){
 
   let documents = []
   const getDocuments = e => {
-    return fetch('${API_URL}/api/docs/list/', {
+    let docListGetDocsAPIstring = API_URL + "/api/docs/list/"
+    return fetch(docListGetDocsAPIstring, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

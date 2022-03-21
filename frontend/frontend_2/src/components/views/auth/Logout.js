@@ -6,7 +6,8 @@ const Logout = () => {
 
   useEffect(() => {
     if (sessionStorage.getItem('token') == null) {
-      window.location.replace('${REACT_URL}/login');
+      let logoutUseEffectString = REACT_URL + "/login"
+      window.location.replace(logoutUseEffectString);
     } else {
       setLoading(false);
     }
@@ -15,7 +16,8 @@ const Logout = () => {
   const handleLogout = e => {
     e.preventDefault();
 
-    fetch('${API_URL}/api/users/auth/logout/', {
+    let logoutHandleLogoutString = API_URL + "/api/users/auth/logout/"
+    fetch(logoutHandleLogoutString, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -26,7 +28,8 @@ const Logout = () => {
       .then(data => {
         console.log(data);
         sessionStorage.clear();
-        window.location.replace('${REACT_URL}/login');
+        let logoutHandleLogoutString = REACT_URL + "/login"
+        window.location.replace(logoutHandleLogoutString);
       });
   };
 
