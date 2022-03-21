@@ -16,7 +16,4 @@ if(prod){
     react_url = 'http://vicsr.herokuapp.com';
 }
 
-//const API_ROOT = api_url;
-//const REACT_ROOT = react_url;
-
 export const API_URL = api_url, REACT_URL = react_url;
