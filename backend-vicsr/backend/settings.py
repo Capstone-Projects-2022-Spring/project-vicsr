@@ -30,13 +30,9 @@ SECRET_KEY = SECRET
 
 ALLOWED_HOSTS = [
     'http://localhost:3000',
-<<<<<<< HEAD
-    '127.0.0.1',
-=======
     '127.0.0.1'
     'https://vicsr-test.herokuapp.com/',
     'https://vicsr.herokuapp.com/'
->>>>>>> main
 ]
 
 
