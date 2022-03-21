@@ -11,7 +11,8 @@ import { API_URL, REACT_URL } from './../../../config'
 
 async function loginUser(credentials) {
     //login logic/talking to server goes here
-    return fetch('${API_URL}/api/users/auth/login/', {
+    let loginString = API_URL + '/api/users/auth/login/'
+    return fetch(loginString, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
