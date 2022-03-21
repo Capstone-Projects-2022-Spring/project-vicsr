@@ -8,8 +8,8 @@ import { API_URL, REACT_URL } from './../../../config'
 
 async function registerUser(credentials) {
     //login logic/talking to server goes here
-
-    return fetch('${API_URL}/api/users/auth/register/', {
+    let registerUserAPIstring = API_URL + '/api/users/auth/register/'
+    return fetch(registerUserAPIstring, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -28,7 +28,8 @@ export default function Register( {setToken} ) {
 
   useEffect(() => {
     if (sessionStorage.getItem('token') !== null) {
-      window.location.replace('${REACT_URL}/docs/');
+        let reigsterUseEffectString = REACT_URL + "/docs"
+        window.location.replace(reigsterUseEffectString);
     } else {
       setLoading(false);
     }
@@ -49,7 +50,8 @@ export default function Register( {setToken} ) {
     setToken(token.key);
 
     if(token.key){
-            window.location.replace('${REACT_URL}/docs/');
+            let registerOnSubmitString = REACT_URL+ '/docs/'
+            window.location.replace(registerOnSubmitString);
         } else {
             setEmail('');
             setPassword1('');
