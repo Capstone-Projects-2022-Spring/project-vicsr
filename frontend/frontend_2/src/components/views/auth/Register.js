@@ -28,7 +28,7 @@ export default function Register( {setToken} ) {
 
   useEffect(() => {
     if (sessionStorage.getItem('token') !== null) {
-      window.location.replace("http://vicsr.herokuapp.com/docs/");
+      window.location.replace('${REACT_URL}/docs/');
     } else {
       setLoading(false);
     }
@@ -49,7 +49,7 @@ export default function Register( {setToken} ) {
     setToken(token.key);
 
     if(token.key){
-            window.location.replace("http://vicsr.herokuapp.com/docs/");
+            window.location.replace('${REACT_URL}/docs/');
         } else {
             setEmail('');
             setPassword1('');

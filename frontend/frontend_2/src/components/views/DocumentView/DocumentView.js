@@ -3,6 +3,7 @@ import DocumentList from '../../sidebars/DocumentList.js'
 import DocumentModal from './DocumentModal'
 import Logout from '../auth/Logout'
 import {Link} from "react-router-dom";
+import { API_URL, REACT_URL } from './../../../config'
 
 //Variables for the document list component
 const fake_documents = [
@@ -19,7 +20,7 @@ export default function DocumentView() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        window.location.replace("http://vicsr.herokuapp.com/logout");
+        window.location.replace('${REACT_URL}/logout');
     }
 
     return(

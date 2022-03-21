@@ -1,5 +1,7 @@
 import FlatList from "flatlist-react"
 import Button from "react-bootstrap/Button";
+import { API_URL, REACT_URL } from './../../config'
+
 
 //import "./DocumentList.css"
 
@@ -13,7 +15,7 @@ function DocumentList(props){
 
   const addDocument = e => {
 
-    return fetch('https://vicsr-api-test.herokuapp.com/api/docs/', {
+    return fetch('${API_URL}/api/docs/add/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -26,7 +28,7 @@ function DocumentList(props){
 
   let documents = []
   const getDocuments = e => {
-    return fetch('https://vicsr-api-test.herokuapp.com/api/docs/', {
+    return fetch('${API_URL}/api/docs/list/', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

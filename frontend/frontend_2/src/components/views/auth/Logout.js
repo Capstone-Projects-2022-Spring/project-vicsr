@@ -6,7 +6,7 @@ const Logout = () => {
 
   useEffect(() => {
     if (sessionStorage.getItem('token') == null) {
-      window.location.replace("${REACT_URL}/login");
+      window.location.replace('${REACT_URL}/login');
     } else {
       setLoading(false);
     }
