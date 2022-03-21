@@ -34,7 +34,7 @@ export default function DocumentView() {
 
             </div>
             <div className="canvas">
-                <iframe title="test-pdf" src= "https://www.germansociety.org/wp-content/uploads/2022/01/ApplicationForm2022.pdf"/>
+                <DocumentPage/>
             </div>
             <div>
                 <form onSubmit={handleSubmit}>
