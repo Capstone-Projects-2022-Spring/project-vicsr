@@ -24,9 +24,10 @@ export default function DocumentView() {
         <header className="row2">
             <div className="documentList" >
                 <DocumentListLoader/>
+
             </div>
-            <div className="canvas col-md bg-dark border-white border-3 border">
-                <iframe title="test-pdf" src= "https://www.germansociety.org/wp-content/uploads/2022/01/ApplicationForm2022.pdf"/>
+            <div className="canvas">
+                <DocumentPage/>
             </div>
             <div className="col-md bg-dark h-100">
                 <form onSubmit={handleSubmit}>
