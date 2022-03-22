@@ -29,6 +29,7 @@ function DocumentList(props){
   }
 
   let documents = []
+  let docsToLoad;
   const getDocuments = e => {
     let docListGetDocsAPIstring = API_URL + "/api/docs/list/"
     return fetch(docListGetDocsAPIstring, {
@@ -43,10 +44,14 @@ function DocumentList(props){
         console.log(data);
         documents = data;
         console.log(documents);
+        docsToLoad = documents;
         return documents;
       });
   }
-  let docsToLoad = getDocuments();
+  //let docsToLoad = await getDocuments();
+  getDocuments();
+
+  //console.log("docs to load: " + docsToLoad[0].filename);
   return(
 
     <main className="container">
