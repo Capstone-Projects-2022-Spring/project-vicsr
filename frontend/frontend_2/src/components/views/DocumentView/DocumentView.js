@@ -4,6 +4,7 @@ import DocumentModal from './DocumentModal'
 import Logout from '../auth/Logout'
 import {Link} from "react-router-dom";
 import { API_URL, REACT_URL } from './../../../config'
+import DocumentPage from "../../DocumentPage";
 
 //Variables for the document list component
 const fake_documents = [
