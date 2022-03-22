@@ -1,8 +1,8 @@
 
-const dev = false;
+const dev = true;
 const test = false;
 const prod =false;
-const testFrontProdBack = true;
+const testFrontProdBack = false;
 
 let api_url;
 let react_url;
