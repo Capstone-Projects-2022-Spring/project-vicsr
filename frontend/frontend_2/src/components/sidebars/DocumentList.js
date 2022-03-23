@@ -1,26 +1,10 @@
-import FlatList from "flatlist-react"
 import {FixedSizeList as List} from "react-window";
 import Button from "react-bootstrap/Button";
 import { API_URL, REACT_URL } from './../../config'
 import {useEffect, useRef} from "react";
 import "./DocumentList.css"
 
-async function fetchDocuments() {
-    try {
-        let docListGetDocsAPIstring = API_URL + "/api/docs/list/"
-        const response = await fetch(docListGetDocsAPIstring, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': "Token " + sessionStorage.getItem('token')
-            },
-        });
-        const docs = await response.json();
-        return docs;
-    } catch (error) {
-        console.error(error);
-    }
-}
+
 
 
 function DocumentList(props){
@@ -28,10 +12,27 @@ function DocumentList(props){
     let docsToLoad = useRef();
     let numDocs = useRef();
 
-    useEffect(async () => {
-        console.log("reload");
-        docsToLoad.current = await fetchDocuments();
-        numDocs.current =  docsToLoad.current.length;
+    useEffect( () => {
+        //function to get documents (inside useEffects as the asynchronous function)
+        async function fetchDocuments() {
+            try {
+                let docListGetDocsAPIstring = API_URL + "/api/docs/list/"
+                const response = await fetch(docListGetDocsAPIstring, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': "Token " + sessionStorage.getItem('token')
+                    },
+                });
+                const docs = await response.json();
+                docsToLoad.current = docs;
+                numDocs.current =  docs.length;
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        fetchDocuments();
+
         console.log(docsToLoad)
     }, []);
 
@@ -67,7 +68,7 @@ function DocumentList(props){
         </div>
             <List
                 height={150}
-                itemCount={numDocs.current""}
+                itemCount={numDocs.current}
                 itemSize={35}
                 width={300}
             >
@@ -83,20 +84,20 @@ const Row = ({ index, style }) => (
   <div style={style}>Row {index}</div>
 );
 
-function renderDocumentItem(document, idx){
-  return (
-      <li key={idx}>
-          <div className="documentListCard">
-            <span>
-                <b>file: {document.Title}</b>
-            </span>
-            <span>
-                <button className="btn btn-danger"> Delete </button>
-            </span>
-
-          </div>
-      </li>
-  );
-}
+// function renderDocumentItem(document, idx){
+//   return (
+//       <li key={idx}>
+//           <div className="documentListCard">
+//             <span>
+//                 <b>file: {document.Title}</b>
+//             </span>
+//             <span>
+//                 <button className="btn btn-danger"> Delete </button>
+//             </span>
+//
+//           </div>
+//       </li>
+//   );
+// }
 
 export default DocumentList
