@@ -1,10 +1,9 @@
 import FlatList from "flatlist-react"
+import {FixedSizeList as List} from "react-window";
 import Button from "react-bootstrap/Button";
 import { API_URL, REACT_URL } from './../../config'
-import {useEffect} from "react";
-
-
-//import "./DocumentList.css"
+import {useEffect, useRef} from "react";
+import "./DocumentList.css"
 
 async function fetchDocuments() {
     try {
@@ -25,10 +24,14 @@ async function fetchDocuments() {
 
 
 function DocumentList(props){
-    let docsToLoad = []
+    //initialize variables to save value of from within useEffect using useRef hook
+    let docsToLoad = useRef();
+    let numDocs = useRef();
+
     useEffect(async () => {
-        console.log("reload")
-        docsToLoad = await fetchDocuments()
+        console.log("reload");
+        docsToLoad.current = await fetchDocuments();
+        numDocs.current =  docsToLoad.current.length;
         console.log(docsToLoad)
     }, []);
 
@@ -38,40 +41,47 @@ function DocumentList(props){
         {URL: "www.dqwdikcdw.com", Title: "German HW 3"}
     ];
 
-  const addDocument = e => {
 
-
-    let docListAddDocAPIstring = API_URL + "/api/docs/add/"
-    return fetch(docListAddDocAPIstring, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': "Token " + sessionStorage.getItem('token')
-        },
-        //body: JSON.stringify(document)
-    })
-        .then(data => data.json())
-  }
+  //addDocument should be the responsibility of the upload page that Songyaun is coding, refactor this code into
+  // const addDocument = e => {
+  //
+  //
+  //   let docListAddDocAPIstring = API_URL + "/api/docs/add/"
+  //   return fetch(docListAddDocAPIstring, {
+  //       method: 'POST',
+  //       headers: {
+  //           'Content-Type': 'application/json',
+  //           'Authorization': "Token " + sessionStorage.getItem('token')
+  //       },
+  //       //body: JSON.stringify(document)
+  //   })
+  //       .then(data => data.json())
+  // }
 
   return(
 
     <main className="container">
         <h1 className="text-white text-uppercase text-center my-4">Document List</h1>
-        <Button variant="warning" onClick={addDocument}>Add Document</Button>
+        <Button variant="success" >Add Document</Button>
         <div className="mb-4">
         </div>
-            <ul className="no-bullets">
-                <FlatList
-                    list={docs}
-                    renderItem={renderDocumentItem}
-                    renderWhenEmpty={() => <div>List is empty!</div>}
-                />
-            </ul>
+            <List
+                height={150}
+                itemCount={numDocs.current""}
+                itemSize={35}
+                width={300}
+            >
+                {Row}
+            </List>
       </main>
 
   );
 
 }
+
+const Row = ({ index, style }) => (
+  <div style={style}>Row {index}</div>
+);
 
 function renderDocumentItem(document, idx){
   return (
