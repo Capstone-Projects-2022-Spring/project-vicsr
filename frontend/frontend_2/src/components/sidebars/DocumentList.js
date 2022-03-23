@@ -1,12 +1,37 @@
 import FlatList from "flatlist-react"
 import Button from "react-bootstrap/Button";
 import { API_URL, REACT_URL } from './../../config'
+import {useEffect} from "react";
 
 
 //import "./DocumentList.css"
 
+async function fetchDocuments() {
+    try {
+        let docListGetDocsAPIstring = API_URL + "/api/docs/list/"
+        const response = await fetch(docListGetDocsAPIstring, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': "Token " + sessionStorage.getItem('token')
+            },
+        });
+        const docs = await response.json();
+        return docs;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 
 function DocumentList(props){
+    let docsToLoad = []
+    useEffect(async () => {
+        console.log("reload")
+        docsToLoad = await fetchDocuments()
+        console.log(docsToLoad)
+    }, []);
+
   const docs = [
         {URL: "www.wqdwqojdfnqwd.com", Title: "German HW"},
         {URL: "www.wqdwqojdfqdwwqdwdwd.com", Title: "German HW 2"},
@@ -28,30 +53,6 @@ function DocumentList(props){
         .then(data => data.json())
   }
 
-  let documents = []
-  let docsToLoad;
-  const getDocuments = e => {
-    let docListGetDocsAPIstring = API_URL + "/api/docs/list/"
-    return fetch(docListGetDocsAPIstring, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': "Token " + sessionStorage.getItem('token')
-        },
-    })
-      .then(data => data.json())
-      .then(data => {
-        console.log(data);
-        documents = data;
-        console.log(documents);
-        docsToLoad = documents;
-        return documents;
-      });
-  }
-  //let docsToLoad = await getDocuments();
-  getDocuments();
-
-  //console.log("docs to load: " + docsToLoad[0].filename);
   return(
 
     <main className="container">
