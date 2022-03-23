@@ -23,22 +23,22 @@ export default function DocumentView() {
     }
 
     return(
-    <div className="container-fluid bg-white border-danger border-5 border">
+    <div className="container-fluid h-100 bg-white border-danger border-5 border">
         <div className="row bg-dark">
             <div className="col-md bg-primary border-bottom">
                 <p>VICSR Dasboard</p>
             </div>
         </div>
 
-        <div className="row bg-dark">
+        <div className="row bg-dark h-100">
             <div className="documentList col-md" >
                 <DocumentList documents = {fake_documents} />
 
             </div>
-            <div className="canvas col-md bg-primary">
+            <div className="canvas col-md bg-primary h-100">
                 <iframe title="test-pdf" src= "https://www.germansociety.org/wp-content/uploads/2022/01/ApplicationForm2022.pdf"/>
             </div>
-            <div className="col-md bg-dark">
+            <div className="col-md bg-dark h-100">
                 <form onSubmit={handleSubmit}>
                     <button type="submit"> Logout </button>
                 </form>
