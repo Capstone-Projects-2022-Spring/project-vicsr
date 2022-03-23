@@ -6,7 +6,8 @@ import Register from './Register.js'
 import { useNavigate } from "react-router-dom";
 import {LinkContainer} from "react-router-bootstrap"
 import Button from "react-bootstrap/Button";
-
+import "./Login.css"
+import "../../media/VICSR-Logo.png"
 
 async function loginUser(credentials) {
     //login logic/talking to server goes here
@@ -56,32 +57,48 @@ export default function Login( {setToken} ) {
     }
 
     return(
-        <div className="login-wrapper">
-            {loading === false && <h1>Login to VICSR</h1>}
-            {errors === true && <h2>Cannot log in with provided credentials</h2>}
-            {loading === false && (<form onSubmit={handleSubmit}>
-                <label>
-                    <p>Email</p>
-                    <input type="email" onChange={e => setEmail(e.target.value)} />
-                </label> <br />
-                <label>
-                    <p>Password</p>
-                    <input type="password" onChange={e => setPassword(e.target.value)} />
-                </label>
-                <br />
-                <div>
-                    <br />
-                    <button type="submit">Log In</button>
-                </div>
-            </form>)}
-            <br />
-            <nav>
-                <li>
-                    <LinkContainer to="/register">
-                        <Button>Register</Button>
-                    </LinkContainer>
-                </li>
-            </nav>
+        <div className="container-fluid h-100">
+            <div className="login-wrapper">
+                {loading === false &&
+                    <div className="row">
+                        <div className="col-12 formItem">
+                            <h1>Login to VICSR</h1>
+                        </div>
+                        <div className="col-12 formItem">
+                            <img className="imageAutoSize" src="https://www.freepnglogos.com/uploads/elephant-png/elephant-designs-deviantart-24.png"/>
+                        </div>
+                    </div>
+                }
+                {errors === true && <h2>Cannot log in with provided credentials</h2>}
+                {loading === false && (
+                    <form onSubmit={handleSubmit} className="row">
+                        <div className="col-12">
+                            <label className="formItem">
+                                <p>Email</p>
+                                <input type="email" onChange={e => setEmail(e.target.value)} />
+                            </label>
+                        </div>
+                        <div className="col-12">
+                            <label className="formItem">
+                                <p>Password</p>
+                                <input type="password" onChange={e => setPassword(e.target.value)} />
+                            </label>
+                        </div>
+                        <div className="col-12">
+                            <div className="formItem">
+                                <button type="submit">Log In</button>
+                            </div>
+                        </div>
+                    </form>
+                )}
+                <nav className="row">
+                    <div className="col-12">
+                        <LinkContainer to="/register">
+                            <Button>Register</Button>
+                        </LinkContainer>
+                    </div>
+                </nav>
+            </div>
         </div>
     )
 

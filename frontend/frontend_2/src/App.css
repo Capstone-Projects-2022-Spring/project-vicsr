@@ -5,7 +5,8 @@
 }
 
 .wrapper {
-    padding: 20px;
+    height: 100vh;
+    padding: 0px;
 }
 
 .row1{

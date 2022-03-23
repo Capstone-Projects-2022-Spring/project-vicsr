@@ -26,7 +26,6 @@ function App() {
     }
     return (
         <div className="wrapper">
-            <h1>Welcome to VICSR!</h1>
                 <Routes>
                     <Route path="/register" element={<Register setToken={setToken}/>}></Route>
                     <Route path="/login" element={<Login token/>}></Route>
