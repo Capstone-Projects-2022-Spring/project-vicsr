@@ -1,7 +1,22 @@
 import React from 'react'
 import {Link} from "react-router-dom";
+<<<<<<< HEAD
 import {REACT_URL } from './../../../config'
 import DocumentListLoader from "../../sidebars/DocumentList/DocumentListLoader.js";
+=======
+import { API_URL, REACT_URL } from './../../../config'
+import DocumentPage from "../../DocumentPage";
+
+//Variables for the document list component
+const fake_documents = [
+//    {URL: "www.wqdwqojdfnqwd.com", Title: "German HW"},
+//    {URL: "www.wqdwqojdfqdwwqdwdwd.com", Title: "German HW 2"},
+//    {URL: "www.dqwdikcdw.com", Title: "German HW 3"}
+    {id:5, owner_id:3, filename:"file2", file:"https://vicsr-storage.s3.amazonaws.com/media/Screen_Shot_2022-02-22_at_9.25.23_AM_hsNF75k.png", date_added:"03/14/2022 06:55P", mode:"TRL", language:"English", trans_language:"German"},
+    {id:6, owner_id:3, filename:"file3", file:"https://vicsr-storage.s3.amazonaws.com/media/Screen_Shot_2022-02-22_at_9.25.23_AM_MAqKJta.png", date_added:"03/14/2022 06:55P", mode:"TRL", language:"English", trans_language:"German"},
+    {id:7, owner_id:3, filename:"file4", file:"https://vicsr-storage.s3.amazonaws.com/media/Screen_Shot_2022-02-22_at_9.25.23_AM_SSM1KM5.png", date_added:"03/14/2022 07:06P", mode:"TRL", language:"en", trans_language:"es"},
+]
+>>>>>>> 3bed134677cabdd6e4f330ba885c27b67bab2d18
 
 
 export default function DocumentView() {
