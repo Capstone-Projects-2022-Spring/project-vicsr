@@ -51,7 +51,7 @@ function DocumentList(props){
 
     <main className="container">
         <h1 className="text-white text-uppercase text-center my-4">Document List</h1>
-        <Button variant="warning" onClick={addDocument}>Add Document</Button>
+        <Button href="/docs/option" variant="warning" onClick={addDocument}>Add Document</Button>
         <div className="mb-4">
         </div>
             <ul className="no-bullets">
