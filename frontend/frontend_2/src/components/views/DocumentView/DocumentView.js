@@ -1,16 +1,30 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Link} from "react-router-dom";
 import {REACT_URL } from './../../../config'
 import DocumentListLoader from "../../sidebars/DocumentList/DocumentListLoader.js";
 import DocumentPage from "../../DocumentPage";
 
 
+
+
 export default function DocumentView() {
+
+    let[data, setData] = useState({currentDocURL: ""})
 
     const handleSubmit = e => {
         e.preventDefault();
         let docViewHandleSubmitString = REACT_URL + "/logout"
         window.location.replace(docViewHandleSubmitString);
+    }
+
+    useEffect(() => {
+        console.log("document: " + data.currentDocURL + " chosen");
+        }, [data.currentDocURL]);
+
+    function chooseDocument(URL) {
+        console.log("document: " + URL + " chosen");
+        setData({currentDocURL: URL});
+        //download image here and load in as an object
     }
 
     return(
@@ -24,11 +38,11 @@ export default function DocumentView() {
 
         <header className="row2">
             <div className="documentList" >
-                <DocumentListLoader/>
+                <DocumentListLoader chooseDoc = {chooseDocument}/>
 
             </div>
             <div className="canvas">
-                <DocumentPage/>
+                <DocumentPage URL = {data.currentDocURL}/>
             </div>
             <div className="col-md bg-dark h-100">
                 <form onSubmit={handleSubmit}>

@@ -8,7 +8,11 @@ import PopUp from "./PopUp";
 
 
 
+
 function DocumentList(props){
+    function clickDocChooseButtonHandler(URL){
+        props.chooseDocument(URL);
+    }
     useEffect( () => {
         }, []);
 
@@ -20,6 +24,7 @@ function DocumentList(props){
                 </Card.Title>
                 <Card.Body>
                     <div>URL: {props.documents[index].file}</div>
+                    <Button onClick={() => clickDocChooseButtonHandler(props.documents[index].file)}>Choose this document!</Button>
                 </Card.Body>
             </Card>
         </div>

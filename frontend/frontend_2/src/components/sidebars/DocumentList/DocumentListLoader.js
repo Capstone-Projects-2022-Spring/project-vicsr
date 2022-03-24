@@ -2,9 +2,12 @@ import React, {useEffect, useState} from 'react'
 import {API_URL} from '../../../config'
 import DocumentList from "./DocumentList";
 
-function DocumentListLoader(){
-
+function DocumentListLoader(props){
     let [data, setData] = useState({docsFromServer:[], numDocs:0, isFetching: false})
+
+    function docPicker(URL){
+        props.chooseDoc(URL);
+    }
 
     useEffect( () =>{
         async function fetchDocuments() {
@@ -33,7 +36,7 @@ function DocumentListLoader(){
 
 
     return(
-        <DocumentList documents = {data.docsFromServer} numberOfDocs = {data.numDocs} isLoading ={data.isFetching} />
+        <DocumentList documents = {data.docsFromServer} numberOfDocs = {data.numDocs} isLoading ={data.isFetching} chooseDocument = {docPicker}/>
     )
 }
 

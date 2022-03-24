@@ -1,7 +1,7 @@
 import CanvasDraw from "react-canvas-draw";
 import ExampleImage from '../assets/Screen Shot 2022-03-24 at 1.05.06 PM.png'
 
-export default function DocumentPage(){
+export default function DocumentPage(props){
     return(
         <div>
             {/* The 80 at the end of the hex code sets the transparency*/}
