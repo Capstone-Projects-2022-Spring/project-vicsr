@@ -22,7 +22,6 @@ export default function DocumentView() {
         }, [data.currentDocURL]);
 
     function chooseDocument(URL) {
-        console.log("document: " + URL + " chosen");
         setData({currentDocURL: URL});
         //download image here and load in as an object
     }
