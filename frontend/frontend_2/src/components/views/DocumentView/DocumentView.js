@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from "react-router-dom";
 import {REACT_URL } from './../../../config'
 import DocumentListLoader from "../../sidebars/DocumentList/DocumentListLoader.js";
+import DocumentPage from "../../DocumentPage";
 
 
 export default function DocumentView() {
