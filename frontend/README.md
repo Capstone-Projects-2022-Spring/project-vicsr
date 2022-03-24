@@ -11,7 +11,7 @@ From [here](https://reactnative.dev/docs/environment-setup), under mac/iOS setti
 ## Development Diary ##
 Search this page for bugs, weird issues, following my coding logic etc
 
-[Here](documentation/development_diary.txt)
+[Here](documentation/Bri_development_diary.txt)
 
 ## Development Setting up Environment ##
 
