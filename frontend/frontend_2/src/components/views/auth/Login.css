@@ -1,0 +1,16 @@
+.formItem {
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    font-size: 1.3em;
+}
+
+#centerInParent {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.imageAutoSize {
+    width: 20vw;
+    height: auto;
+}
