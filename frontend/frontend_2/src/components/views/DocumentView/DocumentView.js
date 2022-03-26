@@ -15,7 +15,7 @@ export default function DocumentView() {
     return(
     <div className="container-fluid h-100 bg-white border-danger border-5 border">
         <div className="row bg-dark">
-            <div className="col-md bg-primary border-bottom">
+            <div className="col-md bg-body border-bottom">
                 <p>VICSR Dasboard</p>
             </div>
         </div>
@@ -25,7 +25,7 @@ export default function DocumentView() {
             <div className="documentList" >
                 <DocumentListLoader/>
             </div>
-            <div className="canvas col-md bg-primary h-100">
+            <div className="canvas col-md bg-dark border-white border-3 border">
                 <iframe title="test-pdf" src= "https://www.germansociety.org/wp-content/uploads/2022/01/ApplicationForm2022.pdf"/>
             </div>
             <div className="col-md bg-dark h-100">
