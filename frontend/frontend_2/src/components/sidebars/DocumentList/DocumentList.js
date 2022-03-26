@@ -17,6 +17,11 @@ function DocumentList(props){
             <Card>
                 <Card.Title>
                     Title: {props.documents[index].filename}
+
+                    <div className="button_right">
+                        <OptionButton/>
+                    </div>
+
                 </Card.Title>
                 <Card.Body>
                     <div>URL: {props.documents[index].file}</div>
