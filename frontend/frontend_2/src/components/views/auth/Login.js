@@ -7,11 +7,12 @@ import { useNavigate } from "react-router-dom";
 import {LinkContainer} from "react-router-bootstrap"
 import Button from "react-bootstrap/Button";
 import "./Login.css"
-import "../../media/VICSR-Logo.png"
+import { API_URL, REACT_URL } from './../../../config'
 
 async function loginUser(credentials) {
     //login logic/talking to server goes here
-    return fetch('https://vicsr-api-test.herokuapp.com/api/users/auth/login/', {
+    let loginString = API_URL + '/api/users/auth/login/'
+    return fetch(loginString, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -29,7 +30,8 @@ export default function Login( {setToken} ) {
 
     useEffect(() => {
         if(sessionStorage.getItem('token') !== null) {
-            window.location.replace("http://vicsr.herokuapp.com/docs/");
+            let windowString = REACT_URL+ '/docs/'
+            window.location.replace(windowString);
         } else {
             setLoading(false);
         }
@@ -41,7 +43,8 @@ export default function Login( {setToken} ) {
         setToken(token.key);
         console.log("token in login.js: " + token.key)
         if(token.key){
-            window.location.replace("http://vicsr.herokuapp.com/docs/");
+            let onSubmitString = REACT_URL+ '/docs/'
+            window.location.replace(onSubmitString);
         } else {
             setEmail('');
             setPassword('');
