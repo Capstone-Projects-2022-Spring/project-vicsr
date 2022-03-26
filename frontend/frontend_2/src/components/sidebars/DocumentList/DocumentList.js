@@ -5,6 +5,7 @@ import {useEffect} from "react";
 import "./DocumentList.css"
 import {Spinner} from "react-bootstrap";
 import OptionButton from "./OptionButton";
+import {Link} from "react-router-dom";
 
 
 
@@ -36,6 +37,11 @@ function DocumentList(props){
     <main className="container">
         <h1 className="text-white text-uppercase text-center my-4">Document List</h1>
         <Button variant="success" >Add Document</Button>
+      
+        <Link to='/flashcards'>
+            <Button variant="warning" >Flashcard</Button>
+        </Link>
+      
         <div/>
         {props.isLoading && <Spinner animation="border"/>}
         <List
