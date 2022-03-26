@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card"
 import {useEffect} from "react";
 import "./DocumentList.css"
 import {Spinner} from "react-bootstrap";
-
+import PopUp from "./PopUp";
 
 
 
@@ -30,6 +30,8 @@ function DocumentList(props){
     <main className="container">
         <h1 className="text-white text-uppercase text-center my-4">Document List</h1>
         <Button variant="success" >Add Document</Button>
+        <PopUp/>
+      
         <div/>
         {props.isLoading && <Spinner animation="border"/>}
         <List
