@@ -1,3 +1,23 @@
+.bgPrimary {
+  background-color: #79b791;
+}
+
+.bgSecondary {
+  background-color: #abd1b5;
+}
+
+.bgLight {
+  background-color: #edf4ed;
+}
+
+.bgDark {
+  background-color: #222222;
+}
+
+.bgDark2 {
+  background-color: #4d4d4d ;
+}
+
 .App {
   text-align: center;
   display: flex;
@@ -6,7 +26,20 @@
 
 .wrapper {
     height: 100vh;
-    padding: 0px;
+    padding: 0;
+}
+
+.banner {
+  color: white;
+  height: 10vh;
+}
+
+.bannerTitle {
+  color: white;
+  margin: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
 }
 
 .row1{
@@ -29,6 +62,11 @@
   alignment: center;
   justify-content: center;
   flex: 1;
+}
+
+.documentView {
+  height: 100%;
+  width: 100%;
 }
 
 .canvas{
@@ -57,4 +95,8 @@
 
 .blueBG {
   background-color: blue;
+}
+
+.padZero {
+  padding: 0;
 }
