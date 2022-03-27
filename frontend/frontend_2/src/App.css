@@ -25,13 +25,9 @@
 }
 
 .wrapper {
-    height: 100vh;
+    overflow-x: hidden;
+    height: 900px;
     padding: 0;
-}
-
-.banner {
-  color: white;
-  height: 10vh;
 }
 
 .bannerTitle {
@@ -40,6 +36,10 @@
   padding-top: 5px;
   padding-bottom: 5px;
   text-align: center;
+}
+
+.hideScrollBar::-webkit-scrollbar {
+  display: none;
 }
 
 .row1{
@@ -58,6 +58,16 @@
   font-size: calc(10px + 2vmin);
 }
 
+.banner {
+  height: 5vh;
+  color: white;
+
+}
+
+.mainTrifoldContent {
+  height: 90vh;
+}
+
 .documentList{
   alignment: center;
   justify-content: center;
@@ -65,13 +75,19 @@
 }
 
 .documentView {
+  background-color: white;
+  flex: 10;
   height: 100%;
   width: 100%;
 }
 
-.canvas{
-  background-color: white;
-  flex: 10;
+.embeddedDocument {
+  height: 100%;
+  width: 100%;
+}
+
+.modeSwitchFooter {
+  height: 5vh;
 }
 
 .loginModalContent{
