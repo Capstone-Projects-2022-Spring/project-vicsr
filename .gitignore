@@ -2,3 +2,4 @@
 venv/
 *.pyc
 backend-vicsr/backend/config.py
+.idea/*
