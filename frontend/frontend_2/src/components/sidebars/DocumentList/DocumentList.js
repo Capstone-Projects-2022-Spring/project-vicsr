@@ -12,7 +12,7 @@ import PopUp from "./PopUp";
 function DocumentList(props){
     //on click, return the top level document id and the .files nested list to the DocumentView
     function clickDocChooseButtonHandler(topLevelID, urls){
-        console.log(urls)
+        //console.log(urls)
         props.chooseDocument(topLevelID, urls);
     }
     useEffect( () => {

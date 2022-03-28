@@ -28,9 +28,9 @@ function DocumentListLoader(props){
                 setData({docsFromServer: data.docsFromServer, numDocs:data.numDocs, isFetching: false})
             }
         }
-        console.log(data.docsFromServer)
+        //console.log(data.docsFromServer)
         fetchDocuments()
-        console.log("Done fetching documents")
+        //console.log("Done fetching documents")
 
         }, []);
 

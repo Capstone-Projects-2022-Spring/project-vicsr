@@ -20,8 +20,8 @@ export default function DocumentView() {
 
     useEffect(() => {
         if(data.pages){setShowPage(data.pages[currentPage].file)}
-        console.log("document: " + shownPage + " chosen");
-        console.log("current page number is: " + currentPage)
+        //console.log("document: " + shownPage + " chosen");
+        //console.log("current page number is: " + currentPage)
         }, [data.currentDocID, shownPage, currentPage]);
 
     function chooseDocument(topLevelID, urls) {
