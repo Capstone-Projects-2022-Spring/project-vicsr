@@ -18,8 +18,8 @@ function DocumentList(props){
     useEffect( () => {
         }, []);
 
-    const Row = ({index}) => (
-        <div className="documentListRowWrapper">
+    const Row = ({index, style}) => (
+        <div style ={style} className="documentListRowWrapper">
             <Card>
                 <Card.Title>
                     Title: {props.documents[index].filename}
@@ -44,7 +44,7 @@ function DocumentList(props){
         <List
             height={900}
             itemCount={props.numberOfDocs}
-            itemSize={35}
+            itemSize={150}
             width={300}
         >
             {Row}
