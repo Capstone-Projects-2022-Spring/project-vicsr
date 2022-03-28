@@ -25,7 +25,7 @@ function DocumentList(props){
                     Title: {props.documents[index].filename}
                 </Card.Title>
                 <Card.Body>
-                    <div>URL: {props.documents[index].id}</div>
+                    <div>ID: {props.documents[index].id}</div>
                     <Button onClick={() => clickDocChooseButtonHandler(props.documents[index].id, props.documents[index].files)}>Choose this document!</Button>
                 </Card.Body>
             </Card>
