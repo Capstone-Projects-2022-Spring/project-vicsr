@@ -5,8 +5,6 @@ import DocumentListLoader from "../../sidebars/DocumentList/DocumentListLoader.j
 import DocumentPage from "../../DocumentPage";
 
 
-
-
 export default function DocumentView() {
 
     let[data, setData] = useState({currentDocURL: ""})
