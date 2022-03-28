@@ -6,28 +6,7 @@ import {FixedSizeList as List} from "react-window";
 import Form from 'react-bootstrap/Form';
 
 
-//function OptionButton(props) {
-    {/*VIC-172 UI: Button to trigger Documents option menu*/}
-/*
-
-    <Dropdown as={ButtonGroup}>
-        <Button variant="success">Document 2</Button>
-        <Dropdown.Toggle split variant="success" id="dropdown-split-basic"/>
-        <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Rename</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Remove</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Open in new tab</Dropdown.Item>
-        </Dropdown.Menu>
-    </Dropdown>
-
-    <br></br>
-
-    return(
-    )
-}
-
-export default OptionButton */
-
+{/*VIC-172 UI: Button to trigger Documents option menu*/}
 
 function OptionButton(props){
 
@@ -55,6 +34,7 @@ function OptionButton(props){
                           <Form.Control type="text" placeholder="Default input" />
                       </FloatingLabel>
                 </Modal.Body>
+
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Cancel
@@ -65,7 +45,10 @@ function OptionButton(props){
                 </Modal.Footer>
             </Modal>
 
+            {/*Remove Function*/}
           <Dropdown.Item href="#/action-2">Remove</Dropdown.Item>
+
+            {/*Some Function*/}
           <Dropdown.Item href="#/action-3">Open in new tab</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
