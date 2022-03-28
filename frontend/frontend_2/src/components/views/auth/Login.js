@@ -4,10 +4,11 @@ import './auth.css';
 import { Link } from "react-router-dom";
 import Register from './Register.js'
 import { useNavigate } from "react-router-dom";
-import {LinkContainer} from "react-router-bootstrap"
+import {LinkContainer} from "react-router-bootstrap";
 import Button from "react-bootstrap/Button";
-import "./Login.css"
-import { API_URL, REACT_URL } from './../../../config'
+import "./Login.css";
+import VICSRLogo from '../../../assets/VICSR-Logo.png';
+import { API_URL, REACT_URL } from './../../../config';
 
 async function loginUser(credentials) {
     //login logic/talking to server goes here
@@ -68,7 +69,7 @@ export default function Login( {setToken} ) {
                             <h1>Login to VICSR</h1>
                         </div>
                         <div className="col-12 formItem">
-                            <img className="imageAutoSize" src="https://www.freepnglogos.com/uploads/elephant-png/elephant-designs-deviantart-24.png"/>
+                            <img className="imageAutoSize" src={VICSRLogo}/>
                         </div>
                     </div>
                 }

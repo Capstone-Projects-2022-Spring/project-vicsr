@@ -4,6 +4,7 @@
   margin: 0; /* Remove margins */
 }
 
+/*
 .documentListCard{
   height: 180px;
   width: 180px;
@@ -11,3 +12,21 @@
   color: black;
   border: thick black;
 }
+ */
+
+.documentListCard {
+  border-width: 5px;
+  cursor: pointer;
+}
+
+.documentListCard:hover {
+  border-color: #198754;
+}
+
+.documentListCard:hover .documentListCardTitle {
+  color: #198754;
+  text-decoration: underline;
+}
+
+
+

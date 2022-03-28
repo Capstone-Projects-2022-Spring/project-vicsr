@@ -13,13 +13,15 @@ function DocumentList(props){
         }, []);
 
     const Row = ({index}) => (
-        <div className="documentListRowWrapper">
-            <Card>
-                <Card.Title>
-                    Title: {props.documents[index].filename}
-                </Card.Title>
+        <div className="documentListRowWrapper my-1">
+            <Card className="documentListCard">
                 <Card.Body>
-                    <div>URL: {props.documents[index].file}</div>
+                    <Card.Title className="documentListCardTitle">
+                        {props.documents[index].filename}
+                    </Card.Title>
+                    <Card.Text>
+                        URL: {props.documents[index].file}
+                    </Card.Text>
                 </Card.Body>
             </Card>
         </div>
@@ -28,18 +30,31 @@ function DocumentList(props){
   return(
 
     <main className="container">
-        <h1 className="text-white text-uppercase text-center my-4">Document List</h1>
-        <Button variant="success" >Add Document</Button>
-        <div/>
-        {props.isLoading && <Spinner animation="border"/>}
-        <List
-            height={500}
-            itemCount={props.numberOfDocs}
-            itemSize={35}
+        <div className="row">
+            <div className="col-12" style={{marginTop: "30px"}}>
+                <p className="text-white text-uppercase text-center" style={{fontSize: "25px"}}>
+                    Documents
+                </p>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-12 text-center my-2">
+                <Button variant="success" >Add Document</Button>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-12">
+                {props.isLoading && <Spinner animation="border"/>}
+                <List
+                    height={500}
+                    itemCount={props.numberOfDocs}
+                    itemSize={35}
+                >
+                    {Row}
+                </List>
+            </div>
+        </div>
 
-        >
-            {Row}
-        </List>
     </main>
   );
 }
