@@ -32,13 +32,15 @@ function PopUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("filename: " + e.target.elements.formFileName.value )
-    console.log("file: " + e.target.elements.formFile.value )
+    // console.log("file: " + e.target.elements.formFile.value )
+    console.log("file: " + e.target.formFile.files[0])
     console.log("mode: " + e.target.elements.formMode.value )
     console.log("language: " + e.target.elements.formLanguage.value )
     console.log("trans language: " + e.target.elements.formTransLanguage.value )
 
     const filename = e.target.elements.formFileName.value;
-    const file = e.target.elements.formFile.value;
+    // const file = e.target.elements.formFile.value;
+    const file = e.target.formFile.files[0];
     const mode = e.target.elements.formMode.value;
     const language = e.target.elements.formLanguage.value;
     const trans_language = e.target.elements.formTransLanguage.value;
@@ -78,7 +80,7 @@ function PopUp() {
                 </Form.Group>
 
                 {/*File Upload*/}
-                <Form.Group className="mb-3" controlId="formFile">
+                <Form.Group className="mb-3" controlId="formFile" >
                     <Form.Label>File</Form.Label>
                     <Form.Control type="file" placeholder="Browse computer" inputRef={(ref) => {this.file = ref}} required/>
                 </Form.Group>
