@@ -7,7 +7,8 @@ import DocumentPage from "../../DocumentPage";
 
 export default function DocumentView() {
 
-    let[data, setData] = useState({currentDocURL: ""})
+    let[data, setData] = useState({currentDocID: "", urls: [], currentPage: 0})
+    let[shownPage, setShowPage] = useState("")
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -16,11 +17,12 @@ export default function DocumentView() {
     }
 
     useEffect(() => {
-        console.log("document: " + data.currentDocURL + " chosen");
-        }, [data.currentDocURL]);
+        console.log("document: " + shownPage + " chosen");
+        }, [data.currentDocID]);
 
-    function chooseDocument(URL) {
-        setData({currentDocURL: URL});
+    function chooseDocument(topLevelID, urls) {
+        setData({currentDocID: topLevelID, urls: urls, currentPage: 0});
+        setShowPage(urls[data.currentPage].file)
         //download image here and load in as an object
     }
 
@@ -39,7 +41,7 @@ export default function DocumentView() {
 
             </div>
             <div className="canvas">
-                <DocumentPage URL = {data.currentDocURL}/>
+                <DocumentPage URL = {shownPage}/>
             </div>
             <div className="col-md bg-dark h-100">
                 <form onSubmit={handleSubmit}>

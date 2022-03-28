@@ -5,8 +5,8 @@ import DocumentList from "./DocumentList";
 function DocumentListLoader(props){
     let [data, setData] = useState({docsFromServer:[], numDocs:0, isFetching: false})
 
-    function docPicker(URL){
-        props.chooseDoc(URL);
+    function docPicker(topLevelID, urls){
+        props.chooseDoc(topLevelID, urls);
     }
 
     useEffect( () =>{
