@@ -7,7 +7,6 @@ import Form from 'react-bootstrap/Form';
 
 
 {/*VIC-172 UI: Button to trigger Documents option menu*/}
-
 function OptionButton(props){
 
   const [show, setShow] = useState(false);
