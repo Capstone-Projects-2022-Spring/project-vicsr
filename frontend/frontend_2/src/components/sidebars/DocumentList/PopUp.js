@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import { Modal, Form } from "react-bootstrap";
 import { render } from "react-dom";
 //import OptionButton from "./OptionButton";
+import {API_URL} from '../../../config'
 
 
 
@@ -13,6 +14,20 @@ function PopUp() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  async function addDocument(document) {
+
+    let addDocumentString = API_URL + '/api/docs/add/'
+    return fetch(addDocumentString, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${sessionStorage.getItem('token')}`
+
+        },
+        body: JSON.stringify(document)
+    })
+        .then(data => data.json())
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,12 +37,19 @@ function PopUp() {
     console.log("language: " + e.target.elements.formLanguage.value )
     console.log("trans language: " + e.target.elements.formTransLanguage.value )
 
-    const form = e.target;
+    const filename = e.target.elements.formFileName.value;
+    const file = e.target.elements.formFile.value;
+    const mode = e.target.elements.formMode.value;
+    const language = e.target.elements.formLanguage.value;
+    const trans_language = e.target.elements.formTransLanguage.value;
 
+    const form = e.target;
     if (form.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
     }
+
+    addDocument({filename, file, mode, language, trans_language})
 
     setValidated(true);
     handleClose();
