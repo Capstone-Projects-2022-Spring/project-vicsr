@@ -6,7 +6,7 @@ import "./DocumentList.css"
 import {Spinner} from "react-bootstrap";
 import OptionButton from "./OptionButton";
 import {Link} from "react-router-dom";
-
+import Pagination from 'react-bootstrap/Pagination'
 
 
 
@@ -52,6 +52,21 @@ function DocumentList(props){
         >
             {Row}
         </List>
+
+        {/*
+        //Pagination
+        <Pagination size={'sm'}>
+            <Pagination.Prev />
+            <Pagination.Item>{1}</Pagination.Item>
+            <Pagination.Item>{2}</Pagination.Item>
+            <Pagination.Item>{3}</Pagination.Item>
+            <Pagination.Item>{4}</Pagination.Item>
+            <Pagination.Ellipsis />
+            <Pagination.Item>{10}</Pagination.Item>
+            <Pagination.Next />
+        </Pagination>
+        */}
+
       </main>
   );
 }
