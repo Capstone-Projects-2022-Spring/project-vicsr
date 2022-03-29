@@ -37,11 +37,13 @@ function DocumentList(props){
     <main className="container">
         <h1 className="text-white text-uppercase text-center my-4">Document List</h1>
         <Button variant="success" >Add Document</Button>
-      
+
+        {/*
         <Link to='/flashcards'>
             <Button variant="warning" >Flashcard</Button>
         </Link>
-      
+        */}
+
         <div/>
         {props.isLoading && <Spinner animation="border"/>}
         <List
@@ -53,19 +55,6 @@ function DocumentList(props){
             {Row}
         </List>
 
-        {/*
-        //Pagination
-        <Pagination size={'sm'}>
-            <Pagination.Prev />
-            <Pagination.Item>{1}</Pagination.Item>
-            <Pagination.Item>{2}</Pagination.Item>
-            <Pagination.Item>{3}</Pagination.Item>
-            <Pagination.Item>{4}</Pagination.Item>
-            <Pagination.Ellipsis />
-            <Pagination.Item>{10}</Pagination.Item>
-            <Pagination.Next />
-        </Pagination>
-        */}
 
       </main>
   );
