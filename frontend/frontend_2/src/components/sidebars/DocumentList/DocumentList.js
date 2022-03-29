@@ -43,7 +43,6 @@ function DocumentList(props){
 
     <main className="container">
         <h1 className="text-white text-uppercase text-center my-4">Document List</h1>
-        <Button variant="success" >Add Document</Button>
 
         <PopUp/>
       
