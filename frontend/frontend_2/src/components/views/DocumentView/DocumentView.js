@@ -1,15 +1,51 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Link} from "react-router-dom";
 import {REACT_URL } from './../../../config'
 import DocumentListLoader from "../../sidebars/DocumentList/DocumentListLoader.js";
+import DocumentPage from "../../DocumentPage";
+import {Button} from "react-bootstrap"
 
 
 export default function DocumentView() {
+
+    let[data, setData] = useState({currentDocID: "", pages: null})
+    let[shownPage, setShowPage] = useState("")
+    let[currentPage, setCurrentPage] = useState(0)
 
     const handleSubmit = e => {
         e.preventDefault();
         let docViewHandleSubmitString = REACT_URL + "/logout"
         window.location.replace(docViewHandleSubmitString);
+    }
+
+    useEffect(() => {
+        if(data.pages){setShowPage(data.pages[currentPage].file)}
+        //console.log("document: " + shownPage + " chosen");
+        //console.log("current page number is: " + currentPage)
+        }, [data.currentDocID, shownPage, currentPage]);
+
+    function chooseDocument(topLevelID, urls) {
+        setData({currentDocID: topLevelID, pages: urls});
+        setCurrentPage(0)
+        setShowPage(urls[currentPage].file)
+    }
+
+    function previousPage() {
+        if(currentPage > 0){
+            setCurrentPage(currentPage - 1)
+        }
+        else{
+            console.log("error, page previous clicked while on first page")
+        }
+    }
+
+    function nextPage() {
+        if(currentPage != data.pages.length -1){
+            setCurrentPage(currentPage + 1)
+        }
+        else{
+            console.log("error, page next clicked while on last page")
+        }
     }
 
     return(
@@ -23,10 +59,15 @@ export default function DocumentView() {
 
         <header className="row2">
             <div className="documentList" >
-                <DocumentListLoader/>
+                <DocumentListLoader chooseDoc = {chooseDocument}/>
+
             </div>
-            <div className="canvas col-md bg-dark border-white border-3 border">
-                <iframe title="test-pdf" src= "https://www.germansociety.org/wp-content/uploads/2022/01/ApplicationForm2022.pdf"/>
+            <div className="canvas">
+                <DocumentPage URL = {shownPage}/>
+                <div>
+                    <Button onClick = { () => previousPage()}>Previous page</Button>
+                    <Button onClick = { () => nextPage()}>Next page</Button>
+                </div>
             </div>
             <div className="col-md bg-dark h-100">
                 <form onSubmit={handleSubmit}>
