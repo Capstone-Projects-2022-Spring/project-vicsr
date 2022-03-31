@@ -1,8 +1,44 @@
+
+#loginPageWrapper {
+    background-color: #f6d1d3;
+    padding: 0;
+}
+
+#loginItemsContainer {
+    width: 80%;
+    height: 100%;
+    background-color: #FFF3F4;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-width: 2px;
+    border-color: #7EB09B
+}
+
+#appName {
+    color: #202d31;
+}
+
+#logoImg {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+}
+
 .formItem {
     display: block;
     text-align: center;
     line-height: 150%;
     font-size: 1.3em;
+}
+
+input, Button {
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#loginEmailInput {
 }
 
 #centerInParent {
@@ -11,6 +47,6 @@
 }
 
 .imageAutoSize {
-    width: 20vw;
+    width: 100%;
     height: auto;
 }

@@ -7,7 +7,9 @@ import { useNavigate } from "react-router-dom";
 import {LinkContainer} from "react-router-bootstrap"
 import Button from "react-bootstrap/Button";
 import "./Login.css"
-import { API_URL, REACT_URL } from './../../../config'
+import VICSRLogoImage from '../../../assets/VICSR-logo.png';
+import atIcon from '../../../assets/at_symbol.png';
+import { API_URL, REACT_URL } from './../../../config';
 
 async function loginUser(credentials) {
     //login logic/talking to server goes here
@@ -60,48 +62,55 @@ export default function Login( {setToken} ) {
     }
 
     return(
-        <div className="container-fluid h-100">
-            <div className="login-wrapper">
-                {loading === false &&
-                    <div className="row">
-                        <div className="col-12 formItem">
-                            <h1>Login to VICSR</h1>
-                        </div>
-                        <div className="col-12 formItem">
-                            <img className="imageAutoSize" src="https://www.freepnglogos.com/uploads/elephant-png/elephant-designs-deviantart-24.png"/>
-                        </div>
+        <div id="loginItemsContainer" className="container">
+            {loading === false &&
+                <div className="row py-5">
+                    <div className="col-12 formItem">
+                        <h1 id="appName">VICSR</h1>
                     </div>
-                }
-                {errors === true && <h2>Cannot log in with provided credentials</h2>}
-                {loading === false && (
-                    <form onSubmit={handleSubmit} className="row">
-                        <div className="col-12">
+                    <div className="col-12 px-5 formItem">
+                        <img id="logoImg" className="" src={VICSRLogoImage}/>
+                    </div>
+                    {errors === true && <h2>Cannot log in with provided credentials</h2>}
+                    <form onSubmit={handleSubmit}>
+                        <div className="col-12 py-3">
                             <label className="formItem">
-                                <p>Email</p>
-                                <input type="email" onChange={e => setEmail(e.target.value)} />
+                                <input
+                                    id="loginEmailInput"
+                                    type="email"
+                                    placeholder="Email"
+                                    onChange={e => setEmail(e.target.value)} />
+                            </label>
+                        </div>
+                        <div className="col-12 py-3">
+                            <label className="formItem">
+                                <input
+                                    type="password"
+                                    placeholder="Password"
+                                    onChange={e => setPassword(e.target.value)} />
                             </label>
                         </div>
                         <div className="col-12">
-                            <label className="formItem">
-                                <p>Password</p>
-                                <input type="password" onChange={e => setPassword(e.target.value)} />
-                            </label>
-                        </div>
-                        <div className="col-12">
-                            <div className="formItem">
-                                <button type="submit">Log In</button>
+                            <div className="formItem py-3">
+                                <Button variant="success" type="submit">Log In</Button>
                             </div>
                         </div>
                     </form>
-                )}
-                <nav className="row">
                     <div className="col-12">
                         <LinkContainer to="/register">
-                            <Button>Register</Button>
+                            <div className="formItem py-0">
+                                <Button variant="outline-info">Register</Button>
+                            </div>
                         </LinkContainer>
                     </div>
-                </nav>
-            </div>
+
+                </div>
+            }
+            <nav className="row">
+                <div className="col-12">
+
+                </div>
+            </nav>
         </div>
     )
 
