@@ -2,13 +2,17 @@
 ### Vocabulary In Context + Spaced Repitition
 
 ## Overview
-VISCR facilitates foreign language and special subject vocabulary learning in two ways: by making user highlighted vocabulary and translations available in the context of assigned texts as a sidebar, and by organizing said vocabulary into flash cards, which the user studies using the principles of spaced-repetition learning. Unlike competitors such as Notability, Anki, and Quizlet, VICSR streamlines the “reading to vocabulary learning pipeline” by bundling useful and novel functionality in one app! No other app lets a user simply highlight a word to translate it, let alone automatically transposing this vocab pair into a flash card for easy studying!
-
-In conclusion, VICSR is for students and learners who want to study vocabulary using the most effective method. It provides a way to extract and define vocabulary in the context of the text itself, and study said vocabulary with automatically generated flash cards and study plans. Unlike products such as Anki, Notability, Evernote, Quizlet, Bear, and analog flashcards, our product combines useful and novel functionality to simplify the “reading to studying pipeline” and save users’ time. 
+VICSR - or Vocabulary In Context + Spaced Repetition is a vocabulary learning app. By enabling learners to see new vocabulary words in the context of their reading using our intuitive highlight to translation feature, memorization starts early. When the user finishes a reading, they can easily begin to memorize all the unknown new words by taking advantage  of VICSR’s automatic flashcard generation feature. Any word highlighted in a given document (and its translation) will be appended to a flashcard deck, from which users can study their new vocabulary. 
 
 ## URL
 
 http://vicsr.herokuapp.com
+
+## Getting Started
+
+[Beginner's Guide](frontend/documentation/Getting_Started.md)
+
+FAQs
 
 ## Contributers
 * Alyssa Colella
@@ -19,3 +23,4 @@ http://vicsr.herokuapp.com
 
 ## Releases
 [v1.0](https://github.com/Capstone-Projects-2022-Spring/project-vicsr/releases/tag/v1.0)
+[v1.1](https://github.com/Capstone-Projects-2022-Spring/project-vicsr/releases/tag/v1.1)
