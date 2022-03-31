@@ -4,6 +4,8 @@ import Card from "react-bootstrap/Card"
 import {useEffect} from "react";
 import "./DocumentList.css"
 import {Spinner} from "react-bootstrap";
+import OptionButton from "./OptionButton";
+import {Link} from "react-router-dom";
 import PopUp from "./PopUp";
 
 
@@ -23,6 +25,11 @@ function DocumentList(props){
             <Card>
                 <Card.Title>
                     Title: {props.documents[index].filename}
+
+                    <div className="button_right">
+                        <OptionButton/>
+                    </div>
+
                 </Card.Title>
                 <Card.Body>
                     <div>ID: {props.documents[index].id}</div>
@@ -49,6 +56,8 @@ function DocumentList(props){
         >
             {Row}
         </List>
+
+
       </main>
   );
 }

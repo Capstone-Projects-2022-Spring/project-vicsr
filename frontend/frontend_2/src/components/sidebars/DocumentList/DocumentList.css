@@ -11,3 +11,7 @@
   color: black;
   border: thick black;
 }
+
+.button_right {
+  float: right;
+}
