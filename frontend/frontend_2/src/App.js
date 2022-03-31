@@ -6,8 +6,8 @@ import useToken from './useToken';
 import Login from './components/views/auth/Login';
 import Register from './components/views/auth/Register';
 import Logout from './components/views/auth/Logout'
-import FlashcardView from './components/views/FlashCardView'
-import FlashcardOptions from './components/views/FlashcardView/FlashcardOptions.js'
+import FlashcardView from './components/views/FlashcardView/FlashCardView'
+import FlashcardOptions from './components/views/FlashcardView/subcomponents/FlashcardOptions.js'
 import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
