@@ -13,12 +13,6 @@ export default function DocumentView() {
     let[shownPage, setShowPage] = useState("")
     let[currentPage, setCurrentPage] = useState(0)
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        let docViewHandleSubmitString = REACT_URL + "/logout"
-        window.location.replace(docViewHandleSubmitString);
-    }
-
     useEffect(() => {
         if(data.pages){setShowPage(data.pages[currentPage].file)}
         //console.log("document: " + shownPage + " chosen");
@@ -50,7 +44,7 @@ export default function DocumentView() {
     }
 
     return(
-    <div className="container-fluid h-100 bg-white border-danger border-5 border">
+    <div className="container-fluid w-100 h-100 bg-white border-danger border-5 border">
         <div className="row bg-dark">
         </div>
 
@@ -68,15 +62,11 @@ export default function DocumentView() {
                 </div>
             </div>
             <div className="col-md bg-dark h-100">
-                <form onSubmit={handleSubmit}>
-                    <button type="submit"> Logout </button>
-                </form>
 
             </div>
         </header>
         <div className="row bg-dark border-top">
             <CustomNavbar/>
-            <Link to='/flashcards'>Go to flashcard view</Link>
         </div>
 
     </div>
