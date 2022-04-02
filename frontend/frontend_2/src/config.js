@@ -4,6 +4,7 @@ const test = false;
 const prod = false;
 const testFrontProdBack = true;
 
+
 let api_url;
 let react_url;
 
@@ -14,7 +15,7 @@ if(dev){
 
 if(prod){
     api_url = 'https://vicsr-api-test.herokuapp.com';
-    react_url = 'http://vicsr.herokuapp.com';
+    react_url = 'https://vicsr.herokuapp.com';
 }
 
 if(testFrontProdBack){

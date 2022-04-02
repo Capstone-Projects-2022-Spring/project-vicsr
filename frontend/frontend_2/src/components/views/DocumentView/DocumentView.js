@@ -4,6 +4,7 @@ import {REACT_URL } from './../../../config'
 import DocumentListLoader from "../../sidebars/DocumentList/DocumentListLoader.js";
 import DocumentPage from "../../DocumentPage";
 import {Button} from "react-bootstrap"
+import CustomNavbar from "./CustomNavbar";
 
 
 export default function DocumentView() {
@@ -11,12 +12,6 @@ export default function DocumentView() {
     let[data, setData] = useState({currentDocID: "", pages: null})
     let[shownPage, setShowPage] = useState("")
     let[currentPage, setCurrentPage] = useState(0)
-
-    const handleSubmit = e => {
-        e.preventDefault();
-        let docViewHandleSubmitString = REACT_URL + "/logout"
-        window.location.replace(docViewHandleSubmitString);
-    }
 
     useEffect(() => {
         if(data.pages){setShowPage(data.pages[currentPage].file)}
@@ -49,11 +44,8 @@ export default function DocumentView() {
     }
 
     return(
-    <div className="container-fluid h-100 bg-white border-danger border-5 border">
+    <div className="container-fluid w-100 h-100 bg-white border-danger border-5 border">
         <div className="row bg-dark">
-            <div className="col-md bg-body border-bottom">
-                <p>VICSR Dasboard</p>
-            </div>
         </div>
 
 
@@ -70,14 +62,11 @@ export default function DocumentView() {
                 </div>
             </div>
             <div className="col-md bg-dark h-100">
-                <form onSubmit={handleSubmit}>
-                    <button type="submit"> Logout </button>
-                </form>
 
             </div>
         </header>
         <div className="row bg-dark border-top">
-            <Link to='/flashcards'>Go to flashcard view</Link>
+            <CustomNavbar/>
         </div>
 
     </div>
