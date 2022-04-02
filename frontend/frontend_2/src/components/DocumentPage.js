@@ -8,10 +8,8 @@ export default function DocumentPage(props){
 
     const canvasRef = useRef(null);
     const [drawing, setDrawing] = useState();
-    const [backgroundImage, setBgImage] = useState();
 
     useEffect(() => {
-        setBgImage(props.URL)
         }, [props.URL]);
 
     function saveData() {
