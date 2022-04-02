@@ -2,6 +2,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .wrapper {
@@ -12,13 +13,11 @@
 .row1{
   background-color: #00008B;
   color: white;
-  min-height: 40px;
   text-align: center;
 }
 
 .row2 {
   background-color: #282c34;
-  min-height: 100vh;
   width: 300vh;
   display: flex;
   flex-direction: row;

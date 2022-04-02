@@ -49,7 +49,7 @@ function DocumentList(props){
         <div/>
         {props.isLoading && <Spinner animation="border"/>}
         <List
-            height={900}
+            height={600}
             itemCount={props.numberOfDocs}
             itemSize={150}
             width={300}

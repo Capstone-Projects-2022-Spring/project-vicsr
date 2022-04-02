@@ -4,6 +4,7 @@ import {REACT_URL } from './../../../config'
 import DocumentListLoader from "../../sidebars/DocumentList/DocumentListLoader.js";
 import DocumentPage from "../../DocumentPage";
 import {Button} from "react-bootstrap"
+import CustomNavbar from "./CustomNavbar";
 
 
 export default function DocumentView() {
@@ -51,9 +52,6 @@ export default function DocumentView() {
     return(
     <div className="container-fluid h-100 bg-white border-danger border-5 border">
         <div className="row bg-dark">
-            <div className="col-md bg-body border-bottom">
-                <p>VICSR Dasboard</p>
-            </div>
         </div>
 
 
@@ -77,6 +75,7 @@ export default function DocumentView() {
             </div>
         </header>
         <div className="row bg-dark border-top">
+            <CustomNavbar/>
             <Link to='/flashcards'>Go to flashcard view</Link>
         </div>
 
