@@ -22,7 +22,7 @@ export default function CustomNavbar(props){
                     <Nav.Link className="border" as={Link} to="/flashcards">Flashcards</Nav.Link>
                 </Nav>
                 </Container>
-                <Button variant="secondary" className="rounded-bottom" onClick={() => handleLogout()}>Logout</Button>
+                <Button variant="secondary" className="rounded-bottom" onClick={(e) => handleLogout(e)}>Logout</Button>
 
             </Navbar>
         </div>
