@@ -16,7 +16,6 @@ backend-vicsr/backend/config.py
 /coverage
 
 # production
-/build
 
 # misc
 .DS_Store
