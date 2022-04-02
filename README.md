@@ -10,7 +10,7 @@ http://vicsr.herokuapp.com
 
 ## Getting Started
 
-[Beginner's Guide](frontend/documentation/Getting_Started.md)
+[Beginner's Guide](documentation/Getting_Started.md)
 
 FAQs
 
