@@ -15,7 +15,7 @@ if(dev){
 
 if(prod){
     api_url = 'https://vicsr-api-test.herokuapp.com';
-    react_url = 'http://vicsr.herokuapp.com';
+    react_url = 'https://vicsr.herokuapp.com';
 }
 
 if(testFrontProdBack){
