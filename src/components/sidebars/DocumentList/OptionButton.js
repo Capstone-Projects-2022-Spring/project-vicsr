@@ -73,8 +73,6 @@ function OptionButton(props){
             </Modal>
 
             {/*Remove Function*/}
-            {/*<Dropdown.Item href="#/action-2">Remove</Dropdown.Item>*/}
-
             <Dropdown.Item onClick={()=>deleteDocument(props.documentid)} >Remove</Dropdown.Item>
 
             {/*Some Function*/}

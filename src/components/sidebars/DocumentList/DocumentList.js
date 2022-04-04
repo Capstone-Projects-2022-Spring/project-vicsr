@@ -28,7 +28,6 @@ function DocumentList(props){
 
                     <div className="button_right">
                         <OptionButton documentid={props.documents[index].id}/>
-                        {/* <OptionButton/> */}
                     </div>
 
                 </Card.Title>
