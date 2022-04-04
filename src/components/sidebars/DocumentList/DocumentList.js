@@ -27,7 +27,8 @@ function DocumentList(props){
                     Title: {props.documents[index].filename}
 
                     <div className="button_right">
-                        <OptionButton/>
+                        <OptionButton documentid={props.documents[index].id}/>
+                        {/* <OptionButton/> */}
                     </div>
 
                 </Card.Title>
