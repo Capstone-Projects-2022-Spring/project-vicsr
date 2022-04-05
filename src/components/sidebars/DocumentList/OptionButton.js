@@ -15,17 +15,15 @@ function OptionButton(props){
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  //test function
-
-    var myHeaders = new Headers();
+  var myHeaders = new Headers();
     myHeaders.append("Authorization", `Token ${sessionStorage.getItem('token')}`);
     myHeaders.append("Cookie", "csrftoken=afXBilocRuFLnYhMQA7k60LRU9WX5ulNNzbahvbzIevwWZxAmnOWPC8yyoM1TsEC; messages=.eJxtzMEKgzAMgOFXCTlnIoJ3YY-wo0gpNXaRNgFTD3v7uZ29fvD_84wh7G4aKrvHzEg9DT3h03STo8YmpsCPGqWAszZoBru9dco_6pLVDhe6vYyErzOlS7azlA-4ZOUVRCH6_3GVyxdMZixk:1nX2r9:xSWaIiqs4LUJIrfBmjb9cAJ2mSusq5Sevrs0xEzEHDY");
 
-    var requestOptions = {
+  var requestOptions = {
         method: 'DELETE',
         headers: myHeaders,
         redirect: 'follow'
-    };
+  };
 
     //add useEffect to wait for new status det to false, true change
     /*
@@ -33,13 +31,51 @@ function OptionButton(props){
       the function that would trigger the change >>>> .then(result => console.log(result) setDeleteValue(true)
      */
 
-    let removeDocumentString = API_URL + '/api/docs/delete/'+props.documentid;
+  let removeDocumentString = API_URL + '/api/docs/delete/'+props.documentid;
     function deleteDocument(){
         fetch(removeDocumentString,requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
     }
+
+    //Rename Test
+/*
+    var requestOptions2 = {
+        method: 'POST',
+        headers: myHeaders,
+        //body: filename,
+        redirect: 'follow'
+    };
+
+
+    let renameDocumentString = API_URL + '/api/docs/update/'+props.documentid;
+    fetch(renameDocumentString, requestOptions2)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+    {/*
+       // get user input
+    const filename = e.target.elements.formFileName.value;
+
+     const formdata = new FormData();
+        formdata.append('filename', filename);
+        formdata.append('file', file, file.name);
+
+    var requestOptions2 = {
+        method: 'POST',
+        headers: myHeaders,
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    let renameDocumentString = API_URL + '/api/docs/update/'+props.documentid;
+    fetch(renameDocumentString, requestOptions2)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+        */}
 
   return(
       <Dropdown>
@@ -59,7 +95,26 @@ function OptionButton(props){
                       <FloatingLabel label="Please enter a new name for the item:">
                           <Form.Control type="text" placeholder="Default input" />
                       </FloatingLabel>
+
                 </Modal.Body>
+
+                {/*
+
+                Form noValidate validated={validated} onSubmit={handleSubmit.bind(this)}>
+
+                <Form.Group className="mb-3" controlId="formFileName">
+                    <Form.Label>File Name</Form.Label>
+                    <Form.Control type="text" placeholder="Enter file name" inputRef={(ref) => {this.filename = ref}} required/>
+                    <Form.Control.Feedback type="invalid">
+                        Please provide a file name.
+                    </Form.Control.Feedback>
+                </Form.Group>
+
+               <Button type="submit"> Upload </Button>
+
+               </Form>
+
+                */}
 
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
