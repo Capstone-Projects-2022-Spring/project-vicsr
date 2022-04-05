@@ -9,8 +9,6 @@ import {Link} from "react-router-dom";
 import PopUp from "./PopUp";
 
 
-
-
 function DocumentList(props){
     //on click, return the top level document id and the .files nested list to the DocumentView
     function clickDocChooseButtonHandler(topLevelID, urls){
@@ -27,7 +25,7 @@ function DocumentList(props){
                     Title: {props.documents[index].filename}
 
                     <div className="button_right">
-                        <OptionButton/>
+                        <OptionButton documentid={props.documents[index].id}/>
                     </div>
 
                 </Card.Title>
