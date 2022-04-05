@@ -6,7 +6,6 @@ import {FixedSizeList as List} from "react-window";
 import Form from 'react-bootstrap/Form';
 import {API_URL} from '../../../config'
 
-
 {/*VIC-172 UI: Button to trigger Documents option menu*/}
 
 function OptionButton(props){
@@ -28,9 +27,8 @@ function OptionButton(props){
         redirect: 'follow'
     };
 
-
-    /*
     //add useEffect to wait for new status det to false, true change
+    /*
    const [isDeleted,setDeletedValue] = React.useState(false);
       the function that would trigger the change >>>> .then(result => console.log(result) setDeleteValue(true)
      */
@@ -42,7 +40,6 @@ function OptionButton(props){
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
     }
-
 
   return(
       <Dropdown>
@@ -75,7 +72,7 @@ function OptionButton(props){
             </Modal>
 
             {/*Remove Function*/}
-            <Dropdown.Item onClick={()=>deleteDocument(props.documentid)}>Remove</Dropdown.Item>
+            <Dropdown.Item onClick={()=>deleteDocument(props.documentid)} >Remove</Dropdown.Item>
 
             {/*Some Function*/}
           <Dropdown.Item href="#/action-3">Open in new tab</Dropdown.Item>
