@@ -1,3 +1,8 @@
+#loginTitle {
+    text-align: center;
+    font-size: 30px;
+}
+
 .formItem {
     display: block;
     text-align: center;
