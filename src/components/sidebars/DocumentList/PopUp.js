@@ -94,7 +94,7 @@ function PopUp(){
                     <Form.Label>Mode</Form.Label>
                     <Form.Control as="select" inputRef={(ref) => {this.mode = ref}} required>
                         <option value="">Choose study mode</option>
-                        <option value="TRL">Translation</option>
+                        <option value="TRL">Translation</option>    {/*fix VIC-195*/}
                         <option value="DEF">Definition</option>
                     </Form.Control>
                 </Form.Group>

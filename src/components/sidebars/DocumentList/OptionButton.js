@@ -6,11 +6,12 @@ import {FixedSizeList as List} from "react-window";
 import Form from 'react-bootstrap/Form';
 import {API_URL} from '../../../config'
 
-{/*VIC-172 UI: Button to trigger Documents option menu*/}
 
 function OptionButton(props){
 
   const [show, setShow] = useState(false);
+  const [validated, setValidated] = useState(false);
+  const [file, setFile] = useState();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -31,6 +32,7 @@ function OptionButton(props){
       the function that would trigger the change >>>> .then(result => console.log(result) setDeleteValue(true)
      */
 
+    /*Get Remove Api*/
   let removeDocumentString = API_URL + '/api/docs/delete/'+props.documentid;
     function deleteDocument(){
         fetch(removeDocumentString,requestOptions)
@@ -39,29 +41,21 @@ function OptionButton(props){
         .catch(error => console.log('error', error));
     }
 
-    //Rename Test
-/*
-    var requestOptions2 = {
-        method: 'POST',
-        headers: myHeaders,
-        //body: filename,
-        redirect: 'follow'
-    };
+    /*Get Rename Api*/
+    const handleSubmit = (e) => {
+    e.preventDefault();
 
+    const form = e.target;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
 
-    let renameDocumentString = API_URL + '/api/docs/update/'+props.documentid;
-    fetch(renameDocumentString, requestOptions2)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+    // get user input
+    const filename = e.target.elements.formFileNameRename.value;
 
-    {/*
-       // get user input
-    const filename = e.target.elements.formFileName.value;
-
-     const formdata = new FormData();
+    const formdata = new FormData();
         formdata.append('filename', filename);
-        formdata.append('file', file, file.name);
 
     var requestOptions2 = {
         method: 'POST',
@@ -70,12 +64,16 @@ function OptionButton(props){
         redirect: 'follow'
     };
 
-    let renameDocumentString = API_URL + '/api/docs/update/'+props.documentid;
-    fetch(renameDocumentString, requestOptions2)
+    let RenameDocumentString = API_URL + '/api/docs/update/'+props.documentid;
+    fetch(RenameDocumentString, requestOptions2)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
-        */}
+
+    setValidated(true);
+    handleClose();
+  }
+
 
   return(
       <Dropdown>
@@ -86,44 +84,32 @@ function OptionButton(props){
         <Dropdown.Menu>
 
             {/*Rename Function*/}
-          <Dropdown.Item href="#/action-1" onClick={handleShow}>Rename</Dropdown.Item>
+            <Dropdown.Item href="#/action-1" onClick={handleShow}>Rename</Dropdown.Item>
+
             <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>
                     <Modal.Title>Rename</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                      <FloatingLabel label="Please enter a new name for the item:">
-                          <Form.Control type="text" placeholder="Default input" />
-                      </FloatingLabel>
 
-                </Modal.Body>
-
-                {/*
-
-                Form noValidate validated={validated} onSubmit={handleSubmit.bind(this)}>
-
-                <Form.Group className="mb-3" controlId="formFileName">
-                    <Form.Label>File Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter file name" inputRef={(ref) => {this.filename = ref}} required/>
+            <Form noValidate validated={validated} onSubmit={handleSubmit.bind(this)}>
+                {/*Form For Rename File Name*/}
+                <Form.Group className="mb-3" controlId="formFileNameRename">
+                    <Form.Control type="text" placeholder="Please enter new file name" inputRef={(ref) => {this.filename = ref}} required/>
                     <Form.Control.Feedback type="invalid">
                         Please provide a file name.
                     </Form.Control.Feedback>
                 </Form.Group>
 
-               <Button type="submit"> Upload </Button>
-
-               </Form>
-
-                */}
-
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Cancel
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button type="submit" variant="primary">
                         OK
                     </Button>
                 </Modal.Footer>
+            </Form>
+
             </Modal>
 
             {/*Remove Function*/}
