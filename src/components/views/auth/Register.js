@@ -19,7 +19,7 @@ async function registerUser(credentials) {
         .then(data => data.json())
 };
 
-export default function Register( {setToken} ) {
+export default function Register( {setRegisterClicked}, {setToken} ) {
   const [email, setEmail] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
@@ -93,6 +93,10 @@ export default function Register( {setToken} ) {
             </div>
             <div className="form-group py-4">
                 <button className="btn btn-lg btn-success w-100" type="submit" onSubmit={registerUser} >Register</button>
+            </div>
+            <div className="form-group py-3" style={{textAlign: "center"}}>
+                <div style={{paddingBottom: "10px"}}>Have an account?</div>
+                <button className="btn btn-lg btn-outline-success w-100" onClick={() => {setRegisterClicked(false)}}>Return To Login</button>
             </div>
       </form>}
     </div>
