@@ -23,10 +23,13 @@ async function loginUser(credentials) {
 };
 
 export default function Login( {setToken} ) {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState(false);
     const [loading, setLoading] = useState(true);
+
+    const [registerClicked, setRegisterClicked] = useState(false);
 
     useEffect(() => {
         if(sessionStorage.getItem('token') !== null) {
@@ -63,30 +66,35 @@ export default function Login( {setToken} ) {
         <div className="container-fluid auth-bg">
             <div className="row justify-content-center">
                 <div className="col-12 col-sm-6 col-md-4">
-                    <form className="form-container" onSubmit={handleSubmit}>
-                        <div id="loginTitle" className="form-group form-label py-3">
-                        VICSR
-                        </div>
-                        <div className="form-group py-4">
-                            <input className="form-control-lg w-100"
-                                   type="email"
-                                   placeholder="Email"
-                                   onChange={e => setEmail(e.target.value)} />
-                        </div>
-                        <div className="form-group py-4">
-                            <input className="form-control-lg w-100"
-                                   type="password"
-                                   placeholder="Password"
-                                   onChange={e => setPassword(e.target.value)} />
-                        </div>
-                        <div className="form-group py-4">
-                            <button className="btn btn-lg btn-primary btn-block w-100" type="submit">Log In</button>
-                        </div>
-                        <div className="form-group py-3" style={{textAlign: "center"}}>
-                            <div style={{paddingBottom: "10px"}}>Don't have an account?</div>
-                            <button className="btn btn-lg btn-outline-success btn-block w-100">Register Here</button>
-                        </div>
-                    </form>
+                    {!registerClicked &&
+                        <form className="form-container" onSubmit={handleSubmit}>
+                            <div id="loginTitle" className="form-group form-label py-3">
+                                VICSR
+                            </div>
+                            <div className="form-group py-4">
+                                <input className="form-control-lg w-100"
+                                       type="email"
+                                       placeholder="Email"
+                                       onChange={e => setEmail(e.target.value)} />
+                            </div>
+                            <div className="form-group py-4">
+                                <input className="form-control-lg w-100"
+                                       type="password"
+                                       placeholder="Password"
+                                       onChange={e => setPassword(e.target.value)} />
+                            </div>
+                            <div className="form-group py-4">
+                                <button className="btn btn-lg btn-primary btn-block w-100" type="submit">Log In</button>
+                            </div>
+                            <div className="form-group py-3" style={{textAlign: "center"}}>
+                                <div style={{paddingBottom: "10px"}}>Don't have an account?</div>
+                                <button className="btn btn-lg btn-outline-success w-100" onClick={() => {setRegisterClicked(true)}}>Register Here</button>
+                            </div>
+                        </form>
+                    }
+                    {registerClicked &&
+                        <Register setRegisterClicked={setRegisterClicked} setToken={setToken}/>
+                    }
                 </div>
             </div>
         </div>

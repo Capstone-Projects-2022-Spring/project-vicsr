@@ -62,24 +62,37 @@ export default function Register( {setToken} ) {
 
   return (
     <div className="register-wrapper">
-      {loading === false && <h1>Register with VICSR</h1>}
-      {errors === true && <h2>Cannot register with provided credentials</h2>}
-      {loading === false && <form onSubmit={handleSubmit}>
-            <label>
-                <p>Email</p>
-                <input type="email" name='email' value={email} onChange={e => setEmail(e.target.value)} />
-            </label> <br />
-            <label>
-                <p>Password</p>
-                <input type="password" name='password1' value={password1} onChange={e => setPassword1(e.target.value)} />
-            </label> <br />
-            <label>
-                <p>Confirm Password</p>
-                <input type="password" name='password2' value={password2} onChange={e => setPassword2(e.target.value)} />
-            </label> <br />
-            <div>
-                <br />
-                <button type="submit" onSubmit={registerUser} >Register</button>
+      {loading === false && <form className="form-container" onSubmit={handleSubmit} style={{minWidth: "30vw"}}>
+            <div id="registerTitle" className="form-group form-label py-3">
+                Register with VICSR
+            </div>
+            {errors === true && <h2>Cannot register with provided credentials</h2>}
+            <div className="form-group py-4">
+                <input className="form-control-lg w-100"
+                       type="email"
+                       name='email'
+                       placeholder='Email'
+                       value={email}
+                       onChange={e => setEmail(e.target.value)} />
+            </div>
+            <div className="form-group py-4">
+                <input className="form-control-lg w-100"
+                       type="password"
+                       name='password1'
+                       placeholder="Password"
+                       value={password1}
+                       onChange={e => setPassword1(e.target.value)} />
+            </div>
+            <div className="form-group py-4">
+                <input className="form-control-lg w-100"
+                       type="password"
+                       name='password2'
+                       placeholder="Confirm Password"
+                       value={password2}
+                       onChange={e => setPassword2(e.target.value)} />
+            </div>
+            <div className="form-group py-4">
+                <button className="btn btn-lg btn-success w-100" type="submit" onSubmit={registerUser} >Register</button>
             </div>
       </form>}
     </div>
