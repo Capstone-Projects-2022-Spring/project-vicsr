@@ -27,7 +27,9 @@ export default function Register( {setRegisterClicked}, {setToken} ) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (sessionStorage.getItem('token') !== null) {
+    if ((sessionStorage.getItem('token') !== null) && sessionStorage.getItem('token') !== 'undefined') {
+        console.log(sessionStorage.getItem('token'))
+        console.log(typeof sessionStorage.getItem('token') != 'undefined')
         let reigsterUseEffectString = REACT_URL + "/docs"
         window.location.replace(reigsterUseEffectString);
     } else {
