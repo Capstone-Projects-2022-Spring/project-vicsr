@@ -62,7 +62,7 @@ export default function Login( {setToken} ) {
     return (
         <div className="container-fluid auth-bg">
             <div className="row justify-content-center">
-                <div className="col-12 col-sm-6 col-md-3">
+                <div className="col-12 col-sm-6 col-md-4">
                     <form className="form-container" onSubmit={handleSubmit}>
                         <div id="loginTitle" className="form-group form-label py-3">
                         VICSR
@@ -81,6 +81,10 @@ export default function Login( {setToken} ) {
                         </div>
                         <div className="form-group py-4">
                             <button className="btn btn-lg btn-primary btn-block w-100" type="submit">Log In</button>
+                        </div>
+                        <div className="form-group py-3" style={{textAlign: "center"}}>
+                            <div style={{paddingBottom: "10px"}}>Don't have an account?</div>
+                            <button className="btn btn-lg btn-outline-success btn-block w-100">Register Here</button>
                         </div>
                     </form>
                 </div>
