@@ -14,11 +14,16 @@ function App() {
     const { token, setToken } = useToken();
     console.log("token in app.js: " + token)
 
+    if (sessionStorage.getItem('token') === 'undefined'){
+        sessionStorage.clear()
+    }
+
     if(!token) {
         return(
             <div className="wrapper">
-                <Login setToken={setToken}/>
+
                     <Routes>
+                        <Route path="/" element ={<Login setToken={setToken}/>}/>
                         <Route path="/register" element={<Register setToken={setToken}/>}></Route>
                     </Routes>
             </div>

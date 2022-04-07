@@ -11,15 +11,19 @@ import { API_URL, REACT_URL } from '../../../config'
 
 async function loginUser(credentials) {
     //login logic/talking to server goes here
-    let loginString = API_URL + '/api/users/auth/login/'
-    return fetch(loginString, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(credentials)
-    })
-        .then(data => data.json())
+    try{
+        let loginString = API_URL + '/api/users/auth/login/'
+        return fetch(loginString, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(credentials)
+        })
+            .then(data => data.json())
+    } catch (error){
+        console.error(error)
+    }
 };
 
 export default function Login( {setToken} ) {
