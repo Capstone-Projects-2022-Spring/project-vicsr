@@ -27,6 +27,7 @@ export default function Register( {setRegisterClicked}, {setToken} ) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    //had to check for literally the string "undefined", because sessionStorage.getitem returns a string if theres anything defined in its dict
     if ((sessionStorage.getItem('token') !== null) && sessionStorage.getItem('token') !== 'undefined') {
         console.log(sessionStorage.getItem('token'))
         console.log(typeof sessionStorage.getItem('token') != 'undefined')
