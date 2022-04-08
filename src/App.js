@@ -29,10 +29,6 @@ function App() {
         );
     }
     console.log("got here in app.js")
-    if (sessionStorage.getItem('token') === 'undefined'){
-        console.log("clearing token")
-        sessionStorage.clear()
-    }
     return (
         <div className="wrapper">
                 <Routes>
