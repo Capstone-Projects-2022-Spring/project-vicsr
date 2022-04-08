@@ -5,6 +5,7 @@ import DocumentListLoader from "../../sidebars/DocumentList/DocumentListLoader.j
 import DocumentPage from "../../DocumentPage";
 import {Button} from "react-bootstrap"
 import CustomNavbar from "./CustomNavbar";
+import "./DocumentView.css";
 
 
 export default function DocumentView() {
@@ -44,11 +45,7 @@ export default function DocumentView() {
     }
 
     return(
-    <div className="container-fluid w-100 h-100 bg-white border-danger border-5 border">
-        <div className="row bg-dark">
-        </div>
-
-
+    <div id="documentViewContainer" className="container-fluid">
         <header className="row2">
             <div className="documentList" >
                 <DocumentListLoader chooseDoc = {chooseDocument}/>
