@@ -21,9 +21,8 @@ function App() {
     if(!token) {
         return(
             <div className="wrapper">
-
+                <Login setToken={setToken}/>
                     <Routes>
-                        <Route path="/" element ={<Login setToken={setToken}/>}/>
                         <Route path="/register" element={<Register setToken={setToken}/>}></Route>
                     </Routes>
             </div>
