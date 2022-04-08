@@ -14,10 +14,6 @@ function App() {
     const { token, setToken } = useToken();
     console.log("token in app.js: " + token)
 
-    if (sessionStorage.getItem('token') === 'undefined'){
-        sessionStorage.clear()
-    }
-
     if(!token) {
         return(
             <div className="wrapper">
@@ -28,6 +24,10 @@ function App() {
                     </Routes>
             </div>
         );
+    }
+    console.log("got here in app.js")
+    if (sessionStorage.getItem('token') === 'undefined'){
+        sessionStorage.clear()
     }
     return (
         <div className="wrapper">
