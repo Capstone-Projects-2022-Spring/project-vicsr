@@ -51,6 +51,8 @@ export default function Login( {setToken} ) {
         setToken(token.key);
         console.log("token in login.js: " + token.key)
         if(token.key){
+            console.log("replacing window")
+            console.log("token in login.js before replacing window: " + token.key)
             let onSubmitString = REACT_URL+ '/docs/'
             window.location.replace(onSubmitString);
         } else {
