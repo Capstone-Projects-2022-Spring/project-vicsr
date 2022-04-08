@@ -37,6 +37,7 @@ export default function Login( {setToken} ) {
 
     useEffect(() => {
         if(sessionStorage.getItem('token') !== null) {
+            console.log("getting here useEffect login")
             let windowString = REACT_URL+ '/docs/'
             window.location.replace(windowString);
         } else {
