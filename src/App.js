@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import DocumentView from './components/views/DocumentView/DocumentView';
@@ -13,6 +13,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 function App() {
     const { token, setToken } = useToken();
     console.log("token in app.js: " + token)
+
+    useEffect(() => {
+        console.log("app.js reloading")
+    }, [token]);
 
     if(!token) {
         return(
