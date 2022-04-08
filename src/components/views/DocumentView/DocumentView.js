@@ -45,25 +45,26 @@ export default function DocumentView() {
     }
 
     return(
-    <div id="documentViewContainer" className="container-fluid">
-        <header className="row2">
-            <div className="documentList" >
+    <div id="documentViewContainer" className="container-fluid w-100">
+        <div id="documentDashboardRow" className="row row2">
+            <div className="col-3 h-100 border border-primary border-3">
                 <DocumentListLoader chooseDoc = {chooseDocument}/>
-
             </div>
-            <div className="canvas">
+            <div id="documentCanvasContainer" className="col-6 border border-warning border-3">
                 <DocumentPage URL = {shownPage}/>
                 <div>
                     <Button onClick = { () => previousPage()}>Previous page</Button>
                     <Button onClick = { () => nextPage()}>Next page</Button>
                 </div>
             </div>
-            <div className="col-md bg-dark h-100">
-
+            <div className="col-3 border border-danger border-3">
+                <p>Vocabulary List</p>
             </div>
-        </header>
-        <div className="row bg-dark border-top">
-            <CustomNavbar/>
+        </div>
+        <div id="footerNavigationRow" className="row">
+            <div className="col-12 p-0">
+                <CustomNavbar/>
+            </div>
         </div>
 
     </div>
