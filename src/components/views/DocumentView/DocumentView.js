@@ -11,16 +11,18 @@ export default function DocumentView() {
 
     let[data, setData] = useState({currentDocID: "", pages: null})
     let[shownPage, setShowPage] = useState("")
-    let[currentPage, setCurrentPage] = useState(0)
+    let[currentPageNumber, setCurrentPageNumber] = useState(0)
     let[pageHighlightData, setPageHighlightData] = useState(null)
 
     useEffect(() => {
         if(data.pages){
-            setShowPage(data.pages[currentPage].file)}
-
-            //console.log("document: " + shownPage + " chosen");
-            //console.log("current page number is: " + currentPage)
-        }, [data.currentDocID, shownPage, currentPage]);
+            let currentPageRef = data.pages[currentPageNumber]
+            setShowPage(currentPageRef.file)
+            setPageHighlightData(fetchPageHighlight(currentPageRef.id))
+        }
+        //console.log("document: " + shownPage + " chosen");
+        //console.log("current page number is: " + currentPageNumber)
+        }, [data.currentDocID, shownPage, currentPageNumber]);
 
     function fetchPageHighlight(subPageID) {
         //LOGIC FOR TALKING TO SERVER HERE, GETTING HIGHLIGHT DATA, AND FORMATTING
@@ -31,15 +33,15 @@ export default function DocumentView() {
 
     function chooseDocument(topLevelID, urls) {
         setData({currentDocID: topLevelID, pages: urls});
-        setCurrentPage(0)
-        setShowPage(urls[currentPage].file)
-        let subPageID = urls[currentPage].id
+        setCurrentPageNumber(0)
+        setShowPage(urls[currentPageNumber].file)
+        let subPageID = urls[currentPageNumber].id
         setPageHighlightData(fetchPageHighlight(subPageID))
     }
 
     function previousPage() {
-        if(currentPage > 0){
-            setCurrentPage(currentPage - 1)
+        if(currentPageNumber > 0){
+            setCurrentPageNumber(currentPageNumber - 1)
         }
         else{
             console.log("error, page previous clicked while on first page")
@@ -47,8 +49,8 @@ export default function DocumentView() {
     }
 
     function nextPage() {
-        if(currentPage != data.pages.length -1){
-            setCurrentPage(currentPage + 1)
+        if(currentPageNumber != data.pages.length -1){
+            setCurrentPageNumber(currentPageNumber + 1)
         }
         else{
             console.log("error, page next clicked while on last page")
