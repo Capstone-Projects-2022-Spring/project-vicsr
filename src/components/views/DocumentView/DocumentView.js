@@ -22,12 +22,19 @@ export default function DocumentView() {
             //console.log("current page number is: " + currentPage)
         }, [data.currentDocID, shownPage, currentPage]);
 
+    function fetchPageHighlight(subPageID) {
+        //LOGIC FOR TALKING TO SERVER HERE, GETTING HIGHLIGHT DATA, AND FORMATTING
+        //RETURN SO WE CAN SET WITH USESTATE
+        return null
+
+    }
+
     function chooseDocument(topLevelID, urls) {
         setData({currentDocID: topLevelID, pages: urls});
         setCurrentPage(0)
         setShowPage(urls[currentPage].file)
         let subPageID = urls[currentPage].id
-        fetchPageHighlight(subPageID)
+        setPageHighlightData(fetchPageHighlight(subPageID))
     }
 
     function previousPage() {
@@ -60,7 +67,7 @@ export default function DocumentView() {
 
             </div>
             <div className="canvas">
-                <DocumentPage URL = {shownPage}/>
+                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} />
                 <div>
                     <Button onClick = { () => previousPage()}>Previous page</Button>
                     <Button onClick = { () => nextPage()}>Next page</Button>
