@@ -5,10 +5,11 @@ import React, {useEffect, useState} from "react";
 import FlashcardListLoader from "./subcomponents/FlashcardListLoader";
 import CustomNavbar from "../DocumentView/CustomNavbar";
 import {Button} from "react-bootstrap";
+import DocumentPage from "../../DocumentPage";
 
 export default function FlashCardView(){
 
-    let[data, setData] = useState({currentDocID: "", pages: null})
+    let[data, setData] = useState({currentDeskID: "", pages: null})
     let[shownPage, setShowPage] = useState("")
     let[currentPage, setCurrentPage] = useState(0)
 
@@ -16,10 +17,10 @@ export default function FlashCardView(){
         if(data.pages){setShowPage(data.pages[currentPage].file)}
         //console.log("document: " + shownPage + " chosen");
         //console.log("current page number is: " + currentPage)
-        }, [data.currentDocID, shownPage, currentPage]);
+        }, [data.currentDeskID, shownPage, currentPage]);
 
     function chooseStudySet(topLevelID, urls) {
-        setData({currentDocID: topLevelID, pages: urls});
+        setData({currentDeskID: topLevelID, pages: urls});
         setCurrentPage(0)
         setShowPage(urls[currentPage].file)
     }
@@ -70,7 +71,7 @@ export default function FlashCardView(){
             </div>
 
             <div className="canvas">
-                <FlashCard/>    {/*drawing screen <DocumentPage URL = {shownPage}/> */}
+                <FlashCard URL = {shownPage}/>    {/*drawing screen <DocumentPage URL = {shownPage}/> */}
 
                 {/*page nav button*/}
                 <div>

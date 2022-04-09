@@ -63,7 +63,7 @@ function FlashcardList(props){
         <div style ={style} className="flashcardListRowWrapper">
             <Card>
                 <Card.Title>
-                    Title: {props.documents[index].filename}
+                    Title: {props.documents[index].filename}  {/*Share same document id for now*/}
 
                     <div className="button_right">
                         <FlashcardOptions deskid={props.documents[index].id}/>

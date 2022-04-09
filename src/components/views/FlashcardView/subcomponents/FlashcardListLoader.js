@@ -20,7 +20,7 @@ function FlashcardListLoader(props){
         useEffect( () =>{
         async function fetchDecks() {
             try {
-                setData({docsFromServer: data.docsFromServer, numDocs:data.numDocs, isFetching: true})
+                setData({decksFromServer: data.decksFromServer, numDocs:data.numDocs, isFetching: true})
                 let vocabSetGetDeskAPIstring = API_URL + "/api/vocab/sets/"
                 const response = await fetch(vocabSetGetDeskAPIstring, {
                     method: 'GET',
@@ -33,7 +33,7 @@ function FlashcardListLoader(props){
                 setData({docsFromServer: docs, numDocs:docs.length, isFetching: false})
             } catch (error) {
                 console.error(error);
-                setData({docsFromServer: data.docsFromServer, numDocs:data.numDocs, isFetching: false})
+                setData({decksFromServer: data.decksFromServer, numDocs:data.numDocs, isFetching: false})
             }
         }
 
