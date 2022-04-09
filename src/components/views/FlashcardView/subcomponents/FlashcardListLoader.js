@@ -3,11 +3,10 @@ import {API_URL} from '../../../../config.js'
 import FlashcardList from "./FlashcardList";
 
 function FlashcardListLoader(props){
-
     let [data, setData] = useState({docsFromServer:[], numDocs:0, isFetching: false})
 
     function deckPicker(topLevelID, urls){
-        props.chooseDeck(topLevelID, urls);
+        props.chooseDesk(topLevelID, urls);
     }
 
     /*
@@ -21,9 +20,9 @@ function FlashcardListLoader(props){
         useEffect( () =>{
         async function fetchDecks() {
             try {
-                setData({docsFromServer: data.docsFromServer, numDocs:data.numDocs, isFetching: false})
-                let docListGetDocsAPIstring = API_URL + "/api/docs/list/"
-                const response = await fetch(docListGetDocsAPIstring, {
+                setData({docsFromServer: data.docsFromServer, numDocs:data.numDocs, isFetching: true})
+                let vocabSetGetDeskAPIstring = API_URL + "/api/vocab/sets/"
+                const response = await fetch(vocabSetGetDeskAPIstring, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -38,15 +37,15 @@ function FlashcardListLoader(props){
             }
         }
 
-        //console.log(data.docsFromServer)
+        //console.log(data.studySetFromServer)
         fetchDecks()
-        //console.log("Done fetching documents")
+        //console.log("Done fetching studyset")
 
         }, []);
 
 
     return(
-        <FlashcardList documents = {data.docsFromServer} numberOfDocs = {data.numDocs} isLoading ={data.isFetching} chooseDeck = {deckPicker}/>
+        <FlashcardList documents = {data.docsFromServer} numberOfDocs = {data.numDocs} isLoading ={data.isFetching} chooseStudySet = {deckPicker}/>
     )
 }
 

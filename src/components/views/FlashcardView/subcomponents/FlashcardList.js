@@ -5,6 +5,7 @@ import {useEffect} from "react";
 import "./FlashcardList.css"
 import {Spinner} from "react-bootstrap";
 import OptionButton2 from "./OptionButton2";
+import {Link} from "react-router-dom";
 import PopUp from "../../../sidebars/DocumentList/PopUp";
 
 
@@ -52,7 +53,7 @@ function FlashcardList(props){
     //on click, return the top level document id and the .files nested list to the DocumentView
     function clickDeckChooseButtonHandler(topLevelID, urls){
         //console.log(urls)
-        props.chooseDeck(topLevelID, urls);
+        props.chooseStudySet(topLevelID, urls);
     }
 
     useEffect( () => {
@@ -65,7 +66,7 @@ function FlashcardList(props){
                     Title: {props.documents[index].filename}
 
                     <div className="button_right">
-                        <OptionButton2 documentid={props.documents[index].id}/>
+                        <OptionButton2 deskid={props.documents[index].id}/>
                     </div>
                 </Card.Title>
 

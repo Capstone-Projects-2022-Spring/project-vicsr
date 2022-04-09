@@ -20,7 +20,7 @@ export default function FlashCardView(){
         //console.log("current page number is: " + currentPage)
         }, [data.currentDocID, shownPage, currentPage]);
 
-    function chooseDocument(topLevelID, urls) {
+    function chooseStudySet(topLevelID, urls) {
         setData({currentDocID: topLevelID, pages: urls});
         setCurrentPage(0)
         setShowPage(urls[currentPage].file)
@@ -62,32 +62,27 @@ export default function FlashCardView(){
      */
 
         <div className="container-fluid w-100 h-100 bg-white border-danger border-5 border">
-        <div className="row bg-dark">
+            <div className="row bg-dark">
         </div>
 
 
         <header className="row2">
-            <div className="documentList" >
-                <FlashcardListLoader chooseDoc = {chooseDocument}/>
-
+            <div className="studySetList" >
+                <FlashcardListLoader chooseDesk = {chooseStudySet}/>
             </div>
+
             <div className="canvas">
+                <FlashCard/>    {/*drawing screen <DocumentPage URL = {shownPage}/> */}
 
-                {/*drawing screen
-                <DocumentPage URL = {shownPage}/>
-                */}
-                <FlashCard/>
-
-                {/*page button*/}
+                {/*page nav button*/}
                 <div>
                     <Button variant="warning" onClick = { () => previousPage()}>Previous page</Button>
                     <Button variant="warning" onClick = { () => nextPage()}>Next page</Button>
                 </div>
 
             </div>
-
-             {/*unknown*/}
             <div className="col-md bg-dark h-100">
+
             </div>
 
         </header>
