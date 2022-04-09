@@ -28,7 +28,7 @@ const Logout = () => {
       .then(data => {
         console.log(data);
         sessionStorage.clear();
-        let logoutHandleLogoutString = REACT_URL + "/login"
+        let logoutHandleLogoutString = REACT_URL + "/"
         window.location.replace(logoutHandleLogoutString);
       });
   };

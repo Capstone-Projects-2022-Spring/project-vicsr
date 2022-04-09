@@ -4,6 +4,10 @@
   margin: 0; /* Remove margins */
 }
 
+#documentList {
+  overflow: hidden;
+}
+
 #documentListCard{
   background: white;
   color: black;

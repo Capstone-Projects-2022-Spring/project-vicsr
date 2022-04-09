@@ -20,23 +20,18 @@ function DocumentList(props){
 
     const Row = ({index, style}) => (
         <div style ={style} className="documentListRowWrapper">
-            <Card
-                id="documentListCard"
-                onClick={() => clickDocChooseButtonHandler(props.documents[index].id, props.documents[index].files)}
-            >
+            <Card id="documentListCard">
                 <Card.Title>
                     <div id="documentCardTitle">
                         {props.documents[index].filename}
                     </div>
-
                     <div className="button_right">
                         <OptionButton documentid={props.documents[index].id}/>
                     </div>
-
                 </Card.Title>
                 <Card.Body>
                     <div>ID: {props.documents[index].id}</div>
-                    <Button>Choose this document!</Button>
+                    <Button onClick={() => clickDocChooseButtonHandler(props.documents[index].id, props.documents[index].files)}>Choose this document!</Button>
                 </Card.Body>
             </Card>
         </div>
@@ -45,20 +40,21 @@ function DocumentList(props){
   return(
 
     <main className="container">
-        <h1 className="text-white text-uppercase text-center my-4">Document List</h1>
-
+        <div className="centerChildren">
+            <h1 className="text-white text-uppercase text-center my-4">Document List</h1>
+        </div>
         <PopUp/>
-      
-        <div/>
         {props.isLoading && <Spinner animation="border"/>}
-        <List
-            height={600}
-            itemCount={props.numberOfDocs}
-            itemSize={150}
-            width={300}
-        >
-            {Row}
-        </List>
+        <div id="documentList" className="centerChildren">
+            <List
+                height={600}
+                itemCount={props.numberOfDocs}
+                itemSize={150}
+                width={200}
+            >
+                {Row}
+            </List>
+        </div>
       </main>
   );
 }

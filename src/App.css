@@ -57,3 +57,14 @@
 .blueBG {
   background-color: blue;
 }
+
+.centerChildrenHorizontal {
+    display: flex;
+    justify-content: center;
+}
+
+.centerChildren {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

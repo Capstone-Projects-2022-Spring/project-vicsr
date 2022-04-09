@@ -46,11 +46,11 @@ export default function DocumentView() {
 
     return(
     <div id="documentViewContainer" className="container-fluid w-100">
-        <div id="documentDashboardRow" className="row row2">
-            <div id="documentListSidebar" className="col-3 h-100 contentBorder">
+        <div id="documentDashboardRow" className="row">
+            <div id="documentListSidebar" className="col-2 h-100">
                 <DocumentListLoader chooseDoc = {chooseDocument}/>
             </div>
-            <div id="documentCanvasContainer" className="col-6 contentBorder">
+            <div id="documentCanvasContainer" className="col contentBorder">
                 <DocumentPage URL = {shownPage}/>
                 <div id="documentCanvasButtons" className="centerChildren">
                     <Button
@@ -67,7 +67,7 @@ export default function DocumentView() {
                     >Next page</Button>
                 </div>
             </div>
-            <div className="col-3 contentBorder">
+            <div className="col-2">
                 <p className="centerChildrenHorizontal" style={{color: "white"}}>Vocabulary List</p>
             </div>
         </div>

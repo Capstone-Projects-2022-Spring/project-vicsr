@@ -1,20 +1,23 @@
 #documentViewContainer {
-    width: 100vh;
-    height: 100vh;
+    overflow: hidden;
     padding: 0;
     background-color: #555555;
 
 }
 
+#documentViewContainer::-webkit-scrollbar {
+  display: none;
+}
+
 #documentDashboardRow {
-    height: 90vh;
-    width: 100%;
+    width: 100vw;
     margin: 0;
+    background-color: #282c34;
 
 }
 
 #documentListSidebar {
-
+    height: 100%;
 }
 
 #documentCanvasContainer {
@@ -42,16 +45,6 @@
     border-width: 3px;
 }
 
-.centerChildrenHorizontal {
-    display: flex;
-    justify-content: center;
-}
-
-.centerChildren {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .row2 {
   background-color: #282c34;
