@@ -47,18 +47,28 @@ export default function DocumentView() {
     return(
     <div id="documentViewContainer" className="container-fluid w-100">
         <div id="documentDashboardRow" className="row row2">
-            <div className="col-3 h-100 border border-primary border-3">
+            <div id="documentListSidebar" className="col-3 h-100 contentBorder">
                 <DocumentListLoader chooseDoc = {chooseDocument}/>
             </div>
-            <div id="documentCanvasContainer" className="col-6 border border-warning border-3">
+            <div id="documentCanvasContainer" className="col-6 contentBorder">
                 <DocumentPage URL = {shownPage}/>
-                <div>
-                    <Button onClick = { () => previousPage()}>Previous page</Button>
-                    <Button onClick = { () => nextPage()}>Next page</Button>
+                <div id="documentCanvasButtons" className="centerChildren">
+                    <Button
+                        onClick = { () => previousPage()}
+                        className="w-50"
+                        variant="outline-primary"
+                        style={{marginRight: "2px"}}
+                    >Previous page</Button>
+                    <Button
+                        onClick = { () => nextPage()}
+                        className="w-50"
+                        variant="outline-primary"
+                        style={{marginLeft: "2px"}}
+                    >Next page</Button>
                 </div>
             </div>
-            <div className="col-3 border border-danger border-3">
-                <p>Vocabulary List</p>
+            <div className="col-3 contentBorder">
+                <p className="centerChildrenHorizontal" style={{color: "white"}}>Vocabulary List</p>
             </div>
         </div>
         <div id="footerNavigationRow" className="row">

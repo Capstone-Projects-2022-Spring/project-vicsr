@@ -20,9 +20,14 @@ function DocumentList(props){
 
     const Row = ({index, style}) => (
         <div style ={style} className="documentListRowWrapper">
-            <Card>
+            <Card
+                id="documentListCard"
+                onClick={() => clickDocChooseButtonHandler(props.documents[index].id, props.documents[index].files)}
+            >
                 <Card.Title>
-                    Title: {props.documents[index].filename}
+                    <div id="documentCardTitle">
+                        {props.documents[index].filename}
+                    </div>
 
                     <div className="button_right">
                         <OptionButton documentid={props.documents[index].id}/>
@@ -31,7 +36,7 @@ function DocumentList(props){
                 </Card.Title>
                 <Card.Body>
                     <div>ID: {props.documents[index].id}</div>
-                    <Button onClick={() => clickDocChooseButtonHandler(props.documents[index].id, props.documents[index].files)}>Choose this document!</Button>
+                    <Button>Choose this document!</Button>
                 </Card.Body>
             </Card>
         </div>
@@ -54,8 +59,6 @@ function DocumentList(props){
         >
             {Row}
         </List>
-
-
       </main>
   );
 }

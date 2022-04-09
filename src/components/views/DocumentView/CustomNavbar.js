@@ -11,21 +11,52 @@ export default function CustomNavbar(props){
         e.preventDefault();
         let docViewHandleSubmitString = REACT_URL + "/logout"
         window.location.replace(docViewHandleSubmitString);
-    }
+   }
 
-    return(
-        <div className="h-100">
-            <Navbar className="h-100 w-100 py-0 text-center" bg="dark" variant="dark">
-                <Container className=" h-100 m-0 p-0">
-                    <Nav className="nav-fill w-100 h-100 py-0">
-                        <Nav.Link className="btn btn-success btn-block border-dark w-100 h-75" as={Link} to="/docs">Documents</Nav.Link>
-                        <Nav.Link className="btn btn-success btn-block border-dark w-100 h-75" as={Link} to="/flashcards">Flashcards</Nav.Link>
-                    </Nav>
-                </Container>
+   const conatinerStyle = {
+       textAlign: "center"
+   }
+
+   const navbarStyle = {
+       width: "100%",
+       height: "100%",
+       margin: "0px",
+       padding: "0px"
+   }
+
+   const navLinkStyle = {
+       display: "flex",
+       justifyContent: "center",
+       alignItems: "center",
+       fontSize: "2em",
+   }
+
+   return(
+       <div className="h-100">
+            <Navbar style={navbarStyle} bg="dark" variant="dark">
+                <Nav className="nav-fill w-100 h-100 py-0">
+                    <Nav.Link
+                        className="btn btn-success btn-block border-dark w-100 h-75"
+                        style={navLinkStyle}
+
+                        as={Link}
+                        to="/docs"
+                    >
+                        Documents
+                    </Nav.Link>
+                    <Nav.Link
+                        className="btn btn-success btn-block border-dark w-100 h-75"
+                        style={navLinkStyle}
+                        as={Link}
+                        to="/flashcards"
+                    >
+                        Flashcards
+                    </Nav.Link>
+                </Nav>
                 {/*
                 <Button variant="secondary" className="rounded-bottom" onClick={(e) => handleLogout(e)}>Logout</Button>
                 */}
             </Navbar>
         </div>
-    )
+   )
 }

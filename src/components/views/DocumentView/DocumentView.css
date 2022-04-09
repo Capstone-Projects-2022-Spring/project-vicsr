@@ -2,7 +2,7 @@
     width: 100vh;
     height: 100vh;
     padding: 0;
-    background-color: red;
+    background-color: #555555;
 
 }
 
@@ -10,6 +10,7 @@
     height: 90vh;
     width: 100%;
     margin: 0;
+
 }
 
 #documentListSidebar {
@@ -17,13 +18,39 @@
 }
 
 #documentCanvasContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 50vw;
+}
+
+#documentCanvasButtons {
+    padding-top: 5px;
+    width: 500px;
 }
 
 #footerNavigationRow {
     width: 100%;
     height: 10vh;
     margin: 0;
+}
+
+.contentBorder {
+    border-style: solid;
+    border-color: #4f734a;
+    border-width: 3px;
+}
+
+.centerChildrenHorizontal {
+    display: flex;
+    justify-content: center;
+}
+
+.centerChildren {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .row2 {
