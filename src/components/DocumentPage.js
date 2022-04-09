@@ -11,7 +11,7 @@ export default function DocumentPage(props){
     return(
         <div>
             {/* The 80 at the end of the hex code sets the transparency*/}
-            <CanvasDraw enablePanAndZoom = {false} clampLinesToDocument={true} imgSrc={props.URL} canvasHeight={685} canvasWidth={500} brushColor={"#FFFF0080"} catenaryColor={"#FFFF0080"}/>
+            <CanvasDraw enablePanAndZoom = {false} clampLinesToDocument={true} imgSrc={props.URL} canvasHeight={633} canvasWidth={489} brushColor={"#FFFF0080"} catenaryColor={"#FFFF0080"}/>
         </div>
     )
 }

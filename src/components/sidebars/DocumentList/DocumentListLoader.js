@@ -33,7 +33,7 @@ function DocumentListLoader(props){
         //console.log("Done fetching documents")
 
         }, []);
-
+    console.log(data.docsFromServer)
 
     return(
         <DocumentList documents = {data.docsFromServer} numberOfDocs = {data.numDocs} isLoading ={data.isFetching} chooseDocument = {docPicker}/>

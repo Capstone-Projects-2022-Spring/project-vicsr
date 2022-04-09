@@ -12,17 +12,22 @@ export default function DocumentView() {
     let[data, setData] = useState({currentDocID: "", pages: null})
     let[shownPage, setShowPage] = useState("")
     let[currentPage, setCurrentPage] = useState(0)
+    let[pageHighlightData, setPageHighlightData] = useState(null)
 
     useEffect(() => {
-        if(data.pages){setShowPage(data.pages[currentPage].file)}
-        //console.log("document: " + shownPage + " chosen");
-        //console.log("current page number is: " + currentPage)
+        if(data.pages){
+            setShowPage(data.pages[currentPage].file)}
+
+            //console.log("document: " + shownPage + " chosen");
+            //console.log("current page number is: " + currentPage)
         }, [data.currentDocID, shownPage, currentPage]);
 
     function chooseDocument(topLevelID, urls) {
         setData({currentDocID: topLevelID, pages: urls});
         setCurrentPage(0)
         setShowPage(urls[currentPage].file)
+        let subPageID = urls[currentPage].id
+        fetchPageHighlight(subPageID)
     }
 
     function previousPage() {
