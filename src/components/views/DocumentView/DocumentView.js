@@ -27,6 +27,10 @@ export default function DocumentView() {
     function fetchPageHighlight(subPageID) {
         //LOGIC FOR TALKING TO SERVER HERE, GETTING HIGHLIGHT DATA, AND FORMATTING
         //RETURN SO WE CAN SET WITH USESTATE
+
+        //return string of save data if availible
+
+        //return null if no entry
         return null
 
     }

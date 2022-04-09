@@ -8,7 +8,19 @@ export default function DocumentPage(props){
     //this will happen every page click and doc choose.
     useEffect(() => {
         //console.log("DocumentPage displaying: " + props.URL);
-        console.log("Highlighting: " + props.highlighting)
+        //console.log("Highlighting: " + props.highlighting)
+
+        //get highlight from current view and send to backend to save
+        let saveData = canvas.current.getSaveData()
+        console.log(saveData)
+        var parse = JSON.parse(saveData)
+        if(parse.lines.length === 0){
+            console.log("save data is empty")
+        }
+        else{
+            console.log("save data has something")
+        }
+
         if(props.highlighting != null){
             canvas.current.loadSaveData(props.highlighting)
         }
