@@ -7,18 +7,15 @@ import Flippy, { FrontSide, BackSide } from 'react-flippy';
 import {render} from "react-dom";
 
 
-export default function FlashCardView(){
+export default function FlashCardView(props){
     const [flip, setFlip] = useState(false)
 
-    //let front_content = "FRONT CONTENT (Question)"
-    //let back_content = "BACK CONTENT (Answer)"
+    let front_content = "FRONT CONTENT (Question)"
+    let back_content = "BACK CONTENT (Answer)"
 
     {/*Test Here*/}
 /*
-    const frontEl = useRef()
-    const backEl = useRef()
-
-    let front_content = API_URL + '/api/vocab/sets/' + '/words/';
+    let front_content = API_URL + '/api/vocab/sets/' + props.studysetid + '/words/';
         function frontContent(){
         fetch(front_content,requestOptions)
         .then(response => response.text())

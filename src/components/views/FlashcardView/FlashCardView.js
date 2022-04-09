@@ -5,11 +5,10 @@ import React, {useEffect, useState} from "react";
 import FlashcardListLoader from "./subcomponents/FlashcardListLoader";
 import CustomNavbar from "../DocumentView/CustomNavbar";
 import {Button} from "react-bootstrap";
-import DocumentPage from "../../DocumentPage";
 
 export default function FlashCardView(){
 
-    let[data, setData] = useState({currentDeskID: "", pages: null})
+    let[data, setData] = useState({currentDocID: "", pages: null})
     let[shownPage, setShowPage] = useState("")
     let[currentPage, setCurrentPage] = useState(0)
 
@@ -17,10 +16,10 @@ export default function FlashCardView(){
         if(data.pages){setShowPage(data.pages[currentPage].file)}
         //console.log("document: " + shownPage + " chosen");
         //console.log("current page number is: " + currentPage)
-        }, [data.currentDeskID, shownPage, currentPage]);
+        }, [data.currentDocID, shownPage, currentPage]);
 
     function chooseStudySet(topLevelID, urls) {
-        setData({currentDeskID: topLevelID, pages: urls});
+        setData({currentDocID: topLevelID, pages: urls});
         setCurrentPage(0)
         setShowPage(urls[currentPage].file)
     }
@@ -30,7 +29,7 @@ export default function FlashCardView(){
             setCurrentPage(currentPage - 1)
         }
         else{
-            console.log("error, page previous clicked while on first page")
+            console.log("error, card previous clicked while on first card")
         }
     }
 
@@ -39,7 +38,7 @@ export default function FlashCardView(){
             setCurrentPage(currentPage + 1)
         }
         else{
-            console.log("error, page next clicked while on last page")
+            console.log("error, card next clicked while on last card")
         }
     }
 
@@ -71,12 +70,12 @@ export default function FlashCardView(){
             </div>
 
             <div className="canvas">
-                <FlashCard URL = {shownPage}/>    {/*drawing screen <DocumentPage URL = {shownPage}/> */}
+                <FlashCard URL = {shownPage}/>
 
                 {/*page nav button*/}
                 <div>
-                    <Button variant="warning" onClick = { () => previousPage()}>Previous page</Button>
-                    <Button variant="warning" onClick = { () => nextPage()}>Next page</Button>
+                    <Button variant="warning" onClick = { () => previousPage()}>Previous card</Button>
+                    <Button variant="warning" onClick = { () => nextPage()}>Next card</Button>
                 </div>
 
             </div>

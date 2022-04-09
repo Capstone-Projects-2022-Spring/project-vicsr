@@ -7,10 +7,11 @@ import {Spinner} from "react-bootstrap";
 import FlashcardOptions from "./FlashcardOptions";
 import {Link} from "react-router-dom";
 import PopUp from "../../../sidebars/DocumentList/PopUp";
+import flashcardListLoader from "./FlashcardListLoader";
 
 
 function FlashcardList(props){
-    //on click, return the top level document id and the .files nested list to the DocumentView
+
     /*
     function clickDeckChooseButtonHandler(){
         //console.log(urls)
@@ -50,7 +51,7 @@ function FlashcardList(props){
   );*/
 
  //Testing Area
-    //on click, return the top level document id and the .files nested list to the DocumentView
+    //on click, return the top level studyset id and the .files nested list to the FlashcardView
     function clickDeckChooseButtonHandler(topLevelID, urls){
         //console.log(urls)
         props.chooseStudySet(topLevelID, urls);
@@ -63,33 +64,32 @@ function FlashcardList(props){
         <div style ={style} className="flashcardListRowWrapper">
             <Card>
                 <Card.Title>
-                    Title: {props.documents[index].filename}  {/*Share same document id for now*/}
+                    Title: {props.studysets[index].filename}
 
                     <div className="button_right">
-                        <FlashcardOptions deskid={props.documents[index].id}/>
+                        <FlashcardOptions studysetsid={props.studysets[index].id}/>
                     </div>
                 </Card.Title>
 
                 <Card.Body>
-                    <div>ID: {props.documents[index].id}</div>
-                    <Button variant="warning" onClick={() => clickDeckChooseButtonHandler(props.documents[index].id, props.documents[index].files)}>Choose this deck!</Button>
+                    <div>ID: {props.studysets[index].id}</div>
+                    <Button variant="warning" onClick={() => clickDeckChooseButtonHandler(props.studysets[index].id, props.studysets[index].files)}>Choose this deck!</Button>
                 </Card.Body>
             </Card>
         </div>
     );
+
 
   return(
 
     <main className="container">
         <h1 className="text-white text-uppercase text-center my-4">FlashCard List</h1>
 
-        {/* <PopUp/> |Maybe add it as Add Desks?|*/}
-
         <div/>
         {props.isLoading && <Spinner animation="border"/>}
         <List
             height={600}
-            itemCount={props.numberOfDocs}
+            itemCount={props.numberOfDesks}
             itemSize={150}
             width={300}
         >
