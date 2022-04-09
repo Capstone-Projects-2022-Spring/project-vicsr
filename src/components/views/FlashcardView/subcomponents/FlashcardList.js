@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card"
 import {useEffect} from "react";
 import "./FlashcardList.css"
 import {Spinner} from "react-bootstrap";
-import OptionButton2 from "./OptionButton2";
+import FlashcardOptions from "./FlashcardOptions";
 import {Link} from "react-router-dom";
 import PopUp from "../../../sidebars/DocumentList/PopUp";
 
@@ -66,7 +66,7 @@ function FlashcardList(props){
                     Title: {props.documents[index].filename}
 
                     <div className="button_right">
-                        <OptionButton2 deskid={props.documents[index].id}/>
+                        <FlashcardOptions deskid={props.documents[index].id}/>
                     </div>
                 </Card.Title>
 

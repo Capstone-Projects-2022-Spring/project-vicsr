@@ -4,8 +4,6 @@ import {Link} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import FlashcardListLoader from "./subcomponents/FlashcardListLoader";
 import CustomNavbar from "../DocumentView/CustomNavbar";
-import DocumentListLoader from "../../sidebars/DocumentList/DocumentListLoader";
-import DocumentPage from "../../DocumentPage";
 import {Button} from "react-bootstrap";
 
 export default function FlashCardView(){
