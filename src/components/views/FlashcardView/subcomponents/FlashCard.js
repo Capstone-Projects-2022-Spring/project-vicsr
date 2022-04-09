@@ -10,10 +10,11 @@ import {render} from "react-dom";
 export default function FlashCardView(){
     const [flip, setFlip] = useState(false)
 
-    //let front_content = "FRONT CONTENT"
-    //let back_content = "BACK CONTENT"
+    let front_content = "FRONT CONTENT"
+    let back_content = "BACK CONTENT"
 
     {/*Test Here*/}
+/*
     let front_content = API_URL + '/api/vocab/sets/' + '/words/';
         function frontContent(){
         fetch(front_content,requestOptions)
@@ -28,7 +29,7 @@ export default function FlashCardView(){
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
     }
-
+*/
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Token ${sessionStorage.getItem('token')}`);
     myHeaders.append("Cookie", "csrftoken=afXBilocRuFLnYhMQA7k60LRU9WX5ulNNzbahvbzIevwWZxAmnOWPC8yyoM1TsEC; messages=.eJxtzMEKgzAMgOFXCTlnIoJ3YY-wo0gpNXaRNgFTD3v7uZ29fvD_84wh7G4aKrvHzEg9DT3h03STo8YmpsCPGqWAszZoBru9dco_6pLVDhe6vYyErzOlS7azlA-4ZOUVRCH6_3GVyxdMZixk:1nX2r9:xSWaIiqs4LUJIrfBmjb9cAJ2mSusq5Sevrs0xEzEHDY");
@@ -57,11 +58,11 @@ export default function FlashCardView(){
             <div className="back">{back_content}</div>
             */}
 
-            <FrontSide className="front" style={{ backgroundColor: '#ffffff'}}>
+            <FrontSide className="front" style={{textAlign:'center', padding: '30%'}}>
                 {front_content}
             </FrontSide>
 
-            <BackSide className="back" style={{ backgroundColor: '#ffffff'}}>
+            <BackSide className="back" style={{textAlign:'center', padding: '30%'}}>
                 {back_content}
             </BackSide>
         </div>
