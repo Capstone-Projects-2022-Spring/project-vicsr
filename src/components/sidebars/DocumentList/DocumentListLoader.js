@@ -31,8 +31,9 @@ function DocumentListLoader(props){
         //console.log(data.docsFromServer)
         fetchDocuments()
         //console.log("Done fetching documents")
+        props.setNeedHighlight(false);
 
-        }, []);
+        }, [props.needHighlight]);
     console.log(data.docsFromServer)
 
     return(

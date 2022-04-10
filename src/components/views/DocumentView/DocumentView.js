@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {Link} from "react-router-dom";
-import {REACT_URL } from '../../../config'
+import {API_URL, REACT_URL} from '../../../config'
 import DocumentListLoader from "../../sidebars/DocumentList/DocumentListLoader.js";
 import DocumentPage from "../../DocumentPage";
 import {Button} from "react-bootstrap"
@@ -12,35 +12,29 @@ export default function DocumentView() {
     let[data, setData] = useState({currentDocID: "", pages: null})
     let[shownPage, setShowPage] = useState("")
     let[currentPageNumber, setCurrentPageNumber] = useState(0)
+    let[currentPageID, setCurrentPageID] = useState(null)
     let[pageHighlightData, setPageHighlightData] = useState(null)
+    let[needHighlight, setNeedHighlight] = useState(true)
 
     useEffect(() => {
         if(data.pages){
             let currentPageRef = data.pages[currentPageNumber]
             setShowPage(currentPageRef.file)
-            setPageHighlightData(fetchPageHighlight(currentPageRef.id))
+            setCurrentPageID(currentPageRef.id)
+            setNeedHighlight(true)
+            setPageHighlightData(currentPageRef.highlight)
         }
         //console.log("document: " + shownPage + " chosen");
         //console.log("current page number is: " + currentPageNumber)
         }, [data.currentDocID, shownPage, currentPageNumber]);
 
-    function fetchPageHighlight(subPageID) {
-        //LOGIC FOR TALKING TO SERVER HERE, GETTING HIGHLIGHT DATA, AND FORMATTING
-        //RETURN SO WE CAN SET WITH USESTATE
-
-        //return string of save data if availible
-
-        //return null if no entry
-        return null
-
-    }
 
     function chooseDocument(topLevelID, urls) {
         setData({currentDocID: topLevelID, pages: urls});
         setCurrentPageNumber(0)
+        setCurrentPageID(urls[currentPageNumber].id)
         setShowPage(urls[currentPageNumber].file)
-        let subPageID = urls[currentPageNumber].id
-        setPageHighlightData(fetchPageHighlight(subPageID))
+        setNeedHighlight(true)
     }
 
     function previousPage() {
@@ -53,7 +47,7 @@ export default function DocumentView() {
     }
 
     function nextPage() {
-        if(currentPageNumber != data.pages.length -1){
+        if(currentPageNumber !== data.pages.length -1){
             setCurrentPageNumber(currentPageNumber + 1)
         }
         else{
@@ -69,11 +63,11 @@ export default function DocumentView() {
 
         <header className="row2">
             <div className="documentList" >
-                <DocumentListLoader chooseDoc = {chooseDocument}/>
+                <DocumentListLoader chooseDoc = {chooseDocument} needHighlight = {needHighlight} setNeedHighlight={setNeedHighlight}/>
 
             </div>
             <div className="canvas">
-                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} />
+                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} currentPageID={currentPageID}/>
                 <div>
                     <Button onClick = { () => previousPage()}>Previous page</Button>
                     <Button onClick = { () => nextPage()}>Next page</Button>
