@@ -33,7 +33,7 @@ function DocumentListLoader(props){
         fetchDocuments()
         //console.log("Done fetching documents")
 
-        }, []);
+    }, []);
 
 
     return(

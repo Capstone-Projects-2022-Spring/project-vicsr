@@ -6,6 +6,7 @@ import DocumentPage from "../../DocumentPage";
 import {Button} from "react-bootstrap"
 import CustomNavbar from "./CustomNavbar";
 import "./DocumentView.css";
+import VocabularyListLoader from "../VocabularyView/VocabularyListLoader"
 
 
 export default function DocumentView() {
@@ -69,6 +70,7 @@ export default function DocumentView() {
             </div>
             <div className="col-2">
                 <p className="centerChildrenHorizontal" style={{color: "white"}}>Vocabulary List</p>
+                <VocabularyListLoader currentDoc = {data.currentDocID} updateOn = {data}/>
             </div>
         </div>
         <div id="footerNavigationRow" className="row">
