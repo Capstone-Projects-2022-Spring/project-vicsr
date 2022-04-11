@@ -70,7 +70,7 @@ export default function DocumentView() {
             </div>
             <div className="col-2">
                 <p className="centerChildrenHorizontal" style={{color: "white"}}>Vocabulary List</p>
-                <VocabularyListLoader currentDoc = {data.currentDocID} updateOn = {data}/>
+                <VocabularyListLoader currentDoc = {data.currentDocID}/>
             </div>
         </div>
         <div id="footerNavigationRow" className="row">

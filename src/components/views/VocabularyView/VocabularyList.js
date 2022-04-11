@@ -6,10 +6,8 @@ import {Spinner} from "react-bootstrap";
 
 function VocabularyList(props) {
 
-    console.log(props.words);
-
     useEffect( () => {
-        console.log(props.toString())
+        console.log("Vocabulary List props: " + JSON.stringify(props, null, 4));
     }, []);
 
     const Row = ({index, style}) => (
@@ -17,7 +15,7 @@ function VocabularyList(props) {
             <Card>
                 <Card.Title>
                     <p>
-                        Word: {props.words[0]}
+                        Word: {props.words[index].word}
                     </p>
                 </Card.Title>
                 <Card.Body>
@@ -38,7 +36,7 @@ function VocabularyList(props) {
             <div className="centerChildren">
                 <List
                     height={600}
-                    itemCount={3}
+                    itemCount={props.numWords}
                     itemSize={150}
                     width={200}
                 >
