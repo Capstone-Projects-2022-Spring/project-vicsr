@@ -9,7 +9,9 @@ function DocumentListLoader(props){
         props.chooseDoc(topLevelID, urls);
     }
 
+    //will happen upon component loading in and then if props.highlight changes
     useEffect( () =>{
+        //function defined
         async function fetchDocuments() {
             try {
                 setData({docsFromServer: data.docsFromServer, numDocs: data.numDocs, isFetching: false})
@@ -28,6 +30,10 @@ function DocumentListLoader(props){
                 setData({docsFromServer: data.docsFromServer, numDocs: data.numDocs, isFetching: false})
             }
         }
+
+        //fetchDocuments will be called only if props.needHighlight is true
+        //the variable which provides the Boolean for props.needHighlight is defined as true originally in the DocumentView
+        //It will be turned back to true whenever a document is clicked or the page is turned
         if(props.needHighlight){
             console.log("Documents being fetched")
             fetchDocuments()
