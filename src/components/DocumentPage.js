@@ -6,6 +6,8 @@ import {API_URL} from "../config";
 export default function DocumentPage(props){
     const canvas = useRef(null)
 
+    //this function is passed as a property to the CanvasDraw component, which will be called every time the canvas is updated in some way
+    //this means new background image, new highlight, etc will fire this func
     async function saveHighlightToServer(lowLevelDocumentId){
         if(props.URL === ""){
             console.log("no page, not attempting save")
@@ -14,8 +16,8 @@ export default function DocumentPage(props){
             console.log("attempting save")
             //get highlight from current view and send to backend to save
             let highlightData = canvas.current.getSaveData()
-            console.log(highlightData)
-            console.log(typeof highlightData)
+            //console.log(highlightData)
+            //console.log(typeof highlightData)
             let studySet;
 
             let myHeaders = new Headers();
@@ -44,16 +46,18 @@ export default function DocumentPage(props){
 
     }
 
-    let [currentHighlight, setCurrentHighlight] = useState(null)
     //this will happen every page click and doc choose.
     useEffect(() => {
         //console.log("DocumentPage displaying: " + props.URL);
         //console.log("Highlighting: " + props.highlighting)
 
-
+        //props.highlighting is declared as null originally, and a document which has never tried to save highlight data will always
+        //be listed as "" in the database. If neither of these cases are true, then we can load valid highlight data
+        //per the CanvasDraw component and should try to do so
         if(props.highlighting != null && props.highlighting !== ""){
             canvas.current.loadSaveData(props.highlighting, true)
         }
+        //no highlight
         else{
             console.log("erasing all highlight")
             canvas.current.eraseAll()
