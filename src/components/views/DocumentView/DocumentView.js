@@ -9,6 +9,7 @@ import CustomNavbar from "./CustomNavbar";
 
 export default function DocumentView() {
 
+    //state variables
     let[data, setData] = useState({currentDocID: "", pages: null})
     let[shownPage, setShowPage] = useState("")
     let[currentPageNumber, setCurrentPageNumber] = useState(0)
@@ -21,7 +22,6 @@ export default function DocumentView() {
             let currentPageRef = data.pages[currentPageNumber]
             setShowPage(currentPageRef.file)
             setCurrentPageID(currentPageRef.id)
-            setNeedHighlight(true)
             setPageHighlightData(currentPageRef.highlight)
         }
         //console.log("document: " + shownPage + " chosen");
@@ -32,13 +32,16 @@ export default function DocumentView() {
     function chooseDocument(topLevelID, urls) {
         setData({currentDocID: topLevelID, pages: urls});
         setCurrentPageNumber(0)
-        setCurrentPageID(urls[currentPageNumber].id)
-        setShowPage(urls[currentPageNumber].file)
+        let currentPageRef = urls[currentPageNumber]
+        setCurrentPageID(currentPageRef.id)
+        setShowPage(currentPageRef.file)
+        setPageHighlightData(currentPageRef.highlight)
         setNeedHighlight(true)
     }
 
     function previousPage() {
         if(currentPageNumber > 0){
+            setNeedHighlight(true)
             setCurrentPageNumber(currentPageNumber - 1)
         }
         else{
@@ -48,6 +51,7 @@ export default function DocumentView() {
 
     function nextPage() {
         if(currentPageNumber !== data.pages.length -1){
+            setNeedHighlight(true)
             setCurrentPageNumber(currentPageNumber + 1)
         }
         else{

@@ -12,7 +12,7 @@ function DocumentListLoader(props){
     useEffect( () =>{
         async function fetchDocuments() {
             try {
-                setData({docsFromServer: data.docsFromServer, numDocs:data.numDocs, isFetching: false})
+                setData({docsFromServer: data.docsFromServer, numDocs: data.numDocs, isFetching: false})
                 let docListGetDocsAPIstring = API_URL + "/api/docs/list/"
                 const response = await fetch(docListGetDocsAPIstring, {
                     method: 'GET',
@@ -22,19 +22,18 @@ function DocumentListLoader(props){
                     },
                 });
                 const docs = await response.json();
-                setData({docsFromServer: docs, numDocs:docs.length, isFetching: false})
+                setData({docsFromServer: docs, numDocs: docs.length, isFetching: false})
             } catch (error) {
                 console.error(error);
-                setData({docsFromServer: data.docsFromServer, numDocs:data.numDocs, isFetching: false})
+                setData({docsFromServer: data.docsFromServer, numDocs: data.numDocs, isFetching: false})
             }
         }
-        //console.log(data.docsFromServer)
-        fetchDocuments()
-        //console.log("Done fetching documents")
-        props.setNeedHighlight(false);
-
-        }, [props.needHighlight]);
-    console.log(data.docsFromServer)
+        if(props.needHighlight){
+            console.log("Documents being fetched")
+            fetchDocuments()
+            props.setNeedHighlight(false);
+        }
+    }, [props.needHighlight]);
 
     return(
         <DocumentList documents = {data.docsFromServer} numberOfDocs = {data.numDocs} isLoading ={data.isFetching} chooseDocument = {docPicker}/>

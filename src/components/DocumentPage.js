@@ -7,34 +7,41 @@ export default function DocumentPage(props){
     const canvas = useRef(null)
 
     async function saveHighlightToServer(lowLevelDocumentId){
-        //get highlight from current view and send to backend to save
-        let highlightData = canvas.current.getSaveData()
-        console.log(highlightData)
-        console.log(typeof highlightData)
-        let studySet;
+        if(props.URL === ""){
+            console.log("no page, not attempting save")
+        }
+        else{
+            console.log("attempting save")
+            //get highlight from current view and send to backend to save
+            let highlightData = canvas.current.getSaveData()
+            console.log(highlightData)
+            console.log(typeof highlightData)
+            let studySet;
 
-        let myHeaders = new Headers();
-        myHeaders.append("Authorization", "Token " + sessionStorage.getItem('token'))
+            let myHeaders = new Headers();
+            myHeaders.append("Authorization", "Token " + sessionStorage.getItem('token'))
 
-        let formdata = new FormData();
-        formdata.append("highlight", highlightData)
+            let formdata = new FormData();
+            formdata.append("highlight", highlightData)
 
-        let requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: formdata,
-            redirect: 'follow'
+            let requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: formdata,
+                redirect: 'follow'
+            }
+
+            try{
+                let saveHighlight = API_URL + "/api/files/update/" + lowLevelDocumentId
+                //COMMENTED OUT SO IT DOESNT DDOS THE BACKEND
+                //const response = await fetch(saveHighlight, requestOptions);
+                //studySet = response
+                //console.log(studySet)
+            }catch (error){
+                console.error(error)
+            }
         }
 
-        try{
-            let saveHighlight = API_URL + "/api/files/update/" + lowLevelDocumentId
-            const response = await fetch(saveHighlight, requestOptions);
-            studySet = response
-            console.log(studySet)
-        }catch (error){
-            console.error(error)
-        }
-        return studySet;
     }
 
     let [currentHighlight, setCurrentHighlight] = useState(null)
@@ -42,10 +49,6 @@ export default function DocumentPage(props){
     useEffect(() => {
         //console.log("DocumentPage displaying: " + props.URL);
         //console.log("Highlighting: " + props.highlighting)
-
-        if(props.URL){
-            console.log("attempting save")
-        }
 
 
         if(props.highlighting != null && props.highlighting !== ""){
