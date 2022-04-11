@@ -52,7 +52,7 @@ export default function DocumentPage(props){
 
 
         if(props.highlighting != null && props.highlighting !== ""){
-            canvas.current.loadSaveData(props.highlighting)
+            canvas.current.loadSaveData(props.highlighting, true)
         }
         else{
             console.log("erasing all highlight")
@@ -63,7 +63,7 @@ export default function DocumentPage(props){
     return(
         <div>
             {/* The 80 at the end of the hex code sets the transparency*/}
-            <CanvasDraw ref={canvas} onChange={(event) => saveHighlightToServer(props.currentPageID)} enablePanAndZoom = {false} clampLinesToDocument={true}  saveData={currentHighlight} imgSrc={props.URL} canvasHeight={1123} canvasWidth={794} brushColor={"#FFFF0080"} catenaryColor={"#FFFF0080"}/>
+            <CanvasDraw ref={canvas} onChange={(event) => saveHighlightToServer(props.currentPageID)} enablePanAndZoom = {false} clampLinesToDocument={true}  saveData={null} imgSrc={props.URL} canvasHeight={1123} canvasWidth={794} brushColor={"#FFFF0080"} catenaryColor={"#FFFF0080"}/>
         </div>
     )
 }
