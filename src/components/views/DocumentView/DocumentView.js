@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {Link} from "react-router-dom";
-import {REACT_URL } from '../../../config'
+import {API_URL, REACT_URL} from '../../../config'
 import DocumentListLoader from "../../sidebars/DocumentList/DocumentListLoader.js";
 import DocumentPage from "../../DocumentPage";
 import {Button} from "react-bootstrap"
@@ -11,25 +11,40 @@ import VocabularyListLoader from "../VocabularyView/VocabularyListLoader"
 
 export default function DocumentView() {
 
+    //state variables
     let[data, setData] = useState({currentDocID: "", pages: null})
     let[shownPage, setShowPage] = useState("")
-    let[currentPage, setCurrentPage] = useState(0)
+    let[currentPageNumber, setCurrentPageNumber] = useState(0)
+    let[currentPageID, setCurrentPageID] = useState(null)
+    let[pageHighlightData, setPageHighlightData] = useState(null)
+    let[needHighlight, setNeedHighlight] = useState(true)
 
     useEffect(() => {
-        if(data.pages){setShowPage(data.pages[currentPage].file)}
+        if(data.pages){
+            let currentPageRef = data.pages[currentPageNumber]
+            setShowPage(currentPageRef.file)
+            setCurrentPageID(currentPageRef.id)
+            setPageHighlightData(currentPageRef.highlight)
+        }
         //console.log("document: " + shownPage + " chosen");
-        //console.log("current page number is: " + currentPage)
-        }, [data.currentDocID, shownPage, currentPage]);
+        //console.log("current page number is: " + currentPageNumber)
+        }, [data.currentDocID, shownPage, currentPageNumber]);
+
 
     function chooseDocument(topLevelID, urls) {
         setData({currentDocID: topLevelID, pages: urls});
-        setCurrentPage(0)
-        setShowPage(urls[currentPage].file)
+        setCurrentPageNumber(0)
+        let currentPageRef = urls[currentPageNumber]
+        setCurrentPageID(currentPageRef.id)
+        setShowPage(currentPageRef.file)
+        setPageHighlightData(currentPageRef.highlight)
+        setNeedHighlight(true)
     }
 
     function previousPage() {
-        if(currentPage > 0){
-            setCurrentPage(currentPage - 1)
+        if(currentPageNumber > 0){
+            setNeedHighlight(true)
+            setCurrentPageNumber(currentPageNumber - 1)
         }
         else{
             console.log("error, page previous clicked while on first page")
@@ -37,8 +52,9 @@ export default function DocumentView() {
     }
 
     function nextPage() {
-        if(currentPage != data.pages.length -1){
-            setCurrentPage(currentPage + 1)
+        if(currentPageNumber !== data.pages.length -1){
+            setNeedHighlight(true)
+            setCurrentPageNumber(currentPageNumber + 1)
         }
         else{
             console.log("error, page next clicked while on last page")

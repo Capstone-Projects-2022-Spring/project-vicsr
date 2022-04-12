@@ -6,7 +6,7 @@ const Logout = () => {
 
   useEffect(() => {
     if (sessionStorage.getItem('token') == null) {
-      let logoutUseEffectString = REACT_URL + "/login"
+      let logoutUseEffectString = REACT_URL + "/"
       window.location.replace(logoutUseEffectString);
     } else {
       setLoading(false);
@@ -28,7 +28,9 @@ const Logout = () => {
       .then(data => {
         console.log(data);
         sessionStorage.clear();
+      
         let logoutHandleLogoutString = REACT_URL + "/"
+
         window.location.replace(logoutHandleLogoutString);
       });
   };

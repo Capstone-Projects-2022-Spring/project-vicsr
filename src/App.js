@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import DocumentView from './components/views/DocumentView/DocumentView';
@@ -14,21 +14,21 @@ function App() {
     const { token, setToken } = useToken();
     console.log("token in app.js: " + token)
 
-    if (sessionStorage.getItem('token') === 'undefined'){
-        sessionStorage.clear()
-    }
+    useEffect(() => {
+        console.log("app.js reloading")
+    }, [token]);
 
     if(!token) {
         return(
             <div className="wrapper">
-
+                <Login setToken={setToken}/>
                     <Routes>
-                        <Route path="/" element ={<Login setToken={setToken}/>}/>
                         <Route path="/register" element={<Register setToken={setToken}/>}></Route>
                     </Routes>
             </div>
         );
     }
+    console.log("got here in app.js")
     return (
         <div className="wrapper">
                 <Routes>
