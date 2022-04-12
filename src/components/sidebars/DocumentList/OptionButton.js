@@ -39,6 +39,7 @@ function OptionButton(props){
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
+        props.setDocUpdated(true)
     }
 
     /*Get Rename Api*/
@@ -71,6 +72,7 @@ function OptionButton(props){
         .catch(error => console.log('error', error));
 
     setValidated(true);
+    props.setDocUpdated(true)
     handleClose();
   }
 

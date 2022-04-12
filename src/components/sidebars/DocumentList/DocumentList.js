@@ -1,7 +1,7 @@
 import {FixedSizeList as List} from "react-window";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card"
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import "./DocumentList.css"
 import {Spinner} from "react-bootstrap";
 import OptionButton from "./OptionButton";
@@ -10,14 +10,26 @@ import PopUp from "./PopUp";
 
 
 function DocumentList(props){
+
+    let [numDocs, setNumDocs] = useState(0)
+
     //on click, return the top level document id and the .files nested list to the DocumentView
     function clickDocChooseButtonHandler(topLevelID, urls){
         //console.log(urls)
         props.chooseDocument(topLevelID, urls);
     }
-    useEffect( () => {}, []);
 
-    const Row = ({index, style}) => (
+    function setDocUpdated(val){
+        props.setDocUpdated(val)
+        console.log("function running in doc list")
+    }
+
+    useEffect( () => {
+        console.log("DocumentList.js being reloaded")
+        setNumDocs(props.numberOfDocs)
+    }, [props.documents, props.numberOfDocs]);
+
+    let Row = ({index, style}) => (
         <div style ={style} className="documentListRowWrapper">
             <Card id="documentListCard" className="greenBorder">
                 <Card.Title className="px-0">
@@ -45,6 +57,7 @@ function DocumentList(props){
                         <OptionButton
                             documentid={props.documents[index].id}
                             style={{width: "100%"}}
+                            setDocUpdated = {setDocUpdated}
                         />
                     </div>
                 </Card.Body>
@@ -63,7 +76,7 @@ function DocumentList(props){
         <div id="documentList" className="centerChildren">
             <List
                 height={600}
-                itemCount={props.numberOfDocs}
+                itemCount={numDocs}
                 itemSize={150}
                 width={250}
             >

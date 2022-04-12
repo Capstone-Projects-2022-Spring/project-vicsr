@@ -4,6 +4,7 @@ import DocumentList from "./DocumentList";
 
 function DocumentListLoader(props){
     let [data, setData] = useState({docsFromServer:[], numDocs:0, isFetching: false})
+    let [docUpdated, setDocUpdated] = useState(true)
 
     function docPicker(topLevelID, urls){
         props.chooseDoc(topLevelID, urls);
@@ -24,7 +25,7 @@ function DocumentListLoader(props){
                     },
                 });
                 const docs = await response.json();
-
+                console.log("fetching documents")
                 setData({docsFromServer: docs, numDocs: docs.length, isFetching: false})
               
             } catch (error) {
@@ -41,10 +42,15 @@ function DocumentListLoader(props){
             fetchDocuments()
             props.setNeedHighlight(false);
         }
-    }, [props.needHighlight]);
+        if(docUpdated){
+            console.log("Documents being fetched")
+            fetchDocuments()
+            setDocUpdated(false)
+        }
+    }, [props.needHighlight, docUpdated]);
 
     return(
-        <DocumentList documents = {data.docsFromServer} numberOfDocs = {data.numDocs} isLoading ={data.isFetching} chooseDocument = {docPicker}/>
+        <DocumentList documents = {data.docsFromServer} numberOfDocs = {data.numDocs} isLoading ={data.isFetching} chooseDocument = {docPicker} setDocUpdated = {setDocUpdated}/>
     )
 }
 
