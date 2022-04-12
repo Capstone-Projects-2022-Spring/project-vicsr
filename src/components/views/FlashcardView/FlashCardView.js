@@ -8,20 +8,20 @@ import {Button} from "react-bootstrap";
 
 export default function FlashCardView(){
 
-    let[data, setData] = useState({currentDocID: "", pages: null})
-    let[shownPage, setShowPage] = useState("")
+    let[data, setData] = useState({currentDeskID: "", cards: null})
+    let[shownCard, setShowCard] = useState("")
     let[currentPage, setCurrentPage] = useState(0)
 
     useEffect(() => {
-        if(data.pages){setShowPage(data.pages[currentPage].file)}
-        //console.log("document: " + shownPage + " chosen");
+        if(data.cards){setShowCard(data.cards[currentPage].file)}
+        //console.log("document: " + shownCard + " chosen");
         //console.log("current page number is: " + currentPage)
-        }, [data.currentDocID, shownPage, currentPage]);
+        }, [data.currentDeskID, shownCard, currentPage]);
 
     function chooseStudySet(topLevelID, urls) {
-        setData({currentDocID: topLevelID, pages: urls});
+        setData({currentDeskID: topLevelID, cards: urls});
         setCurrentPage(0)
-        setShowPage(urls[currentPage].file)
+        setShowCard(urls[currentPage].file)
     }
 
     function previousPage() {
@@ -34,7 +34,7 @@ export default function FlashCardView(){
     }
 
     function nextPage() {
-        if(currentPage != data.pages.length -1){
+        if(currentPage != data.cards.length -1){
             setCurrentPage(currentPage + 1)
         }
         else{
@@ -70,7 +70,7 @@ export default function FlashCardView(){
             </div>
 
             <div className="canvas">
-                <FlashCard URL = {shownPage}/>
+                <FlashCard URL = {shownCard}/>
 
                 {/*page nav button*/}
                 <div>

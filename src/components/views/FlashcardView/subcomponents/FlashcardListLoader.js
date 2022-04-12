@@ -6,8 +6,8 @@ import DocumentList from "../../../sidebars/DocumentList/DocumentList";
 function FlashcardListLoader(props){
     let [data, setData] = useState({studySetFromServer:[], numDesks:0, isFetching: false})
 
-    function docPicker(topLevelID, urls){
-        props.chooseDoc(topLevelID, urls);
+    function deskPicker(topLevelID, urls){
+        props.chooseDesk(topLevelID, urls);
     }
 
     useEffect( () =>{
@@ -37,7 +37,7 @@ function FlashcardListLoader(props){
 
 
     return(
-        <FlashcardList studysets = {data.studySetFromServer} numberOfDesks = {data.numDesks} isLoading ={data.isFetching} chooseStudySet  = {docPicker}/>
+        <FlashcardList studysets = {data.studySetFromServer} numberOfDesks = {data.numDesks} isLoading ={data.isFetching} chooseStudySet  = {deskPicker}/>
     )
 }
 

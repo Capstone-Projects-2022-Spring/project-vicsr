@@ -51,7 +51,7 @@ function FlashcardList(props){
   );*/
 
  //Testing Area
-    //on click, return the top level studyset id and the .files nested list to the FlashcardView
+    //on click, return the top level studysets id and the .files nested list to the FlashcardView
     function clickDeckChooseButtonHandler(topLevelID, urls){
         //console.log(urls)
         props.chooseStudySet(topLevelID, urls);
