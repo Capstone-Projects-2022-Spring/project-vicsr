@@ -61,6 +61,12 @@ export default function DocumentView() {
         }
     }
 
+    const handleLogout = e => {
+        e.preventDefault();
+        let docViewHandleSubmitString = REACT_URL + "/logout"
+        window.location.replace(docViewHandleSubmitString);
+    }
+
     return(
     <div id="documentViewContainer" className="container-fluid w-100">
         <div id="documentDashboardRow" className="row">
@@ -69,20 +75,31 @@ export default function DocumentView() {
             </div>
             <div id="documentCanvasContainer" className="col contentBorder">
                 <DocumentPage URL = {shownPage}/>
-                <div id="documentCanvasButtons" className="centerChildren">
+                <div
+                    id="documentCanvasButtons"
+                    className="container-fluid centerChildrenHorizontal w-100"
+                    style={{padding: "0px 100px 0px 100px"}}
+                >
                     <Button
                         onClick = { () => previousPage()}
-                        className="w-50"
+                        className="col-5"
                         variant="outline-primary"
                         style={{marginRight: "2px"}}
                     >Previous page</Button>
                     <Button
                         onClick = { () => nextPage()}
-                        className="w-50"
+                        className="col-5"
                         variant="outline-primary"
                         style={{marginLeft: "2px"}}
                     >Next page</Button>
+                    <Button
+                        variant="secondary"
+                        className="col rounded-bottom"
+                        style={{marginLeft: "2px"}}
+                        onClick={(e) => handleLogout(e)}
+                >Logout</Button>
                 </div>
+
             </div>
             <div className="col-2">
                 <VocabularyListLoader currentDoc = {data.currentDocID}/>

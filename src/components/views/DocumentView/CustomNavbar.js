@@ -7,16 +7,6 @@ import Button from "react-bootstrap/Button";
 
 export default function CustomNavbar(props){
 
-   const handleLogout = e => {
-        e.preventDefault();
-        let docViewHandleSubmitString = REACT_URL + "/logout"
-        window.location.replace(docViewHandleSubmitString);
-   }
-
-   const conatinerStyle = {
-       textAlign: "center"
-   }
-
    const navbarStyle = {
        width: "100%",
        height: "100%",
@@ -53,9 +43,6 @@ export default function CustomNavbar(props){
                         Flashcards
                     </Nav.Link>
                 </Nav>
-                {/*
-                <Button variant="secondary" className="rounded-bottom" onClick={(e) => handleLogout(e)}>Logout</Button>
-                */}
             </Navbar>
         </div>
    )
