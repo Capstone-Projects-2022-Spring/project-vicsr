@@ -104,12 +104,12 @@ function PopUp(){
                   <Form.Label>Language of Original Document</Form.Label>
                   <Form.Control as="select" className="mb-3" inputRef={(ref) => {this.language = ref}} required>
                     <option value="">Choose a language </option>
-                    <option value="chi-sim">Chinese</option>
-                    <option value="eng">English</option>
-                    <option value="fra">French</option>
-                    <option value="deu">German</option>
-                    <option value="lat">Latin</option>
-                    <option value="spa">Spanish</option>
+                    <option value="zh-CN">Simplified Chinese</option>
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="lv">Latvian</option>
+                    <option value="es">Spanish</option>
                   </Form.Control>
               </Form.Group>
 
@@ -118,12 +118,12 @@ function PopUp(){
                   <Form.Label>Language to Translate to</Form.Label>
                   <Form.Control as="select" className="mb-3" inputRef={(ref) => {this.transLanguage = ref}} required>
                     <option value="">Choose a language </option>
-                    <option value="chi-sim">Chinese</option>
-                    <option value="eng">English</option>
-                    <option value="fra">French</option>
-                    <option value="deu">German</option>
-                    <option value="lat">Latin</option>
-                    <option value="spa">Spanish</option>
+                    <option value="zh-CN">Simplified Chinese</option>
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="lv">Latvian</option>
+                    <option value="es">Spanish</option>
                   </Form.Control>
               </Form.Group>
               <Button type="submit"> Upload </Button>
