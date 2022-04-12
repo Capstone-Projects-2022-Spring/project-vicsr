@@ -70,7 +70,7 @@ export default function DocumentView() {
                 <DocumentListLoader chooseDoc = {chooseDocument} needHighlight = {needHighlight} setNeedHighlight={setNeedHighlight}/>
             </div>
             <div id="documentCanvasContainer" className="col contentBorder">
-                <DocumentPage URL = {shownPage}/>
+                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} currentPageID={currentPageID}/>
                 <div
                     id="documentCanvasButtons"
                     className="container-fluid centerChildrenHorizontal w-100"
