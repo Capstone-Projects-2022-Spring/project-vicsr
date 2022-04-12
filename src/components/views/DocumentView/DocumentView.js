@@ -65,7 +65,7 @@ export default function DocumentView() {
     <div id="documentViewContainer" className="container-fluid w-100">
         <div id="documentDashboardRow" className="row">
             <div id="documentListSidebar" className="col-2 h-100">
-                <DocumentListLoader chooseDoc = {chooseDocument}/>
+                <DocumentListLoader chooseDoc = {chooseDocument} needHighlight = {needHighlight} setNeedHighlight={setNeedHighlight}/>
             </div>
             <div id="documentCanvasContainer" className="col contentBorder">
                 <DocumentPage URL = {shownPage}/>
