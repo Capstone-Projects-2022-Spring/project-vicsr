@@ -6,11 +6,14 @@
 
 #documentList {
   overflow: hidden;
+  background: slategray;
+  width: fit-content;
 }
 
 #documentListCard{
   background: white;
   color: black;
+  height: 150px;
 }
 
 #documentListCard:hover {
@@ -24,7 +27,11 @@
   float: left;
   font-size: 1.5em;
   font-weight: bold;
-  padding: 0px 7px;
+  padding: 0px 0px;
+  width: fit-content;
+  overflow: hidden;
+  white-space: nowrap; /* Don't forget this one */
+  text-overflow: ellipsis;
 }
 
 .button_right {

@@ -7,6 +7,7 @@ import {Button} from "react-bootstrap"
 import CustomNavbar from "./CustomNavbar";
 import "./DocumentView.css";
 import VocabularyListLoader from "../VocabularyView/VocabularyListLoader"
+import CustomHeader from "./CustomHeader";
 
 
 export default function DocumentView() {
@@ -61,14 +62,9 @@ export default function DocumentView() {
         }
     }
 
-    const handleLogout = e => {
-        e.preventDefault();
-        let docViewHandleSubmitString = REACT_URL + "/logout"
-        window.location.replace(docViewHandleSubmitString);
-    }
-
     return(
     <div id="documentViewContainer" className="container-fluid w-100">
+        <CustomHeader/>
         <div id="documentDashboardRow" className="row">
             <div id="documentListSidebar" className="col-2 h-100">
                 <DocumentListLoader chooseDoc = {chooseDocument} needHighlight = {needHighlight} setNeedHighlight={setNeedHighlight}/>
@@ -92,12 +88,6 @@ export default function DocumentView() {
                         variant="outline-primary"
                         style={{marginLeft: "2px"}}
                     >Next page</Button>
-                    <Button
-                        variant="secondary"
-                        className="col rounded-bottom"
-                        style={{marginLeft: "2px"}}
-                        onClick={(e) => handleLogout(e)}
-                >Logout</Button>
                 </div>
 
             </div>

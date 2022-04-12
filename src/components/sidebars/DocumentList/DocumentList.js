@@ -25,7 +25,7 @@ function DocumentList(props){
                         id="documentCardTitle"
                         style={{
                             overflowWrap: "break-word",
-                            inlineSize: "150px",
+                            inlineSize: "200px",
                     }}
                     >
                         {props.documents[index].filename}
@@ -64,8 +64,8 @@ function DocumentList(props){
             <List
                 height={600}
                 itemCount={props.numberOfDocs}
-                itemSize={200}
-                width={200}
+                itemSize={150}
+                width={250}
             >
                 {Row}
             </List>
