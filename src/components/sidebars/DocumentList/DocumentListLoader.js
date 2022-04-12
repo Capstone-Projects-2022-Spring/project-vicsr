@@ -24,7 +24,9 @@ function DocumentListLoader(props){
                     },
                 });
                 const docs = await response.json();
+
                 setData({docsFromServer: docs, numDocs: docs.length, isFetching: false})
+              
             } catch (error) {
                 console.error(error);
                 setData({docsFromServer: data.docsFromServer, numDocs: data.numDocs, isFetching: false})

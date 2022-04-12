@@ -62,9 +62,11 @@ function PopUp(){
 
   return (
     <>
-      <Button variant="success" onClick={handleShow}>
-        Add Document
-      </Button>
+      <Button
+          className="btn-block w-100 my-2"
+          variant="success"
+          onClick={handleShow}
+      >Add Document</Button>
 
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
