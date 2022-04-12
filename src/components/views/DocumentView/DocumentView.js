@@ -71,7 +71,7 @@ export default function DocumentView() {
 
             </div>
             <div className="canvas">
-                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} currentPageID={currentPageID}/>
+                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} currentPageID={currentPageID} callNewHighlight = {setNeedHighlight}/>
                 <div>
                     <Button onClick = { () => previousPage()}>Previous page</Button>
                     <Button onClick = { () => nextPage()}>Next page</Button>

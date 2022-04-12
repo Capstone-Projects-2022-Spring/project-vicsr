@@ -12,11 +12,14 @@ export default function DocumentPage(props){
         if(props.URL === ""){
             console.log("no page, not attempting save")
         }
+        else if(props.highlighting == canvas.current.getSaveData()){
+            console.log("no change, not attempting save")
+        }
         else{
             console.log("attempting save")
             //get highlight from current view and send to backend to save
             let highlightData = canvas.current.getSaveData()
-            //console.log(highlightData)
+            console.log(highlightData)
             //console.log(typeof highlightData)
             let studySet;
 
@@ -36,9 +39,10 @@ export default function DocumentPage(props){
             try{
                 let saveHighlight = API_URL + "/api/files/update/" + lowLevelDocumentId
                 //COMMENTED OUT SO IT DOESNT DDOS THE BACKEND
-                //const response = await fetch(saveHighlight, requestOptions);
-                //studySet = response
-                //console.log(studySet)
+                const response = await fetch(saveHighlight, requestOptions);
+                props.callNewHighlight(true)
+                studySet = response
+                console.log(studySet)
             }catch (error){
                 console.error(error)
             }
