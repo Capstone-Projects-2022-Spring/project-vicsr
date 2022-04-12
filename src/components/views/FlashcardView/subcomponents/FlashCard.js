@@ -285,7 +285,7 @@ export default function FlashCardView(props) {
                     )
                 })}
 */}
-                {props.DATA.translate}
+                {props.DATA.translation}
                 {props.DATA.definition}
 
             </BackSide>

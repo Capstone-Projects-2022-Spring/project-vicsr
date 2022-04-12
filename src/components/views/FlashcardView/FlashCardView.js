@@ -10,11 +10,11 @@ import {API_URL} from "../../../config";
 export default function FlashCardView(){
 ""
     let[data, setData] = useState({ currentDeskID: "", cards: [
-        {id: 0, word: "School", translate: "Escuella", definition: "" },
-        {id: 1, word: "Purpose", translate: "", definition: "Purpose2" },
-        {id: 2, word: "Estimated", translate: "Estimated1", definition: "" },
-        {id: 3, word: "Describing", translate: "", definition: "Describing2" },
-        {id: 4, word: "Architecture", translate: "", definition: "Architecture2" }
+        {id: 0, word: "School", translation: "Escuella", definition: "" },
+        {id: 1, word: "Purpose", translation: "", definition: "Purpose2" },
+        {id: 2, word: "Estimated", translation: "Estimated1", definition: "" },
+        {id: 3, word: "Describing", translation: "", definition: "Describing2" },
+        {id: 4, word: "Architecture", translation: "", definition: "Architecture2" }
     ]})
     let[shownCard, setShowCard] = useState("")
     let[currentPage, setCurrentPage] = useState(0)
@@ -47,7 +47,7 @@ export default function FlashCardView(){
             .then(response => response.json())
             .then(result => /*console.log(result)*/ setData({currentDeskID: topLevelID, cards: result}))
             .catch(error => console.log('error', error));
-
+    console.log(data.cards)
         /*
         API CALL HERE!!!!!
          */

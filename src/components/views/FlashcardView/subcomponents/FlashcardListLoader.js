@@ -23,6 +23,7 @@ function FlashcardListLoader(props){
                     },
                 });
                 const docs = await response.json();
+                console.log(docs)
                 setData({studySetFromServer: docs, numDesks:docs.length, isFetching: false})
             } catch (error) {
                 console.error(error);
