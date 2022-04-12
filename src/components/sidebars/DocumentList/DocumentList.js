@@ -19,18 +19,34 @@ function DocumentList(props){
 
     const Row = ({index, style}) => (
         <div style ={style} className="documentListRowWrapper">
-            <Card id="documentListCard">
-                <Card.Title>
-                    <div id="documentCardTitle">
+            <Card id="documentListCard" className="greenBorder">
+                <Card.Title className="px-0">
+                    <div
+                        id="documentCardTitle"
+                        style={{
+                            overflowWrap: "break-word",
+                            inlineSize: "150px",
+                    }}
+                    >
                         {props.documents[index].filename}
                     </div>
-                    <div className="button_right">
-                        <OptionButton documentid={props.documents[index].id}/>
-                    </div>
                 </Card.Title>
-                <Card.Body>
-                    <div>ID: {props.documents[index].id}</div>
-                    <Button onClick={() => clickDocChooseButtonHandler(props.documents[index].id, props.documents[index].files)}>Choose this document!</Button>
+                <Card.Body style={{padding: "0px"}}>
+                    <div className="d-block w-100">
+                        <Button
+                            variant="outline-primary"
+                            onClick={() => clickDocChooseButtonHandler(
+                                props.documents[index].id,
+                                props.documents[index].files)}
+                            className="w-100"
+                        >Select</Button>
+                    </div>
+                    <div className="d-block w-100">
+                        <OptionButton
+                            documentid={props.documents[index].id}
+                            style={{width: "100%"}}
+                        />
+                    </div>
                 </Card.Body>
             </Card>
         </div>
@@ -48,7 +64,7 @@ function DocumentList(props){
             <List
                 height={600}
                 itemCount={props.numberOfDocs}
-                itemSize={150}
+                itemSize={200}
                 width={200}
             >
                 {Row}

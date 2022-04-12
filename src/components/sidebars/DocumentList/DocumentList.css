@@ -13,11 +13,18 @@
   color: black;
 }
 
+#documentListCard:hover {
+  color: #3f7e3e;
+  text-decoration: underline;
+  border-color: #89e188;
+
+}
+
 #documentCardTitle {
   float: left;
-  padding-left: 30px;
   font-size: 1.5em;
   font-weight: bold;
+  padding: 0px 7px;
 }
 
 .button_right {

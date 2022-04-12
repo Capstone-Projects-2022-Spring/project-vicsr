@@ -77,7 +77,7 @@ function OptionButton(props){
 
   return(
       <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
+        <Dropdown.Toggle className="w-100" variant="outline-success" id="dropdown-basic">
           ☰
         </Dropdown.Toggle>
 
