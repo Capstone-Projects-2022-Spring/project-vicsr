@@ -37,6 +37,7 @@ export default function Login( {setToken} ) {
 
     useEffect(() => {
         if(sessionStorage.getItem('token') !== null) {
+            console.log("getting here useEffect login")
             let windowString = REACT_URL+ '/docs/'
             window.location.replace(windowString);
         } else {
@@ -50,6 +51,8 @@ export default function Login( {setToken} ) {
         setToken(token.key);
         console.log("token in login.js: " + token.key)
         if(token.key){
+            console.log("replacing window")
+            console.log("token in login.js before replacing window: " + token.key)
             let onSubmitString = REACT_URL+ '/docs/'
             window.location.replace(onSubmitString);
         } else {
@@ -155,5 +158,4 @@ export default function Login( {setToken} ) {
 };
 
 Login.propTypes = {
-  setToken: PropTypes.func.isRequired
 };
