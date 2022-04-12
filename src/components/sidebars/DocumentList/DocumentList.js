@@ -15,23 +15,38 @@ function DocumentList(props){
         //console.log(urls)
         props.chooseDocument(topLevelID, urls);
     }
-    useEffect( () => {
-        }, []);
+    useEffect( () => {}, []);
 
     const Row = ({index, style}) => (
         <div style ={style} className="documentListRowWrapper">
-            <Card>
-                <Card.Title>
-                    Title: {props.documents[index].filename}
-
-                    <div className="button_right">
-                        <OptionButton documentid={props.documents[index].id}/>
+            <Card id="documentListCard" className="greenBorder">
+                <Card.Title className="px-0">
+                    <div
+                        id="documentCardTitle"
+                        style={{
+                            overflowWrap: "break-word",
+                            inlineSize: "200px",
+                    }}
+                    >
+                        {props.documents[index].filename}
                     </div>
-
                 </Card.Title>
-                <Card.Body>
-                    <div>ID: {props.documents[index].id}</div>
-                    <Button onClick={() => clickDocChooseButtonHandler(props.documents[index].id, props.documents[index].files)}>Choose this document!</Button>
+                <Card.Body style={{padding: "0px"}}>
+                    <div className="d-block w-100">
+                        <Button
+                            variant="outline-primary"
+                            onClick={() => clickDocChooseButtonHandler(
+                                props.documents[index].id,
+                                props.documents[index].files)}
+                            className="w-100"
+                        >Select</Button>
+                    </div>
+                    <div className="d-block w-100">
+                        <OptionButton
+                            documentid={props.documents[index].id}
+                            style={{width: "100%"}}
+                        />
+                    </div>
                 </Card.Body>
             </Card>
         </div>
@@ -40,22 +55,21 @@ function DocumentList(props){
   return(
 
     <main className="container">
-        <h1 className="text-white text-uppercase text-center my-4">Document List</h1>
-
+        <div className="centerChildren">
+            <h2 className="text-white text-uppercase text-center my-4">Document List</h2>
+        </div>
         <PopUp/>
-      
-        <div/>
         {props.isLoading && <Spinner animation="border"/>}
-        <List
-            height={600}
-            itemCount={props.numberOfDocs}
-            itemSize={150}
-            width={300}
-        >
-            {Row}
-        </List>
-
-
+        <div id="documentList" className="centerChildren">
+            <List
+                height={600}
+                itemCount={props.numberOfDocs}
+                itemSize={150}
+                width={250}
+            >
+                {Row}
+            </List>
+        </div>
       </main>
   );
 }

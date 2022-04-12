@@ -7,24 +7,43 @@ import Button from "react-bootstrap/Button";
 
 export default function CustomNavbar(props){
 
-   const handleLogout = e => {
-        e.preventDefault();
-        let docViewHandleSubmitString = REACT_URL + "/logout"
-        window.location.replace(docViewHandleSubmitString);
-    }
+   const navbarStyle = {
+       width: "100%",
+       height: "100%",
+       margin: "0px",
+       padding: "0px"
+   }
 
-    return(
-        <div>
-            <Navbar bg="primary" variant="dark">
-                <Container>
-                <Nav className="nav-fill w-100">
-                    <Nav.Link className="border" as={Link} to="/docs">Documents</Nav.Link>
-                    <Nav.Link className="border" as={Link} to="/flashcards">Flashcards</Nav.Link>
+   const navLinkStyle = {
+       display: "flex",
+       justifyContent: "center",
+       alignItems: "center",
+       fontSize: "2em",
+   }
+
+   return(
+       <div className="h-100">
+            <Navbar style={navbarStyle} bg="dark" variant="dark">
+                <Nav className="nav-fill w-100 h-100 py-0">
+                    <Nav.Link
+                        className="btn btn-success btn-block border-dark w-100 h-75"
+                        style={navLinkStyle}
+
+                        as={Link}
+                        to="/docs"
+                    >
+                        Documents
+                    </Nav.Link>
+                    <Nav.Link
+                        className="btn btn-success btn-block border-dark w-100 h-75"
+                        style={navLinkStyle}
+                        as={Link}
+                        to="/flashcards"
+                    >
+                        Flashcards
+                    </Nav.Link>
                 </Nav>
-                </Container>
-                <Button variant="secondary" className="rounded-bottom" onClick={(e) => handleLogout(e)}>Logout</Button>
-
             </Navbar>
         </div>
-    )
+   )
 }
