@@ -66,7 +66,7 @@ export default function DocumentPage(props){
             console.log("erasing all highlight")
             canvas.current.eraseAll()
         }
-        }, [props.URL]);
+        }, [props.URL, props.highlighting]);
 
     return(
         <div>
