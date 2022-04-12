@@ -1,0 +1,26 @@
+#vocabListItem {
+    color: white;
+    border-style: solid;
+    border-radius: 3px;
+    border-width: 3px;
+    border-color: white;
+    margin-bottom: 5px;
+}
+
+#vocabListItem:hover {
+    border-color: #4f734a;
+    cursor: pointer;
+}
+
+#vocabListItem:hover #vocabItemWord {
+    text-decoration: underline;
+}
+
+#vocabItemWord {
+    font-weight: bold;
+}
+
+
+.hideScrollBar::-webkit-scrollbar {
+        width: 0;
+}

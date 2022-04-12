@@ -4,7 +4,6 @@ import VocabularyList from "./VocabularyList"
 
 function VocabularyListLoader(props) {
     let [data, setData] = useState({wordsFromServer:[], numWords:0, isFetching: false});
-    let [currentSetId, setCurrentSetId] = useState(0);
 
     useEffect( async () => {
         await fetchWords();

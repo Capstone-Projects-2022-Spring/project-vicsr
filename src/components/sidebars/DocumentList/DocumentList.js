@@ -15,8 +15,7 @@ function DocumentList(props){
         //console.log(urls)
         props.chooseDocument(topLevelID, urls);
     }
-    useEffect( () => {
-        }, []);
+    useEffect( () => {}, []);
 
     const Row = ({index, style}) => (
         <div style ={style} className="documentListRowWrapper">
@@ -41,7 +40,7 @@ function DocumentList(props){
 
     <main className="container">
         <div className="centerChildren">
-            <h1 className="text-white text-uppercase text-center my-4">Document List</h1>
+            <h2 className="text-white text-uppercase text-center my-4">Document List</h2>
         </div>
         <PopUp/>
         {props.isLoading && <Spinner animation="border"/>}
