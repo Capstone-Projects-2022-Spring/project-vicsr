@@ -17,9 +17,47 @@ export default function FlashCardView(props) {
     //let back_content = "BACK CONTENT (Answer)"
 
 
+    {/******************** Testing New API Call Method ****************************/}
+/*       let [data, setData] = useState({studySetFromServer:[], numDesks:0, isFetching: false})
+
+        async function fetchWordsBySetID(setID) {
+        console.log("setID: " + setID);
+        try {
+            let vocabByDocIdApiString = API_URL + "/api/vocab/sets/" + setID + "/words";
+            console.log("API URL: " + vocabByDocIdApiString);
+
+            const response = await fetch(vocabByDocIdApiString, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + sessionStorage.getItem('token')
+                },
+            });
+            const words = await response.json();
+            console.log("Study set words: " + JSON.stringify(words, null, 4));
+            setData({studySetFromServer: words, numDesks: words.length, isFetching: false})
+        } catch (error){
+            console.error(error);
+            setData({studySetFromServer: [], numDesks: 0, isFetching: false})
+        }
+    }
+
+    let [deskscontent, setCurrentWordData] = useState({word: "", trans: "", def: ""})
+
+        function setCurrentWordDataByWordIndex(index) {
+        const wordObj = props.words[index];
+
+        setCurrentWordData({
+            word: String(wordObj.word),
+            trans: String(wordObj.translate),
+            def: String(wordObj.definition)
+        })
+    }
+*/
+
     {/*Test Here*/}
 
-        let front_content = API_URL + '/api/vocab/sets/' + props.studysetid + '/words/';
+    /*    let front_content = API_URL + '/api/vocab/sets/' + props.studysetid + '/words/';
             function frontContent(){
             fetch(front_content,requestOptions)
             .then(response => response.text())
@@ -33,20 +71,17 @@ export default function FlashCardView(props) {
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
         }
+     */
 
-    //testing data set
-    const cardsData = [
-        {id: 10, word: "School", translate: "School1", definition: "" },
-        {id: 20, word: "Purpose", translate: "", definition: "Purpose2" },
-        {id: 30, word: "Estimated", translate: "Estimated1", definition: "" },
-        {id: 40, word: "Describing", translate: "", definition: "Describing2" },
-        {id: 50, word: "Architecture", translate: "", definition: "Architecture2" }
-    ];
 
-/*    const [cardsData, setCardsData] = useState([]);
-      const [cardComponents, updateCardComponents] = useState([]);
 
-      const piecedata = {
+
+    {/************  Test3 *******************************/}
+/*
+    const [cardsData, setCardsData] = useState([]);
+    const [cardComponents, updateCardComponents] = useState([]);
+
+      const option = {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -55,7 +90,7 @@ export default function FlashCardView(props) {
         };
 
     useEffect(() => {
-    fetch("http://localhost:3000/api/vocab/sets/", piecedata)
+    fetch("http://localhost:3000/api/vocab/sets/", option)
       .then((res) => res.json())
       .then((res) => setCardsData(res));
   }, []);
@@ -74,9 +109,10 @@ export default function FlashCardView(props) {
     );
   }, [cardsData]);
   */
+    {/************ End Test3 *******************************/}
 
 
-
+    /*
     async function fetchWordsBySetID(){
         let getword = API_URL + "/api/vocab/sets/" + props.studysetid+ '/words/';
         const cardsData = await fetch(fetchWordsBySetID, {
@@ -91,8 +127,9 @@ export default function FlashCardView(props) {
         console.log("Returning: " + studySet[0].id);
 
         return studySet[0].id;
-    }
+    }*/
 
+    /* Maybe remove this cuz it seem useless
     async function fetchVocab_front() {
         let front_content = API_URL + '/api/vocab/sets/' + props.studysetid + '/words/';
         const response_front = await fetch(front_content, {
@@ -116,10 +153,12 @@ export default function FlashCardView(props) {
         });
         const back = await response_back.json();
     }
+    */
 
-        useEffect(() => {
+
+    useEffect(() => {
         //console.log("DocumentPage displaying: " + props.URL);
-        }, [props.URL]);
+    }, [props.URL]);
 
 
     useEffect(() => {
@@ -148,7 +187,42 @@ export default function FlashCardView(props) {
         const front = await response_contents.json();
     }
 
-    {/*******************************************/}
+    {/************  Test2 *******************************/}
+/*
+        this.state = {
+            items: [],
+            DataisLoaded: false
+        };
+
+       // ComponentDidMount is used to
+    // execute the code
+
+        fetch("https://jsonplaceholder.typicode.com/users", {
+              method: 'POST',
+  body: JSON.stringify({
+    title: 'foo',
+    body: 'bar',
+    userId: 1,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+            .then((res) => res.json())
+            .then((json) => {
+                this.setState({
+                    items: json,
+                    DataisLoaded: true
+                });
+            })
+
+
+        const {items } = this.state;
+
+*/
+        {/************  End Test2 *******************************/}
+
+
 
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Token ${sessionStorage.getItem('token')}`);
@@ -174,13 +248,17 @@ export default function FlashCardView(props) {
                 {/*front_content*/}
                 {/*front= {frontEl}*/}
 
-                {cardsData.map(cardsData => {
-                    return(
-                <div key={cardsData.id}>
-                    {cardsData.word}
-                </div>
-                    )
-                })}
+                {/************ Call Test2 *******************************/}
+                {/*items.map((item) => (
+                    <ol key = { item.id } >
+                       User_Name: { item.username },
+                        Full_Name: { item.name },
+                        User_Email: { item.email }
+                    </ol>
+                ))
+            */}
+
+                {props.DATA.word}
 
 
                 {/*<div>{cardComponents}</div>;*/}
@@ -199,13 +277,16 @@ export default function FlashCardView(props) {
                 {/*back_content*/}
                 {/*back= {backEl}*/}
 
-                {cardsData.map(cardsData => {
+                {/*   {cardsData.map(cardsData => {
                     return(
                 <div key={cardsData.id}>
                     {cardsData.translate} {cardsData.definition}
                 </div>
                     )
                 })}
+*/}
+                {props.DATA.translate}
+                {props.DATA.definition}
 
             </BackSide>
         </div>
@@ -213,3 +294,10 @@ export default function FlashCardView(props) {
     )
 
 }
+
+
+/*
+https://www.codingdeft.com/posts/react-fetch-data-api/
+https://www.geeksforgeeks.org/how-to-fetch-data-from-an-api-in-reactjs/
+https://jsonplaceholder.typicode.com/guide/
+*/
