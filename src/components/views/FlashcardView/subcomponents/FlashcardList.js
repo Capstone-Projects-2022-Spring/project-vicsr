@@ -12,45 +12,6 @@ import flashcardListLoader from "./FlashcardListLoader";
 
 function FlashcardList(props){
 
-    /*
-    function clickDeckChooseButtonHandler(){
-        //console.log(urls)
-        props.chooseDeck();
-    }
-    useEffect( () => {
-        }, []);
-
-    const Row = ({index, style}) => (
-        <div style ={style} className="flashcardListRowWrapper">
-            <Card>
-                <Card.Title>
-                    Title: {index}
-                </Card.Title>
-                <Card.Body>
-                    <div>ID: {index}</div>
-                    <Button onClick={() => clickDeckChooseButtonHandler()}>Choose this deck!</Button>
-                </Card.Body>
-            </Card>
-        </div>
-    );
-
-  return(
-
-    <main className="container">
-        <div/>
-        {props.isLoading && <Spinner animation="border"/>}
-        <List
-            height={900}
-            itemCount={20}
-            itemSize={150}
-            width={300}
-        >
-            {Row}
-        </List>
-      </main>
-  );*/
-
- //Testing Area
     //on click, return the top level studysets id and the .files nested list to the FlashcardView
     function clickDeckChooseButtonHandler(topLevelID, urls){
         //console.log(urls)
