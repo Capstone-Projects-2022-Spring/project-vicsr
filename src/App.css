@@ -57,3 +57,25 @@
 .blueBG {
   background-color: blue;
 }
+
+.greenBorder {
+  border-style: solid;
+  border-color: #4f734a;
+  border-width: 4px;
+}
+
+.centerChildrenHorizontal {
+    display: flex;
+    justify-content: center;
+}
+
+.centerChildrenVertical {
+    display: flex;
+    align-items: center;
+}
+
+.centerChildren {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

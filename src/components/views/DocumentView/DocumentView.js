@@ -5,6 +5,9 @@ import DocumentListLoader from "../../sidebars/DocumentList/DocumentListLoader.j
 import DocumentPage from "../../DocumentPage";
 import {Button} from "react-bootstrap"
 import CustomNavbar from "./CustomNavbar";
+import "./DocumentView.css";
+import VocabularyListLoader from "../VocabularyView/VocabularyListLoader"
+import CustomHeader from "./CustomHeader";
 
 
 export default function DocumentView() {
@@ -60,29 +63,42 @@ export default function DocumentView() {
     }
 
     return(
-    <div className="container-fluid w-100 h-100 bg-white border-danger border-5 border">
-        <div className="row bg-dark">
-        </div>
-
-
-        <header className="row2">
-            <div className="documentList" >
+    <div id="documentViewContainer" className="container-fluid w-100">
+        <CustomHeader/>
+        <div id="documentDashboardRow" className="row">
+            <div id="documentListSidebar" className="col-2 h-100">
                 <DocumentListLoader chooseDoc = {chooseDocument} needHighlight = {needHighlight} setNeedHighlight={setNeedHighlight}/>
-
             </div>
-            <div className="canvas">
-                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} currentPageID={currentPageID} callNewHighlight = {setNeedHighlight}/>
-                <div>
-                    <Button onClick = { () => previousPage()}>Previous page</Button>
-                    <Button onClick = { () => nextPage()}>Next page</Button>
+            <div id="documentCanvasContainer" className="col contentBorder">
+                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} currentPageID={currentPageID}/>
+                <div
+                    id="documentCanvasButtons"
+                    className="container-fluid centerChildrenHorizontal w-100"
+                    style={{padding: "0px 100px 0px 100px"}}
+                >
+                    <Button
+                        onClick = { () => previousPage()}
+                        className="col-5"
+                        variant="outline-primary"
+                        style={{marginRight: "2px"}}
+                    >Previous page</Button>
+                    <Button
+                        onClick = { () => nextPage()}
+                        className="col-5"
+                        variant="outline-primary"
+                        style={{marginLeft: "2px"}}
+                    >Next page</Button>
                 </div>
-            </div>
-            <div className="col-md bg-dark h-100">
 
             </div>
-        </header>
-        <div className="row bg-dark border-top">
-            <CustomNavbar/>
+            <div className="col-2">
+                <VocabularyListLoader currentDoc = {data.currentDocID}/>
+            </div>
+        </div>
+        <div id="footerNavigationRow" className="row">
+            <div className="col-12 p-0">
+                <CustomNavbar/>
+            </div>
         </div>
 
     </div>
