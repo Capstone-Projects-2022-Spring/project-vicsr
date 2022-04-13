@@ -1,10 +1,21 @@
 import CanvasDraw from "react-canvas-draw";
 import ExampleImage from '../assets/Screen Shot 2022-03-24 at 1.05.06 PM.png'
-import {useEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import {API_URL} from "../config";
+import LZString from "lz-string"
 
 export default function DocumentPage(props){
+
+    let [highLight, setHighlight] = useState(null)
+
     const canvas = useRef(null)
+
+    const canvasHighlight = useCallback(node =>{
+        if(node != null){
+            setHighlight(node.getSaveData())
+        }
+
+    }, []);
 
     //this function is passed as a property to the CanvasDraw component, which will be called every time the canvas is updated in some way
     //this means new background image, new highlight, etc will fire this func
@@ -12,14 +23,16 @@ export default function DocumentPage(props){
         if(props.URL === ""){
             console.log("no page, not attempting save")
         }
-        else if(props.highlighting == canvas.current.getSaveData()){
+        else if(LZString.decompressFromUTF16(props.highlighting) == canvas.current.getSaveData()){
             console.log("no change, not attempting save")
         }
         else{
             console.log("attempting save")
             //get highlight from current view and send to backend to save
             let highlightData = canvas.current.getSaveData()
+            let compressedHighlight = LZString.compressToUTF16(highlightData);
             console.log(highlightData)
+            console.log(compressedHighlight)
             //console.log(typeof highlightData)
             let studySet;
 
@@ -27,7 +40,7 @@ export default function DocumentPage(props){
             myHeaders.append("Authorization", "Token " + sessionStorage.getItem('token'))
 
             let formdata = new FormData();
-            formdata.append("highlight", highlightData)
+            formdata.append("highlight", compressedHighlight)
 
             let requestOptions = {
                 method: 'POST',
@@ -58,13 +71,15 @@ export default function DocumentPage(props){
         //props.highlighting is declared as null originally, and a document which has never tried to save highlight data will always
         //be listed as "" in the database. If neither of these cases are true, then we can load valid highlight data
         //per the CanvasDraw component and should try to do so
-        if(props.highlighting != null && props.highlighting !== ""){
-            canvas.current.loadSaveData(props.highlighting, true)
+        if(props.highlighting != null){
+            let decompressed = LZString.decompressFromUTF16(props.highlighting);
+            console.log(decompressed)
+            canvas.current.loadSaveData(decompressed, true)
         }
         //no highlight
         else{
             console.log("erasing all highlight")
-            canvas.current.eraseAll()
+            //canvas.current.eraseAll()
         }
         }, [props.URL, props.highlighting]);
 
@@ -72,7 +87,7 @@ export default function DocumentPage(props){
         <div>
             {/* The 80 at the end of the hex code sets the transparency*/}
             <CanvasDraw
-                ref={canvas} 
+                ref={canvas}
                 onChange={(event) => saveHighlightToServer(props.currentPageID)} 
                 enablePanAndZoom = {false}
                 clampLinesToDocument={true}  

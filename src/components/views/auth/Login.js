@@ -45,10 +45,14 @@ export default function Login( {setToken} ) {
         }
     }, []);
 
+    function setTokenLogin(val){
+        setToken(val);
+    }
+
     const handleSubmit = async e => {
         e.preventDefault();
         const token = await loginUser( { email, password } );
-        setToken(token.key);
+        setTokenLogin(token.key);
         console.log("token in login.js: " + token.key)
         if(token.key){
             console.log("replacing window")
@@ -100,7 +104,7 @@ export default function Login( {setToken} ) {
                         </form>
                     }
                     {registerClicked &&
-                        <Register setRegisterClicked={setRegisterClicked} setToken={setToken}/>
+                        <Register setRegisterClicked={setRegisterClicked} setTokenReg={setTokenLogin}/>
                     }
                 </div>
             </div>

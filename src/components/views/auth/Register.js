@@ -19,7 +19,7 @@ async function registerUser(credentials) {
         .then(data => data.json())
 };
 
-export default function Register( {setRegisterClicked}, {setToken} ) {
+export default function Register( {setRegisterClicked}, {setTokenReg} ) {
   const [email, setEmail] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
@@ -50,7 +50,7 @@ export default function Register( {setRegisterClicked}, {setToken} ) {
     // const token = await registerUser ( { email, password1, password2 });
     const token = await registerUser (user);
     console.log("token in register: " + token.key)
-    setToken(token.key);
+    setTokenReg(token.key);
 
     if(token.key){
             let registerOnSubmitString = REACT_URL+ '/docs/'
