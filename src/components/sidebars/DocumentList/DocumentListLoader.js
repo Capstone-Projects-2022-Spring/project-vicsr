@@ -4,9 +4,14 @@ import DocumentList from "./DocumentList";
 
 function DocumentListLoader(props){
     let [data, setData] = useState({docsFromServer:[], numDocs:0, isFetching: false})
+    let [index, setIndex] = useState(null)
 
     function docPicker(topLevelID, urls){
         props.chooseDoc(topLevelID, urls);
+    }
+
+    function docUpdator(topLevelID, urls){
+        props.docUpdater(topLevelID, urls)
     }
 
     //will happen upon component loading in and then if props.highlight changes
@@ -36,15 +41,22 @@ function DocumentListLoader(props){
         //fetchDocuments will be called only if props.needHighlight is true
         //the variable which provides the Boolean for props.needHighlight is defined as true originally in the DocumentView
         //It will be turned back to true whenever a document is clicked or the page is turned
-        if(props.needHighlight){
+        if(props.needHighlight && !index){
             console.log("Documents being fetched")
             fetchDocuments()
             props.setNeedHighlight(false);
         }
+        if(props.needHighlight && index){
+            let pageCallingForHighlight = props.currentPageID;
+            fetchDocuments()
+            docUpdator(pageCallingForHighlight, data.docsFromServer[index].files)
+            props.setNeedHighlight(false);
+        }
+
     }, [props.needHighlight]);
 
     return(
-        <DocumentList documents = {data.docsFromServer} numberOfDocs = {data.numDocs} isLoading ={data.isFetching} chooseDocument = {docPicker}/>
+        <DocumentList documents = {data.docsFromServer} numberOfDocs = {data.numDocs} isLoading ={data.isFetching} chooseDocument = {docPicker} setIndex = {setIndex}/>
     )
 }
 

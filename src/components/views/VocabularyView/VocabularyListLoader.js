@@ -12,7 +12,7 @@ function VocabularyListLoader(props) {
 
     async function fetchStudySetByDocId() {
         let studySetByDocIdApiString = API_URL + "/api/vocab/sets/fromDoc/" + props.currentDoc;
-        console.log("APIURL: " + studySetByDocIdApiString)
+        //console.log("APIURL: " + studySetByDocIdApiString)
         const response = await fetch(studySetByDocIdApiString, {
             method: 'GET',
             headers: {
@@ -22,16 +22,16 @@ function VocabularyListLoader(props) {
         });
 
         const studySet = await response.json();
-        console.log("Returning: " + studySet[0].id);
+        //console.log("Returning: " + studySet[0].id);
 
         return studySet[0].id;
     }
 
     async function fetchWordsBySetID(setID) {
-        console.log("setID: " + setID);
+        //console.log("setID: " + setID);
         try {
             let vocabByDocIdApiString = API_URL + "/api/vocab/sets/" + setID + "/words";
-            console.log("API URL: " + vocabByDocIdApiString);
+            //console.log("API URL: " + vocabByDocIdApiString);
 
             const response = await fetch(vocabByDocIdApiString, {
                 method: 'GET',
@@ -41,7 +41,7 @@ function VocabularyListLoader(props) {
                 },
             });
             const words = await response.json();
-            console.log("Study set words: " + JSON.stringify(words, null, 4));
+            //console.log("Study set words: " + JSON.stringify(words, null, 4));
             setData({wordsFromServer: words, numWords: words.length, isFetching: false})
         } catch (error){
             console.error(error);
@@ -50,20 +50,20 @@ function VocabularyListLoader(props) {
     }
 
     async function fetchWords() {
-            console.log("Current doc ID: " + props.currentDoc)
+            //console.log("Current doc ID: " + props.currentDoc)
             if (props.currentDoc !== "" && props.currentDoc !== 0) {
                 const currentStudySetId = await fetchStudySetByDocId();
-                console.log("currentStudySetId: " + currentStudySetId);
+                //console.log("currentStudySetId: " + currentStudySetId);
                 const studySetWordsJson = await fetchWordsBySetID(currentStudySetId);
-                console.log("Study set words JSON: " + JSON.stringify(studySetWordsJson, null, 4));
+                //console.log("Study set words JSON: " + JSON.stringify(studySetWordsJson, null, 4));
             } else {
-                console.log("No document chosen for vocab fetch.")
+                //console.log("No document chosen for vocab fetch.")
                 clearVocabList();
             }
         }
 
     function clearVocabList() {
-        console.log("Clearing Vocabulary List.");
+        //console.log("Clearing Vocabulary List.");
         setData({wordsFromServer: [], numWords: 0, isFetching: false});
     }
 

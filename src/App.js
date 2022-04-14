@@ -12,10 +12,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
     const { token, setToken } = useToken();
-    console.log("token in app.js: " + token)
+    //console.log("token in app.js: " + token)
 
     useEffect(() => {
-        console.log("app.js reloading")
+        //console.log("app.js reloading")
     }, [token]);
 
     if(!token) {
@@ -28,7 +28,7 @@ function App() {
             </div>
         );
     }
-    console.log("got here in app.js")
+    //console.log("got here in app.js")
     return (
         <div className="wrapper">
                 <Routes>

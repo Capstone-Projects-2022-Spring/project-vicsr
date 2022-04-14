@@ -26,10 +26,11 @@ export default function DocumentView() {
             setShowPage(currentPageRef.file)
             setCurrentPageID(currentPageRef.id)
             setPageHighlightData(currentPageRef.highlight)
+
         }
         //console.log("document: " + shownPage + " chosen");
         //console.log("current page number is: " + currentPageNumber)
-        }, [data.currentDocID, shownPage, currentPageNumber]);
+        }, [data.currentDocID, shownPage, currentPageNumber, needHighlight]);
 
 
     function chooseDocument(topLevelID, urls) {
@@ -38,14 +39,20 @@ export default function DocumentView() {
         let currentPageRef = urls[currentPageNumber]
         setCurrentPageID(currentPageRef.id)
         setShowPage(currentPageRef.file)
-        setPageHighlightData(currentPageRef.highlight)
         setNeedHighlight(true)
+    }
+    function updateDocument(topLevelID, urls){
+        setData({currentDocID: topLevelID, pages: urls});
+        setCurrentPageNumber(currentPageNumber)
+        let currentPageRef = urls[currentPageNumber]
+        setCurrentPageID(currentPageRef.id)
+        setShowPage(currentPageRef.file)
     }
 
     function previousPage() {
         if(currentPageNumber > 0){
-            setNeedHighlight(true)
             setCurrentPageNumber(currentPageNumber - 1)
+            setNeedHighlight(true)
         }
         else{
             console.log("error, page previous clicked while on first page")
@@ -54,8 +61,8 @@ export default function DocumentView() {
 
     function nextPage() {
         if(currentPageNumber !== data.pages.length -1){
-            setNeedHighlight(true)
             setCurrentPageNumber(currentPageNumber + 1)
+            setNeedHighlight(true)
         }
         else{
             console.log("error, page next clicked while on last page")
@@ -67,10 +74,10 @@ export default function DocumentView() {
         <CustomHeader/>
         <div id="documentDashboardRow" className="row">
             <div id="documentListSidebar" className="col-2 h-100">
-                <DocumentListLoader chooseDoc = {chooseDocument} needHighlight = {needHighlight} setNeedHighlight={setNeedHighlight}/>
+                <DocumentListLoader chooseDoc = {chooseDocument} needHighlight = {needHighlight} setNeedHighlight={setNeedHighlight} currentPageID ={currentPageID} docUpdater={updateDocument}/>
             </div>
             <div id="documentCanvasContainer" className="col contentBorder">
-                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} currentPageID={currentPageID}/>
+                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} currentPageID={currentPageID} setNeedHighlight={setNeedHighlight}/>
                 <div
                     id="documentCanvasButtons"
                     className="container-fluid centerChildrenHorizontal w-100"

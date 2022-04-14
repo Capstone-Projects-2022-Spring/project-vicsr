@@ -22,7 +22,7 @@ function VocabularyList(props) {
     let [showWordModel, setShowWordModal] = useState(false);
 
     useEffect( () => {
-        console.log("Vocabulary List props: " + JSON.stringify(props, null, 4));
+        //console.log("Vocabulary List props: " + JSON.stringify(props, null, 4));
     }, []);
 
     function setCurrentWordDataByWordIndex(index) {
