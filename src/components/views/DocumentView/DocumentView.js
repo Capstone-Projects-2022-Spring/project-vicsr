@@ -44,8 +44,10 @@ export default function DocumentView() {
 
     function previousPage() {
         if(currentPageNumber > 0){
-            setNeedHighlight(true)
             setCurrentPageNumber(currentPageNumber - 1)
+            let currentPageRef = data.pages[currentPageNumber]
+            setPageHighlightData(currentPageRef.highlight)
+            setNeedHighlight(true)
         }
         else{
             console.log("error, page previous clicked while on first page")
@@ -56,6 +58,9 @@ export default function DocumentView() {
         if(currentPageNumber !== data.pages.length -1){
             setNeedHighlight(true)
             setCurrentPageNumber(currentPageNumber + 1)
+            let currentPageRef = data.pages[currentPageNumber]
+            setPageHighlightData(currentPageRef.highlight)
+            setNeedHighlight(true)
         }
         else{
             console.log("error, page next clicked while on last page")
@@ -70,7 +75,7 @@ export default function DocumentView() {
                 <DocumentListLoader chooseDoc = {chooseDocument} needHighlight = {needHighlight} setNeedHighlight={setNeedHighlight}/>
             </div>
             <div id="documentCanvasContainer" className="col contentBorder">
-                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} currentPageID={currentPageID}/>
+                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} currentPageID={currentPageID} setNeedHighlight={setNeedHighlight}/>
                 <div
                     id="documentCanvasButtons"
                     className="container-fluid centerChildrenHorizontal w-100"
