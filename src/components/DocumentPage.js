@@ -56,6 +56,7 @@ export default function DocumentPage(props){
                 props.callNewHighlight(true)
                 studySet = response
                 console.log(studySet)
+                setHighlight(canvas.current.getSaveData())
             }catch (error){
                 console.error(error)
             }
@@ -91,7 +92,7 @@ export default function DocumentPage(props){
                 onChange={(event) => saveHighlightToServer(props.currentPageID)} 
                 enablePanAndZoom = {false}
                 clampLinesToDocument={true}  
-                saveData={null}
+                saveData={highLight}
                 imgSrc={props.URL} 
                 canvasHeight={1123} 
                 canvasWidth={794}
