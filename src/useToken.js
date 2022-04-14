@@ -4,9 +4,9 @@ export default function useToken(){
 
     const getToken = () => {
         const tokenString = sessionStorage.getItem('token');
-        console.log("tokenString from session storage: " + tokenString)
+        //console.log("tokenString from session storage: " + tokenString)
         //const userToken = JSON.parse(tokenString);
-        console.log("userToken from session storage: " + tokenString)
+        //console.log("userToken from session storage: " + tokenString)
         //return userToken?.key
         return tokenString
     };
