@@ -1,3 +1,42 @@
+#flashcardViewContainer {
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+
+#flashcardMainContent {
+    background-color: #282c34;
+    height: 90vh;
+}
+
+#flashcardStudySetList {
+    padding: 0;
+}
+
+#flashcardContainer {
+    background-color: #282c34;
+    height: 100%;
+
+}
+
+#flashcardCardAndButtons {
+    margin: 20% 0;
+}
+
+#flashcardCard {
+
+}
+
+#flashcardRightFillerPannel {
+    height: 100%;
+}
+
+#flashcardNavbarContainer {
+    width: 100%;
+    height: 10vh;
+}
+
 .flashcard{
     display: flex;
     justify-content: center;

@@ -70,42 +70,35 @@ export default function FlashCardView(){
 
     return(
 
-        <div className="container-fluid w-100 h-100 bg-white border-danger border-5 border">
-            <div className="row bg-dark">
-        </div>
 
+        <div id="flashcardViewContainer" className="container-fluid">
 
-        <header className="row2">
-            <div className="studySetList" >
-                <FlashcardListLoader chooseDesk = {chooseStudySet}/>
-            </div>
-
-            <div className="canvas">
-
-                {data.cards.map((cardsData,index) => {
-                    return(
-                         (currentPage === index) ? <FlashCard DATA = {cardsData}/> : <></>
-                    )
-                })}
-
-                {/*page Nav button*/}
-                <div>
-                    <Button variant="warning" onClick = { () => previousPage()}>Previous card</Button>
-                    <Button variant="warning" onClick = { () =>nextPage()}>Next card</Button>
+            <div id="flashcardMainContent" className="row">
+                <div id="flashcardStudySetList" className="col-3 studySetList" >
+                    <FlashcardListLoader chooseDesk = {chooseStudySet}/>
                 </div>
-
+                <div id="flashcardContainer" className="col-6 canvas greenBorder">
+                    <div id="flashcardCardAndButtons" className="">
+                        <div id="flashcardCard" className="centerChildrenHorizontal">
+                            {data.cards.map((cardsData,index) => {
+                                return(
+                                     (currentPage === index) ? <FlashCard DATA = {cardsData}/> : <></>
+                                )
+                            })}
+                        </div>
+                        <div className="centerChildrenHorizontal">
+                            <Button variant="warning" onClick = { () => previousPage()}>Previous card</Button>
+                            <Button variant="warning" onClick = { () =>nextPage()}>Next card</Button>
+                        </div>
+                    </div>
+                </div>
+                <div id="flashcardRightFillerPanel" className="col-3">
+                    Chat
+                </div>
             </div>
-            <div className="col-md bg-dark h-100">
-
+            <div id="flashcardNavbarContainer">
+                <CustomNavbar/>
             </div>
-
-        </header>
-
-        <div className="row bg-dark border-top">
-            <CustomNavbar/>
         </div>
-
-    </div>
-
     )
 }

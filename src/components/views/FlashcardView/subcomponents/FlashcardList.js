@@ -43,7 +43,7 @@ function FlashcardList(props){
 
   return(
 
-    <main className="container">
+    <main className="container" style={{padding: "0", margin: "0 auto"}}>
         <h1 className="text-white text-uppercase text-center my-4">FlashCard List</h1>
 
         <div/>
@@ -53,6 +53,7 @@ function FlashcardList(props){
             itemCount={props.numberOfDesks}
             itemSize={150}
             width={300}
+            style={{margin: "0 auto"}}
         >
             {Row}
         </List>
