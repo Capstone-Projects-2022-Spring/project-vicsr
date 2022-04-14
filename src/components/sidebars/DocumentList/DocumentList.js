@@ -11,9 +11,10 @@ import PopUp from "./PopUp";
 
 function DocumentList(props){
     //on click, return the top level document id and the .files nested list to the DocumentView
-    function clickDocChooseButtonHandler(topLevelID, urls){
+    function clickDocChooseButtonHandler(topLevelID, urls, index){
         //console.log(urls)
         props.chooseDocument(topLevelID, urls);
+        props.setIndex(index)
     }
     useEffect( () => {}, []);
 
@@ -37,7 +38,8 @@ function DocumentList(props){
                             variant="outline-primary"
                             onClick={() => clickDocChooseButtonHandler(
                                 props.documents[index].id,
-                                props.documents[index].files)}
+                                props.documents[index].files,
+                                index)}
                             className="w-100"
                         >Select</Button>
                     </div>

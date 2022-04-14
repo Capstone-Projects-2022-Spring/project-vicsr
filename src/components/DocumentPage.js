@@ -80,7 +80,7 @@ export default function DocumentPage(props){
         }
 
 
-        }, [props.URL]);
+        }, [props.URL, props.highlighting]);
 
     return(
         <div onMouseUp={(event) => saveHighlightToServer(event, props.currentPageID)}>
