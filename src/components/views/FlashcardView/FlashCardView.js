@@ -19,13 +19,9 @@ export default function FlashCardView(){
     let[shownCard, setShowCard] = useState("")
     let[currentPage, setCurrentPage] = useState(0)
 
-    //testing data set
-    ////const cardsData = ;
 
     useEffect(() => {
-        //if(data.cards){setShowCard(data.cards[currentPage].file)}
-        //console.log("document: " + shownCard + " chosen");
-        //console.log("current page number is: " + currentPage)
+
         }, [data.currentDeskID, shownCard, currentPage]);
 
     function chooseStudySet(topLevelID, urls) {
@@ -42,22 +38,15 @@ export default function FlashCardView(){
         redirect: 'follow'
     };
 
+    //Call FlashCard Word API here
         let flashcarddata = API_URL + '/api/vocab/sets/' + topLevelID + '/words';
             fetch(flashcarddata,requestOptions)
             .then(response => response.json())
             .then(result => /*console.log(result)*/ setData({currentDeskID: topLevelID, cards: result}))
             .catch(error => console.log('error', error));
-    console.log(data.cards)
-        /*
-        API CALL HERE!!!!!
-         */
-        //setData({currentDeskID: 22, cards:[{id: 42, word: "School", translate: "Escuella", definition: "" },{id: 84, word: "How", translate: "Como", definition: "" },{id: 2, word: "Apple", translate: "Manzana", definition: "" },]})
-/*
-API call to load flash cards here > setData({topLevelID, cards: [{id:0,word:"bannana",translate:"platino"...etc}]})
- */
-       // setData({currentDeskID: topLevelID, cards: urls});
+            console.log(data.cards)
+
         setCurrentPage(0)
-        //setShowCard(urls[currentPage].file)
     }
 
     function previousPage() {
@@ -80,6 +69,7 @@ API call to load flash cards here > setData({topLevelID, cards: [{id:0,word:"ban
 
 
     return(
+
 
         <div id="flashcardViewContainer" className="container-fluid">
 
