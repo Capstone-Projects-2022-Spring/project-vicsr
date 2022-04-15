@@ -8,6 +8,7 @@ import CustomNavbar from "./CustomNavbar";
 import "./DocumentView.css";
 import VocabularyListLoader from "../VocabularyView/VocabularyListLoader"
 import CustomHeader from "./CustomHeader";
+import PopUp from "../../sidebars/DocumentList/PopUp";
 
 
 export default function DocumentView() {
@@ -69,11 +70,16 @@ export default function DocumentView() {
         }
     }
 
+    const [loading, setLoading] = useState(false)
+
     return(
     <div id="documentViewContainer" className="container-fluid w-100">
         <CustomHeader/>
         <div id="documentDashboardRow" className="row">
             <div id="documentListSidebar" className="col-2 h-100">
+
+                <PopUp setLoading={setLoading}/>
+
                 <DocumentListLoader chooseDoc = {chooseDocument} needHighlight = {needHighlight} setNeedHighlight={setNeedHighlight} currentPageID ={currentPageID} docUpdater={updateDocument}/>
             </div>
             <div id="documentCanvasContainer" className="col contentBorder">
