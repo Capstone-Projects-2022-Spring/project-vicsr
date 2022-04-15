@@ -45,15 +45,17 @@ function DocumentListLoader(props){
             console.log("Documents being fetched")
             fetchDocuments()
             props.setNeedHighlight(false);
+            props.setLoading(false);
         }
         if(props.needHighlight && index){
             let pageCallingForHighlight = props.currentPageID;
             fetchDocuments()
             docUpdator(pageCallingForHighlight, data.docsFromServer[index].files)
             props.setNeedHighlight(false);
+            props.setLoading(false);
         }
 
-    }, [props.needHighlight]);
+    }, [props.needHighlight, props.loading]);
 
     return(
         <DocumentList documents = {data.docsFromServer} numberOfDocs = {data.numDocs} isLoading ={data.isFetching} chooseDocument = {docPicker} setIndex = {setIndex}/>

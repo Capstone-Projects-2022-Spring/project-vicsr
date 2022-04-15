@@ -80,7 +80,7 @@ export default function DocumentView() {
 
                 <PopUp setLoading={setLoading}/>
 
-                <DocumentListLoader chooseDoc = {chooseDocument} needHighlight = {needHighlight} setNeedHighlight={setNeedHighlight} currentPageID ={currentPageID} docUpdater={updateDocument}/>
+                <DocumentListLoader loading={loading} setLoading={setLoading} chooseDoc = {chooseDocument} needHighlight = {needHighlight} setNeedHighlight={setNeedHighlight} currentPageID ={currentPageID} docUpdater={updateDocument}/>
             </div>
             <div id="documentCanvasContainer" className="col contentBorder">
                 <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} currentPageID={currentPageID} setNeedHighlight={setNeedHighlight}/>
