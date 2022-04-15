@@ -6,7 +6,7 @@ import { render } from "react-dom";
 import {API_URL} from '../../../config'
 
 
-function PopUp(){
+function PopUp(props){
   const [show, setShow] = useState(false);
   const [validated, setValidated] = useState(false);
 
@@ -53,7 +53,8 @@ function PopUp(){
     let addDocumentString = API_URL + '/api/docs/add/';
     fetch(addDocumentString, requestOptions)
         .then(response => response.text())
-        .then(result => console.log(result))
+        //.then(result => console.log(result))
+        .then(result => console.log(result, props.setLoading(true)))
         .catch(error => console.log('error', error));
 
     setValidated(true);

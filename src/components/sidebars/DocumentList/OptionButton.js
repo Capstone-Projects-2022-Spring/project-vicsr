@@ -26,6 +26,17 @@ function OptionButton(props){
         redirect: 'follow'
   };
 
+  /*Refresh the page once the document is uploaded*/
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        if (loading) {
+            window.location.reload();
+            {setLoading(false)}
+        } else {
+            console.log('Page Already Loaded');
+        }
+        }, [loading]);
+
     //add useEffect to wait for new status det to false, true change
     /*
    const [isDeleted,setDeletedValue] = React.useState(false);
@@ -38,7 +49,7 @@ function OptionButton(props){
         fetch(removeDocumentString,requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
-            //.then(() => {window.location.reload();})
+            .then(() => {window.location.reload();})
         .catch(error => console.log('error', error));
     }
 
@@ -69,7 +80,7 @@ function OptionButton(props){
     fetch(RenameDocumentString, requestOptions2)
         .then(response => response.text())
         .then(result => console.log(result))
-            //.then(() => {window.location.reload();})
+            .then(() => {window.location.reload();})
         .catch(error => console.log('error', error));
 
     setValidated(true);

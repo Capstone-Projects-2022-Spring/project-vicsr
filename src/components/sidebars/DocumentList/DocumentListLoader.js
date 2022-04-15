@@ -44,15 +44,15 @@ function DocumentListLoader(props){
         if(props.needHighlight && !index){
             console.log("Documents being fetched")
             fetchDocuments()
-            props.setNeedHighlight(false);
             props.setLoading(false);
+            props.setNeedHighlight(false);
         }
         if(props.needHighlight && index){
             let pageCallingForHighlight = props.currentPageID;
             fetchDocuments()
+            props.setLoading(false);
             docUpdator(pageCallingForHighlight, data.docsFromServer[index].files)
             props.setNeedHighlight(false);
-            props.setLoading(false);
         }
 
     }, [props.needHighlight, props.loading]);

@@ -60,7 +60,8 @@ function DocumentList(props){
         <div className="centerChildren">
             <h2 className="text-white text-uppercase text-center my-4">Document List</h2>
         </div>
-        <PopUp/>
+        {/*<PopUp/>*/}
+
         {props.isLoading && <Spinner animation="border"/>}
         <div id="documentList" className="centerChildren">
             <List

@@ -70,7 +70,16 @@ export default function DocumentView() {
         }
     }
 
-    const [loading, setLoading] = useState(false)
+    {/*Refresh the page once the document is uploaded*/}
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        if (loading) {
+            window.location.reload();
+            {setLoading(false)}
+        } else {
+            console.log('Page Already Loaded');
+        }
+        }, [loading]);
 
     return(
     <div id="documentViewContainer" className="container-fluid w-100">
@@ -78,7 +87,7 @@ export default function DocumentView() {
         <div id="documentDashboardRow" className="row">
             <div id="documentListSidebar" className="col-2 h-100">
 
-                <PopUp setLoading={setLoading}/>
+                <PopUp loading={loading} setLoading={setLoading}/>
 
                 <DocumentListLoader loading={loading} setLoading={setLoading} chooseDoc = {chooseDocument} needHighlight = {needHighlight} setNeedHighlight={setNeedHighlight} currentPageID ={currentPageID} docUpdater={updateDocument}/>
             </div>
