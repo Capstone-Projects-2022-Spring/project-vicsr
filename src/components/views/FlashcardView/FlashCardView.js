@@ -6,6 +6,8 @@ import FlashcardListLoader from "./subcomponents/FlashcardListLoader";
 import CustomNavbar from "../DocumentView/CustomNavbar";
 import {Button} from "react-bootstrap";
 import {API_URL} from "../../../config";
+import EditFlashCardDesk from "./subcomponents/EditFlashCardDesk";
+
 
 export default function FlashCardView(){
 ""
@@ -75,6 +77,7 @@ export default function FlashCardView(){
 
             <div id="flashcardMainContent" className="row">
                 <div id="flashcardStudySetList" className="col-3 studySetList" >
+                    <EditFlashCardDesk/>
                     <FlashcardListLoader chooseDesk = {chooseStudySet}/>
                 </div>
                 <div id="flashcardContainer" className="col-6 canvas greenBorder">

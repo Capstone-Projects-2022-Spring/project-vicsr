@@ -8,7 +8,6 @@ import FlashcardOptions from "./FlashcardOptions";
 import {Link} from "react-router-dom";
 import PopUp from "../../../sidebars/DocumentList/PopUp";
 import flashcardListLoader from "./FlashcardListLoader";
-import EditFlashCardDesk from "./EditFlashCardDesk";
 
 
 
@@ -48,7 +47,7 @@ function FlashcardList(props){
     <main className="container" style={{padding: "0", margin: "0 auto"}}>
         <h1 className="text-white text-uppercase text-center my-4">FlashCard List</h1>
 
-        <EditFlashCardDesk/>
+
 
         <div/>
         {props.isLoading && <Spinner animation="border"/>}

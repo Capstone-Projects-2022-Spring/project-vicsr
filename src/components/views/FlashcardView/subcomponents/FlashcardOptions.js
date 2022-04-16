@@ -8,12 +8,17 @@ import Form from 'react-bootstrap/Form';
 
 function FlashcardOptions(props){
 
+
   const [show, setShow] = useState(false);
+  const [ShowModal2, setShowModal2] = useState(false);
   const [validated, setValidated] = useState(false);
   const [file, setFile] = useState();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleCloseModalTwo = () => setShowModal2(false);
+  const handleShowModalTwo = () => setShowModal2(true);
 
   return(
       <Dropdown>
@@ -24,7 +29,7 @@ function FlashcardOptions(props){
         <Dropdown.Menu>
 
             {/*Rename Function*/}
-            <Dropdown.Item href="#/action-1" onClick={handleShow}>Rename</Dropdown.Item>
+            <Dropdown.Item onClick={handleShow}>Rename</Dropdown.Item>
 
             <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>
@@ -48,14 +53,46 @@ function FlashcardOptions(props){
                     </Button>
                 </Modal.Footer>
 
-
             </Modal>
+
 
             {/*Remove Function*/}
             <Dropdown.Item >Remove</Dropdown.Item>
 
-            {/*Some Function*/}
-          <Dropdown.Item href="#/action-3">Open in new tab</Dropdown.Item>
+
+            {/*Add card Function*/}
+            <Dropdown.Item onClick={handleShowModalTwo}>Add Card</Dropdown.Item>
+
+            <Modal ShowModal2={ShowModal2} onHide={handleCloseModalTwo} animation={false}>
+                <Modal.Header closeButton>
+                    <Modal.Title>New Card</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                {/*Card Name*/}
+                <Form.Group className="mb-0" controlId="formCardName">
+                    <Form.Label>Front</Form.Label>
+                    <Form.Control type="text" placeholder="Enter a Front word" inputRef={(ref) => {this.filename = ref}} required/>
+                    <Form.Control.Feedback type="invalid">
+                        Please provide a file name.
+                    </Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formFileName">
+                    <Form.Label>Back</Form.Label>
+                    <Form.Control type="text" placeholder="Enter a Back word" inputRef={(ref) => {this.filename = ref}} required/>
+                    <Form.Control.Feedback type="invalid">
+                        Please provide a file name.
+                    </Form.Control.Feedback>
+                </Form.Group>
+
+                    <Button type="submit"> Create </Button>
+
+                </Modal.Body>
+
+                <Modal.Footer></Modal.Footer>
+            </Modal>
+
         </Dropdown.Menu>
       </Dropdown>
   );
