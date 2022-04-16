@@ -1,5 +1,4 @@
 import CanvasDraw from "react-canvas-draw";
-import ExampleImage from '../assets/Screen Shot 2022-03-24 at 1.05.06 PM.png'
 import {useEffect, useRef, useState} from "react";
 import {API_URL} from "../config";
 
