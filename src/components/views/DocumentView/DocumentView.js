@@ -19,6 +19,7 @@ export default function DocumentView() {
     let[currentPageID, setCurrentPageID] = useState(null)
     let[pageHighlightData, setPageHighlightData] = useState(null)
     let[needHighlight, setNeedHighlight] = useState(true)
+    let[needUpdatedVocabList, setNeedUpdatedVocabList] = useState(true)
 
     useEffect(() => {
         if(data.pages){
@@ -77,7 +78,7 @@ export default function DocumentView() {
                 <DocumentListLoader chooseDoc = {chooseDocument} needHighlight = {needHighlight} setNeedHighlight={setNeedHighlight} currentPageID ={currentPageID} docUpdater={updateDocument}/>
             </div>
             <div id="documentCanvasContainer" className="col contentBorder">
-                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} currentPageID={currentPageID} setNeedHighlight={setNeedHighlight}/>
+                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} currentPageID={currentPageID} setNeedHighlight={setNeedHighlight} setNeedVocab={setNeedUpdatedVocabList}/>
                 <div
                     id="documentCanvasButtons"
                     className="container-fluid centerChildrenHorizontal w-100"
@@ -99,7 +100,7 @@ export default function DocumentView() {
 
             </div>
             <div className="col-2">
-                <VocabularyListLoader currentDoc = {data.currentDocID}/>
+                <VocabularyListLoader currentDoc = {data.currentDocID} needVocab={needUpdatedVocabList} setNeedVocab={setNeedUpdatedVocabList}/>
             </div>
         </div>
         <div id="footerNavigationRow" className="row">

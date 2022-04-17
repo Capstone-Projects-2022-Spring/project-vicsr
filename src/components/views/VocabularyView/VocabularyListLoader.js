@@ -6,9 +6,13 @@ function VocabularyListLoader(props) {
     let [data, setData] = useState({wordsFromServer:[], numWords:0, isFetching: false});
 
     useEffect( async () => {
-        await fetchWords();
 
-    }, [props.currentDoc]);
+        console.log("fetching words")
+        await fetchWords();
+        props.setNeedVocab(false)
+
+
+    }, [props.currentDoc, props.needVocab]);
 
     async function fetchStudySetByDocId() {
         let studySetByDocIdApiString = API_URL + "/api/vocab/sets/fromDoc/" + props.currentDoc;
