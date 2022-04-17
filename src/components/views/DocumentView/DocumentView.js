@@ -23,6 +23,7 @@ export default function DocumentView() {
 
     useEffect(() => {
         if(data.pages){
+            console.log(data.pages)
             let currentPageRef = data.pages[currentPageNumber]
             setShowPage(currentPageRef.file)
             setCurrentPageID(currentPageRef.id)
@@ -42,8 +43,8 @@ export default function DocumentView() {
         setShowPage(currentPageRef.file)
         setNeedHighlight(true)
     }
-    function updateDocument(topLevelID, urls){
-        setData({currentDocID: topLevelID, pages: urls});
+    function updateDocument(urls){
+        setData({currentDocID: data.currentDocID, pages: urls});
         setCurrentPageNumber(currentPageNumber)
         let currentPageRef = urls[currentPageNumber]
         setCurrentPageID(currentPageRef.id)
