@@ -42,6 +42,7 @@ export default function DocumentView() {
         setCurrentPageID(currentPageRef.id)
         setShowPage(currentPageRef.file)
         setNeedHighlight(true)
+        setNeedUpdatedVocabList(true)
     }
     function updateDocument(urls){
         setData({currentDocID: data.currentDocID, pages: urls});
