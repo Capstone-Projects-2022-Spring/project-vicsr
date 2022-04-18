@@ -29,6 +29,8 @@ function DocumentListLoader(props){
                     },
                 });
                 const docs = await response.json();
+                console.log("DocumentListLoader: ")
+                console.log(docs)
 
                 setData({docsFromServer: docs, numDocs: docs.length, isFetching: false})
               
@@ -47,9 +49,8 @@ function DocumentListLoader(props){
             props.setNeedHighlight(false);
         }
         if(props.needHighlight && index){
-            let pageCallingForHighlight = props.currentPageID;
             fetchDocuments()
-            docUpdator(pageCallingForHighlight, data.docsFromServer[index].files)
+            docUpdator(data.docsFromServer[index].files)
             props.setNeedHighlight(false);
         }
 
