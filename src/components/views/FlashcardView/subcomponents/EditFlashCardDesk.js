@@ -5,7 +5,7 @@ import { render } from "react-dom";
 import {API_URL} from "../../../../config";
 
 
-function EditFlashCardDesk(){
+function EditFlashCardDesk(props){
   const [show, setShow] = useState(false);
   const [validated, setValidated] = useState(false);
 
@@ -42,7 +42,7 @@ function EditFlashCardDesk(){
         redirect: 'follow'
     };
 
-    let addFlashCardString = API_URL + '/api/docs/add/';
+    let addFlashCardString = API_URL + '/api/vocab/sets/words/update/' + props.studysetid;
     fetch(addFlashCardString, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))

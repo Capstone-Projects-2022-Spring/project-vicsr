@@ -63,7 +63,7 @@ function FlashcardOptions(props){
             {/*Add card Function*/}
             <Dropdown.Item onClick={handleShowModalTwo}>Add Card</Dropdown.Item>
 
-            <Modal ShowModal2={ShowModal2} onHide={handleCloseModalTwo} animation={false}>
+            <Modal show={ShowModal2} onHide={handleCloseModalTwo} animation={false}>
                 <Modal.Header closeButton>
                     <Modal.Title>New Card</Modal.Title>
                 </Modal.Header>
