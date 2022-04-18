@@ -19,9 +19,11 @@ export default function DocumentView() {
     let[currentPageID, setCurrentPageID] = useState(null)
     let[pageHighlightData, setPageHighlightData] = useState(null)
     let[needHighlight, setNeedHighlight] = useState(true)
+    let[needUpdatedVocabList, setNeedUpdatedVocabList] = useState(true)
 
     useEffect(() => {
         if(data.pages){
+            console.log(data.pages)
             let currentPageRef = data.pages[currentPageNumber]
             setShowPage(currentPageRef.file)
             setCurrentPageID(currentPageRef.id)
@@ -40,9 +42,10 @@ export default function DocumentView() {
         setCurrentPageID(currentPageRef.id)
         setShowPage(currentPageRef.file)
         setNeedHighlight(true)
+        setNeedUpdatedVocabList(true)
     }
-    function updateDocument(topLevelID, urls){
-        setData({currentDocID: topLevelID, pages: urls});
+    function updateDocument(urls){
+        setData({currentDocID: data.currentDocID, pages: urls});
         setCurrentPageNumber(currentPageNumber)
         let currentPageRef = urls[currentPageNumber]
         setCurrentPageID(currentPageRef.id)
@@ -77,7 +80,7 @@ export default function DocumentView() {
                 <DocumentListLoader chooseDoc = {chooseDocument} needHighlight = {needHighlight} setNeedHighlight={setNeedHighlight} currentPageID ={currentPageID} docUpdater={updateDocument}/>
             </div>
             <div id="documentCanvasContainer" className="col contentBorder">
-                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} currentPageID={currentPageID} setNeedHighlight={setNeedHighlight}/>
+                <DocumentPage URL = {shownPage} highlighting = {pageHighlightData} currentPageID={currentPageID} setNeedHighlight={setNeedHighlight} setNeedVocab={setNeedUpdatedVocabList}/>
                 <div
                     id="documentCanvasButtons"
                     className="container-fluid centerChildrenHorizontal w-100"
@@ -99,7 +102,7 @@ export default function DocumentView() {
 
             </div>
             <div className="col-2">
-                <VocabularyListLoader currentDoc = {data.currentDocID}/>
+                <VocabularyListLoader currentDoc = {data.currentDocID} needVocab={needUpdatedVocabList} setNeedVocab={setNeedUpdatedVocabList}/>
             </div>
         </div>
         <div id="footerNavigationRow" className="row">

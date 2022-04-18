@@ -1,8 +1,8 @@
 
 const dev = false;
 const test = false;
-const prod = true;
-const testFrontProdBack = false;
+const prod = false;
+const testFrontProdBack = true;
 
 
 let api_url;
