@@ -4,6 +4,7 @@ import './auth.css';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { API_URL, REACT_URL } from '../../../config'
+import {Card} from "react-bootstrap";
 
 
 async function registerUser(credentials) {
@@ -23,22 +24,24 @@ export default function Register( {setRegisterClicked}, {setToken} ) {
   const [email, setEmail] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
-  const [errors, setErrors] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(true);
+
+
 
   useEffect(() => {
     //had to check for literally the string "undefined", because sessionStorage.getitem returns a string if theres anything defined in its dict
     if ((sessionStorage.getItem('token') !== null) && sessionStorage.getItem('token') !== 'undefined') {
         console.log(sessionStorage.getItem('token'))
         console.log(typeof sessionStorage.getItem('token') != 'undefined')
-        let reigsterUseEffectString = REACT_URL + "/docs"
-        window.location.replace(reigsterUseEffectString);
+        let registerUseEffectString = REACT_URL + "/docs"
+        window.location.replace(registerUseEffectString);
     } else {
-      setLoading(false);
+        setLoading(false);
     }
-  }, []);
+  }, [errorMessage]);
 
-  const handleSubmit = async e => {
+  async function handleSubmit (e) {
     e.preventDefault();
 
     const user = {
@@ -48,20 +51,28 @@ export default function Register( {setRegisterClicked}, {setToken} ) {
     };
 
     // const token = await registerUser ( { email, password1, password2 });
-    const token = await registerUser (user);
-    console.log("token in register: " + token.key)
-    setToken(token.key);
+    const token = await registerUser(user);
+    console.log("token in register: " + token.key);
+    console.log("registration response: " + JSON.stringify(token));
+    console.log("error message: " + Object.values(token)[0]);
+    console.log("key: " + token.key);
 
-    if(token.key){
-            let registerOnSubmitString = REACT_URL+ '/docs/'
-            window.location.replace(registerOnSubmitString);
-        } else {
-            setEmail('');
-            setPassword1('');
-            setPassword2('');
-            setErrors(true);
-        }
+    //TODO: Need to use setToken in here in order to get login on registration
+
+    if(token.key && token.key !== "undefined"){
+        setErrorMessage("");
+        console.log("register token noticed")
+        let registerOnSubmitString = REACT_URL + '/docs/'
+        window.location.replace(registerOnSubmitString);
+    } else {
+        console.log("Register error");
+        console.log("Registration errors: " + Object.values(token))
+        setEmail('');
+        setPassword1('');
+        setPassword2('');
+        setErrorMessage(Object.values(token)[0]);
     }
+  }
 
   return (
     <div className="register-wrapper">
@@ -69,7 +80,15 @@ export default function Register( {setRegisterClicked}, {setToken} ) {
             <div id="registerTitle" className="form-group form-label py-3">
                 Register with VICSR
             </div>
-            {errors === true && <h2>Cannot register with provided credentials</h2>}
+            {(errorMessage !== "")
+                ?
+                    <Card>
+                        <Card.Body className="bg-danger text-white">
+                            {errorMessage[0]}
+                        </Card.Body>
+                    </Card>
+                : ""
+            }
             <div className="form-group py-4">
                 <input className="form-control-lg w-100"
                        type="email"
