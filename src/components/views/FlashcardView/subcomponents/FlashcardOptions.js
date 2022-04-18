@@ -28,38 +28,6 @@ function FlashcardOptions(props){
 
         <Dropdown.Menu>
 
-            {/*Rename Function*/}
-            <Dropdown.Item onClick={handleShow}>Rename</Dropdown.Item>
-
-            <Modal show={show} onHide={handleClose} animation={false}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Rename</Modal.Title>
-                </Modal.Header>
-
-                {/*Form For Rename File Name*/}
-                <Form.Group className="mb-3" controlId="formDeskNameRename">
-                    <Form.Control type="text" placeholder="Please enter new desk name" inputRef={(ref) => {this.filename = ref}} required/>
-                    <Form.Control.Feedback type="invalid">
-                        Please provide a file name.
-                    </Form.Control.Feedback>
-                </Form.Group>
-
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Cancel
-                    </Button>
-                    <Button type="submit" variant="primary">
-                        OK
-                    </Button>
-                </Modal.Footer>
-
-            </Modal>
-
-
-            {/*Remove Function*/}
-            <Dropdown.Item >Remove</Dropdown.Item>
-
-
             {/*Add card Function*/}
             <Dropdown.Item onClick={handleShowModalTwo}>Add Card</Dropdown.Item>
 
@@ -91,6 +59,38 @@ function FlashcardOptions(props){
                 </Modal.Body>
 
                 <Modal.Footer></Modal.Footer>
+            </Modal>
+
+
+            {/*Remove Function*/}
+            <Dropdown.Item >Remove</Dropdown.Item>
+
+
+            {/*Rename Function*/}
+            <Dropdown.Item onClick={handleShow}>Rename</Dropdown.Item>
+
+            <Modal show={show} onHide={handleClose} animation={false}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Rename</Modal.Title>
+                </Modal.Header>
+
+                {/*Form For Rename File Name*/}
+                <Form.Group className="mb-3" controlId="formDeskNameRename">
+                    <Form.Control type="text" placeholder="Please enter new desk name" inputRef={(ref) => {this.filename = ref}} required/>
+                    <Form.Control.Feedback type="invalid">
+                        Please provide a file name.
+                    </Form.Control.Feedback>
+                </Form.Group>
+
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Cancel
+                    </Button>
+                    <Button type="submit" variant="primary">
+                        OK
+                    </Button>
+                </Modal.Footer>
+
             </Modal>
 
         </Dropdown.Menu>
