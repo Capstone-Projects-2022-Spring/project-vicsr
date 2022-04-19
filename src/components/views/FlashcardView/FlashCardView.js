@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import FlashcardListLoader from "./subcomponents/FlashcardListLoader";
 import CustomNavbar from "../DocumentView/CustomNavbar";
-import {Button} from "react-bootstrap";
+import {Button, ButtonGroup} from "react-bootstrap";
 import {API_URL} from "../../../config";
 
 export default function FlashCardView(){
@@ -85,6 +85,11 @@ export default function FlashCardView(){
                                      (currentPage === index) ? <FlashCard DATA = {cardsData}/> : <></>
                                 )
                             })}
+                        </div>
+                        <div className="centerChildrenHorizontal my-2">
+                            <button className="btn btn-success btn-circle btn-xl border-white border-2 mx-2">I know it</button>
+                            <button className="btn btn-warning btn-circle btn-xl border-white border-2 mx-2">I'm not sure</button>
+                            <button className="btn btn-danger btn-circle btn-xl border-white border-2 mx-2">I don't know</button>
                         </div>
                         <div className="centerChildrenHorizontal">
                             <Button variant="warning" onClick = { () => previousPage()}>Previous card</Button>
