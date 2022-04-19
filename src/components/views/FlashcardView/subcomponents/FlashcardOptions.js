@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react";
 import Card from "react-bootstrap/Card";
 import {FixedSizeList as List} from "react-window";
 import Form from 'react-bootstrap/Form';
+import {API_URL} from "../../../../config";
 
 
 function FlashcardOptions(props){
@@ -19,6 +20,32 @@ function FlashcardOptions(props){
 
   const handleCloseModalTwo = () => setShowModal2(false);
   const handleShowModalTwo = () => setShowModal2(true);
+
+
+  /* VIC-240 */
+
+  let[shownWord, setShowWord] = useState("")
+
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Token ${sessionStorage.getItem('token')}`);
+    myHeaders.append("Cookie", "csrftoken=afXBilocRuFLnYhMQA7k60LRU9WX5ulNNzbahvbzIevwWZxAmnOWPC8yyoM1TsEC; messages=.eJxtzMEKgzAMgOFXCTlnIoJ3YY-wo0gpNXaRNgFTD3v7uZ29fvD_84wh7G4aKrvHzEg9DT3h03STo8YmpsCPGqWAszZoBru9dco_6pLVDhe6vYyErzOlS7azlA-4ZOUVRCH6_3GVyxdMZixk:1nX2r9:xSWaIiqs4LUJIrfBmjb9cAJ2mSusq5Sevrs0xEzEHDY");
+
+    const formdata = new FormData();
+        formdata.append('filename', filename);
+        formdata.append('file', file, file.name);
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    let addWordString = API_URL + '/api/vocab/sets/addWord';
+    fetch(addWordString, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 
   return(
       <Dropdown>
@@ -54,24 +81,22 @@ function FlashcardOptions(props){
                 {/*    </Form.Control.Feedback>*/}
                 {/*</Form.Group>*/}
 
-                    <ListGroup>
-                        <ListGroupItem as="li" className="d-flex justify-content-between align-items-start">
-                            <div>Bye</div>
-                            <div>Wiedersehen</div>
-                            <Badge type="button"> + </Badge>
+                <ListGroup>
+
+                    <ListGroupItem as="li" className="d-flex justify-content-between align-items-start">
+                        <div>Bye</div>
+                        <div>Wiedersehen</div>
+                        <Badge type="button"> + </Badge>
                         </ListGroupItem>
 
-                        <ListGroupItem as="li" className="d-flex justify-content-between align-items-start">
-                            <div>Hello</div>
-                            <div>你好</div>
-                            <Badge type="button"> + </Badge>
-                        </ListGroupItem>
+                    <ListGroupItem as="li" className="d-flex justify-content-between align-items-start">
+                        <div>Hello</div>
+                        <div>你好</div>
+                        <Badge type="button"> + </Badge>
+                    </ListGroupItem>
 
 
                     </ListGroup>
-
-
-
                 </Modal.Body>
 
                 <Modal.Footer>

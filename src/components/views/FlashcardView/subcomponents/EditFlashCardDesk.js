@@ -23,8 +23,10 @@ function EditFlashCardDesk(props){
       e.stopPropagation();
     }
 
+    /* VIC-238 */
     // get user input
     const filename = e.target.elements.formFileName.value;
+    //file gotten via state on change in form below
 
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Token ${sessionStorage.getItem('token')}`);
@@ -41,8 +43,8 @@ function EditFlashCardDesk(props){
         redirect: 'follow'
     };
 
-    let addDocumentString = API_URL + '/api/vocab/sets/add';
-    fetch(addDocumentString, requestOptions)
+    let addFlashCardString = API_URL + '/api/vocab/sets/add';
+    fetch(addFlashCardString, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
@@ -61,21 +63,22 @@ function EditFlashCardDesk(props){
 
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Desk</Modal.Title>
+          <Modal.Title>New Desk</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <Form noValidate validated={validated} onSubmit={handleSubmit.bind(this)}>
 
                 {/*File Name*/}
                 <Form.Group className="mb-3" controlId="formFileName">
-                    <Form.Label>File Name</Form.Label>
+                    <Form.Label>Desk Name</Form.Label>
                     <Form.Control type="text" placeholder="Enter file name" inputRef={(ref) => {this.filename = ref}} required/>
                     <Form.Control.Feedback type="invalid">
                         Please provide a file name.
                     </Form.Control.Feedback>
                 </Form.Group>
 
-              <Button type="submit"> Upload </Button>
+
+              <Button type="submit"> Create </Button>
             </Form>
         </Modal.Body>
         <Modal.Footer>
