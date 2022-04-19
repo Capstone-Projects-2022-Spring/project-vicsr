@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { API_URL, REACT_URL } from '../../../config'
 import {Card} from "react-bootstrap";
 
-
 async function registerUser(credentials) {
     //login logic/talking to server goes here
     let registerUserAPIstring = API_URL + '/api/users/auth/register/'
@@ -27,8 +26,6 @@ export default function Register( {setRegisterClicked}, {setToken} ) {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(true);
 
-
-
   useEffect(() => {
     //had to check for literally the string "undefined", because sessionStorage.getitem returns a string if theres anything defined in its dict
     if ((sessionStorage.getItem('token') !== null) && sessionStorage.getItem('token') !== 'undefined') {
@@ -41,7 +38,7 @@ export default function Register( {setRegisterClicked}, {setToken} ) {
     }
   }, [errorMessage]);
 
-  async function handleSubmit (e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const user = {
@@ -50,19 +47,16 @@ export default function Register( {setRegisterClicked}, {setToken} ) {
       password2: password2
     };
 
-    // const token = await registerUser ( { email, password1, password2 });
     const token = await registerUser(user);
-    console.log("token in register: " + token.key);
-    console.log("registration response: " + JSON.stringify(token));
-    console.log("error message: " + Object.values(token)[0]);
-    console.log("key: " + token.key);
-
-    //TODO: Need to use setToken in here in order to get login on registration
 
     if(token.key && token.key !== "undefined"){
+        console.log("token key: " + sessionStorage.getItem('token'));
+        sessionStorage.setItem('token', token.key);
+        //setToken(token.key);
         setErrorMessage("");
         console.log("register token noticed")
         let registerOnSubmitString = REACT_URL + '/docs/'
+        console.log("redirecting to: " + registerOnSubmitString);
         window.location.replace(registerOnSubmitString);
     } else {
         console.log("Register error");
