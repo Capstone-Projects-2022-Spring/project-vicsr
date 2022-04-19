@@ -1,4 +1,4 @@
-import {ButtonGroup, Dropdown, FloatingLabel, Modal, Spinner} from "react-bootstrap";
+import {Badge, ButtonGroup, Dropdown, FloatingLabel, ListGroup, ListGroupItem, Modal, Spinner} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import React, {useEffect, useState} from "react";
 import Card from "react-bootstrap/Card";
@@ -37,28 +37,46 @@ function FlashcardOptions(props){
                 </Modal.Header>
 
                 <Modal.Body>
-                {/*Card Name*/}
-                <Form.Group className="mb-0" controlId="formCardName">
-                    <Form.Label>Front</Form.Label>
-                    <Form.Control type="text" placeholder="Enter a Front word" inputRef={(ref) => {this.filename = ref}} required/>
-                    <Form.Control.Feedback type="invalid">
-                        Please provide a file name.
-                    </Form.Control.Feedback>
-                </Form.Group>
+                {/*/!*Card Name*!/*/}
+                {/*<Form.Group className="mb-0" controlId="formCardName">*/}
+                {/*    <Form.Label>Front</Form.Label>*/}
+                {/*    <Form.Control type="text" placeholder="Enter a Front word" inputRef={(ref) => {this.filename = ref}} required/>*/}
+                {/*    <Form.Control.Feedback type="invalid">*/}
+                {/*        Please provide a file name.*/}
+                {/*    </Form.Control.Feedback>*/}
+                {/*</Form.Group>*/}
 
-                <Form.Group className="mb-3" controlId="formFileName">
-                    <Form.Label>Back</Form.Label>
-                    <Form.Control type="text" placeholder="Enter a Back word" inputRef={(ref) => {this.filename = ref}} required/>
-                    <Form.Control.Feedback type="invalid">
-                        Please provide a file name.
-                    </Form.Control.Feedback>
-                </Form.Group>
+                {/*<Form.Group className="mb-3" controlId="formFileName">*/}
+                {/*    <Form.Label>Back</Form.Label>*/}
+                {/*    <Form.Control type="text" placeholder="Enter a Back word" inputRef={(ref) => {this.filename = ref}} required/>*/}
+                {/*    <Form.Control.Feedback type="invalid">*/}
+                {/*        Please provide a file name.*/}
+                {/*    </Form.Control.Feedback>*/}
+                {/*</Form.Group>*/}
 
-                    <Button type="submit"> Create </Button>
+                    <ListGroup>
+                        <ListGroupItem as="li" className="d-flex justify-content-between align-items-start">
+                            <div>Bye</div>
+                            <div>Wiedersehen</div>
+                            <Badge type="button"> + </Badge>
+                        </ListGroupItem>
+
+                        <ListGroupItem as="li" className="d-flex justify-content-between align-items-start">
+                            <div>Hello</div>
+                            <div>你好</div>
+                            <Badge type="button"> + </Badge>
+                        </ListGroupItem>
+
+
+                    </ListGroup>
+
+
 
                 </Modal.Body>
 
-                <Modal.Footer></Modal.Footer>
+                <Modal.Footer>
+                    <Button type="submit"> Submit </Button>
+                </Modal.Footer>
             </Modal>
 
 
