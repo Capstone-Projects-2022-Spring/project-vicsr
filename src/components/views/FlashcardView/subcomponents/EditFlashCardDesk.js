@@ -33,7 +33,6 @@ function EditFlashCardDesk(props){
 
     const formdata = new FormData();
         formdata.append('title', title);
-        //formdata.append('title', title, title.name);
 
     var requestOptions = {
         method: 'POST',
@@ -58,19 +57,19 @@ function EditFlashCardDesk(props){
           className="btn-block w-100 my-2"
           variant="warning"
           onClick={handleShow}
-      >Add Desk</Button>
+      >Add Deck</Button>
 
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
-          <Modal.Title>New Desk</Modal.Title>
+          <Modal.Title>New Deck</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <Form noValidate validated={validated} onSubmit={handleSubmit.bind(this)}>
 
                 {/*File Name*/}
                 <Form.Group className="mb-3" controlId="formTitleName">
-                    <Form.Label>Desk Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter file name" inputRef={(ref) => {this.title = ref}} required/>
+                    <Form.Label>Deck Name</Form.Label>
+                    <Form.Control type="text" placeholder="Enter deck name" inputRef={(ref) => {this.title = ref}} required/>
                     <Form.Control.Feedback type="invalid">
                         Please provide a file name.
                     </Form.Control.Feedback>

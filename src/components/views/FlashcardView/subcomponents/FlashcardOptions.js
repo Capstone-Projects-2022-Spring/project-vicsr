@@ -56,11 +56,11 @@ function FlashcardOptions(props){
         <Dropdown.Menu>
 
             {/*Add card Function*/}
-            <Dropdown.Item onClick={handleShowModalTwo}>Add Card</Dropdown.Item>
+            <Dropdown.Item onClick={handleShowModalTwo}>Add Cards</Dropdown.Item>
 
             <Modal show={ShowModal2} onHide={handleCloseModalTwo} animation={false}>
                 <Modal.Header closeButton>
-                    <Modal.Title>New Card</Modal.Title>
+                    <Modal.Title>New Cards</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
@@ -82,20 +82,6 @@ function FlashcardOptions(props){
                 {/*</Form.Group>*/}
 
                 <ListGroup>
-
-                    <ListGroupItem as="li" className="d-flex justify-content-between align-items-start">
-                        <div>Bye</div>
-                        <div>Wiedersehen</div>
-                        <Badge onClick={()=>console.log('You clicked submit.')} type="button"> + </Badge>
-                        </ListGroupItem>
-
-                    <ListGroupItem as="li" className="d-flex justify-content-between align-items-start">
-                        <div>Hello</div>
-                        <div>你好</div>
-                        <Badge onClick={()=>console.log('You clicked submit.')} type="button"> + </Badge>
-
-                    </ListGroupItem>
-
 
                     </ListGroup>
                 </Modal.Body>
@@ -120,7 +106,7 @@ function FlashcardOptions(props){
 
                 {/*Form For Rename File Name*/}
                 <Form.Group className="mb-3" controlId="formDeskNameRename">
-                    <Form.Control type="text" placeholder="Please enter new desk name" inputRef={(ref) => {this.filename = ref}} required/>
+                    <Form.Control type="text" placeholder="Please enter new deck name" inputRef={(ref) => {this.filename = ref}} required/>
                     <Form.Control.Feedback type="invalid">
                         Please provide a file name.
                     </Form.Control.Feedback>
