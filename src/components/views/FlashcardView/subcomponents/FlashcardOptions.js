@@ -22,7 +22,7 @@ function FlashcardOptions(props){
 
   return(
       <Dropdown>
-        <Dropdown.Toggle variant="danger" id="dropdown-basic">
+        <Dropdown.Toggle variant="outline-danger" id="dropdown-basic">
           ☰
         </Dropdown.Toggle>
 

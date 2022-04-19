@@ -77,7 +77,8 @@ export default function FlashCardView(props){
 
             <div id="flashcardMainContent" className="row">
                 <div id="flashcardStudySetList" className="col-3 studySetList" >
-                    <EditFlashCardDesk studysetid={props.studysetsid}/>
+                    {/*<EditFlashCardDesk studysetid={props.studysetsid}/>*/}
+                    <EditFlashCardDesk/>
                     <FlashcardListLoader chooseDesk = {chooseStudySet}/>
                 </div>
                 <div id="flashcardContainer" className="col-6 canvas greenBorder">
@@ -90,8 +91,8 @@ export default function FlashCardView(props){
                             })}
                         </div>
                         <div className="centerChildrenHorizontal">
-                            <Button variant="warning" onClick = { () => previousPage()}>Previous card</Button>
-                            <Button variant="warning" onClick = { () =>nextPage()}>Next card</Button>
+                            <Button variant="outline-warning" onClick = { () => previousPage()}>Previous card</Button>
+                            <Button variant="outline-warning" onClick = { () =>nextPage()}>Next card</Button>
                         </div>
                     </div>
                 </div>
