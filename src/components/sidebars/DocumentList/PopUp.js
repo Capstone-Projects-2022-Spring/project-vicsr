@@ -88,7 +88,7 @@ function PopUp(){
                 <Form.Group className="mb-3" controlId="formFile" >
                     <Form.Label>File</Form.Label>
                     {/*<Form.Control type="file" placeholder="Browse computer" inputRef={(ref) => {this.file = ref}} required/>*/}
-                    <Form.Control type="file" placeholder="Browse computer" onChange={(e) => setFile(e.target.files[0])} required/>
+                    <Form.Control type="file" accept=".png, .pdf" placeholder="Browse computer" onChange={(e) => setFile(e.target.files[0])} required/>
                 </Form.Group>
 
                 {/*Mode Selection*/}
