@@ -13,7 +13,7 @@ function FlashcardOptions(props){
   const [show, setShow] = useState(false);
   const [ShowModal2, setShowModal2] = useState(false);
   const [validated, setValidated] = useState(false);
-  const [file, setFile] = useState();
+  const [title, setTitle] = useState();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -31,8 +31,8 @@ function FlashcardOptions(props){
     myHeaders.append("Cookie", "csrftoken=afXBilocRuFLnYhMQA7k60LRU9WX5ulNNzbahvbzIevwWZxAmnOWPC8yyoM1TsEC; messages=.eJxtzMEKgzAMgOFXCTlnIoJ3YY-wo0gpNXaRNgFTD3v7uZ29fvD_84wh7G4aKrvHzEg9DT3h03STo8YmpsCPGqWAszZoBru9dco_6pLVDhe6vYyErzOlS7azlA-4ZOUVRCH6_3GVyxdMZixk:1nX2r9:xSWaIiqs4LUJIrfBmjb9cAJ2mSusq5Sevrs0xEzEHDY");
 
     const formdata = new FormData();
-        formdata.append('filename', filename);
-        formdata.append('file', file, file.name);
+        formdata.append('title', title);
+        //formdata.append('file', file, file.name);
 
     var requestOptions = {
         method: 'POST',
@@ -86,13 +86,14 @@ function FlashcardOptions(props){
                     <ListGroupItem as="li" className="d-flex justify-content-between align-items-start">
                         <div>Bye</div>
                         <div>Wiedersehen</div>
-                        <Badge type="button"> + </Badge>
+                        <Badge onClick={()=>console.log('You clicked submit.')} type="button"> + </Badge>
                         </ListGroupItem>
 
                     <ListGroupItem as="li" className="d-flex justify-content-between align-items-start">
                         <div>Hello</div>
                         <div>你好</div>
-                        <Badge type="button"> + </Badge>
+                        <Badge onClick={()=>console.log('You clicked submit.')} type="button"> + </Badge>
+
                     </ListGroupItem>
 
 

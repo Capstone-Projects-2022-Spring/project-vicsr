@@ -23,9 +23,8 @@ function EditFlashCardDesk(props){
       e.stopPropagation();
     }
 
-    /* VIC-238 */
     // get user input
-    const filename = e.target.elements.formFileName.value;
+    const title = e.target.elements.formTitleName.value;
     //file gotten via state on change in form below
 
     var myHeaders = new Headers();
@@ -33,8 +32,8 @@ function EditFlashCardDesk(props){
     myHeaders.append("Cookie", "csrftoken=afXBilocRuFLnYhMQA7k60LRU9WX5ulNNzbahvbzIevwWZxAmnOWPC8yyoM1TsEC; messages=.eJxtzMEKgzAMgOFXCTlnIoJ3YY-wo0gpNXaRNgFTD3v7uZ29fvD_84wh7G4aKrvHzEg9DT3h03STo8YmpsCPGqWAszZoBru9dco_6pLVDhe6vYyErzOlS7azlA-4ZOUVRCH6_3GVyxdMZixk:1nX2r9:xSWaIiqs4LUJIrfBmjb9cAJ2mSusq5Sevrs0xEzEHDY");
 
     const formdata = new FormData();
-        formdata.append('filename', filename);
-        formdata.append('file', file, file.name);
+        formdata.append('title', title);
+        //formdata.append('title', title, title.name);
 
     var requestOptions = {
         method: 'POST',
@@ -69,9 +68,9 @@ function EditFlashCardDesk(props){
             <Form noValidate validated={validated} onSubmit={handleSubmit.bind(this)}>
 
                 {/*File Name*/}
-                <Form.Group className="mb-3" controlId="formFileName">
+                <Form.Group className="mb-3" controlId="formTitleName">
                     <Form.Label>Desk Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter file name" inputRef={(ref) => {this.filename = ref}} required/>
+                    <Form.Control type="text" placeholder="Enter file name" inputRef={(ref) => {this.title = ref}} required/>
                     <Form.Control.Feedback type="invalid">
                         Please provide a file name.
                     </Form.Control.Feedback>

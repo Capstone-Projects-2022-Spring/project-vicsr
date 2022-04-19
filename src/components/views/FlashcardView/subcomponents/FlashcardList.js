@@ -27,7 +27,7 @@ function FlashcardList(props){
         <div style ={style} className="flashcardListRowWrapper">
             <Card>
                 <Card.Title>
-                    Title: {props.studysets[index].filename}
+                    Title: {props.studysets[index].title}
 
                    <div
                         id="deskCardTitle"
