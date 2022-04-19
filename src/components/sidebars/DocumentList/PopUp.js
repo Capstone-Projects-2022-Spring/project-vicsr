@@ -60,6 +60,8 @@ function PopUp(){
     handleClose();
   }
 
+  const [visible,setVisible] = useState(true);
+
   return (
     <>
       <Button
@@ -96,26 +98,29 @@ function PopUp(){
                     <Form.Label>Mode</Form.Label>
                     <Form.Control as="select" inputRef={(ref) => {this.mode = ref}} required>
                         <option value="">Choose study mode</option>
-                        <option value="TRL">Translation</option>    {/*fix VIC-195*/}
-                        <option value="DEF">Definition</option>
+                        <option value="TRL" onClick={()=> setVisible(true)}>Translation</option>
+                        <option value="DEF" onClick={()=> setVisible(false)}>Definition</option>
                     </Form.Control>
                 </Form.Group>
 
               {/*Language Select*/}
-              <Form.Group className="mb-3" controlId="formLanguage">
-                  <Form.Label>Language of Original Document</Form.Label>
-                  <Form.Control as="select" className="mb-3" inputRef={(ref) => {this.language = ref}} required>
-                    <option value="">Choose a language </option>
-                    <option value="zh-CN">Simplified Chinese</option>
-                    <option value="en">English</option>
-                    <option value="fr">French</option>
-                    <option value="de">German</option>
-                    <option value="lv">Latvian</option>
-                    <option value="es">Spanish</option>
-                  </Form.Control>
-              </Form.Group>
+                    <Form.Group className="mb-3" controlId="formLanguage">
+                        <Form.Label>Language of Original Document</Form.Label>
+                        <Form.Control as="select" className="mb-3" inputRef={(ref) => {
+                            this.language = ref
+                        }} required>
+                            <option value="">Choose a language</option>
+                            <option value="zh-CN">Simplified Chinese</option>
+                            <option value="en">English</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                            <option value="lv">Latvian</option>
+                            <option value="es">Spanish</option>
+                        </Form.Control>
+                    </Form.Group>
 
               {/*Translation Language Select*/}
+                { visible &&
               <Form.Group className="mb-3" controlId="formTransLanguage">
                   <Form.Label>Language to Translate to</Form.Label>
                   <Form.Control as="select" className="mb-3" inputRef={(ref) => {this.transLanguage = ref}} required>
@@ -128,6 +133,8 @@ function PopUp(){
                     <option value="es">Spanish</option>
                   </Form.Control>
               </Form.Group>
+                }
+
               <Button type="submit"> Upload </Button>
             </Form>
         </Modal.Body>
