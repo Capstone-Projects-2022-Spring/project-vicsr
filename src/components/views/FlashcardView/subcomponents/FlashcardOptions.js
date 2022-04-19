@@ -32,7 +32,6 @@ function FlashcardOptions(props){
 
     const formdata = new FormData();
         formdata.append('title', title);
-        //formdata.append('file', file, file.name);
 
     var requestOptions = {
         method: 'POST',
@@ -47,6 +46,22 @@ function FlashcardOptions(props){
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 
+
+    // /*Get Remove Api*/
+    // var requestOptions3 = {
+    //     method: 'DELETE',
+    //     headers: myHeaders,
+    //     redirect: 'follow'
+    // };
+    //
+    // let removeDeskString = API_URL + '/api/docs/delete/'+props.studysetsid;
+    // function deleteDesk(){
+    //     fetch(removeDeskString,requestOptions3)
+    //     .then(response => response.text())
+    //     .then(result => console.log(result))
+    //     .catch(error => console.log('error', error));
+    // }
+
   return(
       <Dropdown>
         <Dropdown.Toggle variant="outline-danger" id="dropdown-basic">
@@ -55,8 +70,8 @@ function FlashcardOptions(props){
 
         <Dropdown.Menu>
 
-            {/*Add card Function*/}
-            <Dropdown.Item onClick={handleShowModalTwo}>Add Card</Dropdown.Item>
+            {/*Add cards Function*/}
+            <Dropdown.Item onClick={handleShowModalTwo}>Add Cards</Dropdown.Item>
 
             <Modal show={ShowModal2} onHide={handleCloseModalTwo} animation={false}>
                 <Modal.Header closeButton>
@@ -107,7 +122,8 @@ function FlashcardOptions(props){
 
 
             {/*Remove Function*/}
-            <Dropdown.Item >Remove</Dropdown.Item>
+            {/*<Dropdown.Item onClick={()=>deleteDesk(props.studysetsid)} >Remove</Dropdown.Item>*/}
+            <Dropdown.Item>Remove</Dropdown.Item>
 
 
             {/*Rename Function*/}
@@ -120,7 +136,7 @@ function FlashcardOptions(props){
 
                 {/*Form For Rename File Name*/}
                 <Form.Group className="mb-3" controlId="formDeskNameRename">
-                    <Form.Control type="text" placeholder="Please enter new desk name" inputRef={(ref) => {this.filename = ref}} required/>
+                    <Form.Control type="text" placeholder="Please enter new deck name" inputRef={(ref) => {this.title = ref}} required/>
                     <Form.Control.Feedback type="invalid">
                         Please provide a file name.
                     </Form.Control.Feedback>
