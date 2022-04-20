@@ -62,13 +62,6 @@ export default function Login( {setToken} ) {
         }
     }
 
-    let navigate = useNavigate();
-    const goToRegister = () => {
-        alert('clicked');
-        let path = 'register';
-        navigate(path);
-    }
-
     return (
         <div className="container-fluid auth-bg">
             <div className="row justify-content-center">

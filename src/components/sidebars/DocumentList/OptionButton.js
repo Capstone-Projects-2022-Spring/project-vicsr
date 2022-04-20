@@ -33,7 +33,7 @@ function OptionButton(props){
      */
 
     /*Get Remove Api*/
-  let removeDocumentString = API_URL + '/api/docs/delete/'+props.documentid;
+    let removeDocumentString = API_URL + '/api/docs/delete/'+props.documentid;
     function deleteDocument(){
         fetch(removeDocumentString,requestOptions)
         .then(response => response.text())
@@ -43,36 +43,36 @@ function OptionButton(props){
 
     /*Get Rename Api*/
     const handleSubmit = (e) => {
-    e.preventDefault();
+        e.preventDefault();
 
-    const form = e.target;
-    if (form.checkValidity() === false) {
-      e.preventDefault();
-      e.stopPropagation();
+        const form = e.target;
+        if (form.checkValidity() === false) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+
+        // get user input
+        const filename = e.target.elements.formFileNameRename.value;
+
+        const formdata = new FormData();
+            formdata.append('filename', filename);
+
+        var requestOptions2 = {
+            method: 'POST',
+            headers: myHeaders,
+            body: formdata,
+            redirect: 'follow'
+        };
+
+        let RenameDocumentString = API_URL + '/api/docs/update/'+props.documentid;
+        fetch(RenameDocumentString, requestOptions2)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+
+        setValidated(true);
+        handleClose();
     }
-
-    // get user input
-    const filename = e.target.elements.formFileNameRename.value;
-
-    const formdata = new FormData();
-        formdata.append('filename', filename);
-
-    var requestOptions2 = {
-        method: 'POST',
-        headers: myHeaders,
-        body: formdata,
-        redirect: 'follow'
-    };
-
-    let RenameDocumentString = API_URL + '/api/docs/update/'+props.documentid;
-    fetch(RenameDocumentString, requestOptions2)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-
-    setValidated(true);
-    handleClose();
-  }
 
 
   return(

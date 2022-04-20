@@ -16,13 +16,12 @@ export default function FlashCardView(){
         {id: 3, word: "Describing", translation: "", definition: "Describing2" },
         {id: 4, word: "Architecture", translation: "", definition: "Architecture2" }
     ]})
-    let[shownCard, setShowCard] = useState("")
     let[currentPage, setCurrentPage] = useState(0)
 
 
     useEffect(() => {
 
-        }, [data.currentDeskID, shownCard, currentPage]);
+    }, [data.currentDeskID, currentPage]);
 
     function chooseStudySet(topLevelID, urls) {
        // alert("HELLO IM CHOSEN DECK "+topLevelID)
@@ -49,8 +48,7 @@ export default function FlashCardView(){
         setCurrentPage(0)
     }
 
-    function previousPage() {
-        if(currentPage > 0){
+    function previousPage() {if(currentPage > 0){
             setCurrentPage(currentPage - 1)
         }
         else{
