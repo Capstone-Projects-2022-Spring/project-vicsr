@@ -23,18 +23,34 @@ function FlashcardList(props){
 
     const Row = ({index, style}) => (
         <div style ={style} className="flashcardListRowWrapper">
-            <Card>
-                <Card.Title>
-                    Title: {props.studysets[index].filename}
-
-                    <div className="button_right">
-                        <FlashcardOptions studysetsid={props.studysets[index].id}/>
+            <Card className="greenBorder">
+                <Card.Title id="flashcardSetTitle" className="px-0">
+                    <div
+                        id="flashcardSetTitle"
+                        style={{
+                            overflowWrap: "break-word",
+                            inlineSize: "200px",
+                        }}
+                    >
+                        {props.studysets[index].title}
                     </div>
                 </Card.Title>
-
-                <Card.Body>
-                    <div>ID: {props.studysets[index].id}</div>
-                    <Button variant="warning" onClick={() => clickDeckChooseButtonHandler(props.studysets[index].id, props.studysets[index].files)}>Choose this deck!</Button>
+                <Card.Body className="p-0">
+                    <div className="d-block w-100">
+                        <Button
+                            className="w-100"
+                            variant="outline-info"
+                            onClick={() => clickDeckChooseButtonHandler(
+                                props.studysets[index].id,
+                                props.studysets[index].files)}
+                        >Select</Button>
+                    </div>
+                    <div className="d-block w-100">
+                        <FlashcardOptions
+                            studysetsid={props.studysets[index].id}
+                            style={{width: "100%"}}
+                        />
+                    </div>
                 </Card.Body>
             </Card>
         </div>
@@ -48,16 +64,17 @@ function FlashcardList(props){
 
         <div/>
         {props.isLoading && <Spinner animation="border"/>}
-        <List
-            height={600}
-            itemCount={props.numberOfDesks}
-            itemSize={150}
-            width={300}
-            style={{margin: "0 auto"}}
-        >
-            {Row}
-        </List>
-
+        <div id="flashcardList" className="">
+            <List
+                height={600}
+                itemCount={props.numberOfDesks}
+                itemSize={135}
+                width={300}
+                style={{margin: "0 auto"}}
+            >
+                {Row}
+            </List>
+        </div>
       </main>
   );
 

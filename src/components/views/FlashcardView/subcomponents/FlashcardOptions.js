@@ -16,8 +16,8 @@ function FlashcardOptions(props){
   const handleShow = () => setShow(true);
 
   return(
-      <Dropdown>
-        <Dropdown.Toggle variant="danger" id="dropdown-basic">
+      <Dropdown className="w-100">
+        <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic" className="w-100">
           ☰
         </Dropdown.Toggle>
 
@@ -54,8 +54,6 @@ function FlashcardOptions(props){
             {/*Remove Function*/}
             <Dropdown.Item >Remove</Dropdown.Item>
 
-            {/*Some Function*/}
-          <Dropdown.Item href="#/action-3">Open in new tab</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
   );

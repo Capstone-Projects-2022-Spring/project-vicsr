@@ -114,9 +114,6 @@ function OptionButton(props){
 
             {/*Remove Function*/}
             <Dropdown.Item onClick={()=>deleteDocument(props.documentid)} >Remove</Dropdown.Item>
-
-            {/*Some Function*/}
-          <Dropdown.Item href="#/action-3">Open in new tab</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
   );

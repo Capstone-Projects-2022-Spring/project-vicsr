@@ -4,6 +4,25 @@
   margin: 0; /* Remove margins */
 }
 
+#flashcardSetTitle {
+  float: left;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 0px 0px;
+  width: fit-content;
+  overflow: hidden;
+  white-space: nowrap; /* Don't forget this one */
+  text-overflow: ellipsis;
+}
+#flashcardList {
+  overflow: hidden;
+  background: slategray;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 .flashcardListCard{
   height: 180px;
   width: 180px;

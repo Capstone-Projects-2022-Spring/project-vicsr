@@ -11,15 +11,20 @@ async function updateCardDifficulty(flashcardId, difficulty) {
     try {
         let apiString = API_URL + '/api/vocab/sets/words/update/' + flashcardId;
 
-        return fetch(apiString, {
+        let requestHeader = new Headers();
+        requestHeader.append("Authorization", "Token " + sessionStorage.getItem('token'));
+
+        let requestData = new FormData();
+        requestData.append("ranking", difficulty);
+
+        let requestOptions = {
             method: 'POST',
-            headers: {
-                "Authorization": "Token " + sessionStorage.getItem('token')
-            },
-            body: {
-                "Ranking": "1"
-            },
-        })
+            headers: requestHeader,
+            body: requestData,
+            redirect: 'follow'
+        }
+
+        return fetch(apiString, requestOptions)
             .then(response => response.text)
             .then(result => console.log(result))
             .then(error => console.log('error', error));
