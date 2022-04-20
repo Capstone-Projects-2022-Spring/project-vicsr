@@ -42,13 +42,14 @@ function FlashcardOptions(props){
         body: formdata,
         redirect: 'follow'
     };
-
-    let addWordString = API_URL + '/api/vocab/sets/addWord';
-    fetch(addWordString, requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-
+   //Why is this here
+     {/*
+     let addWordString = API_URL + '/api/vocab/sets/addWord';
+     fetch(addWordString, requestOptions)
+         .then(response => response.text())
+         .then(result => console.log(result))
+         .catch(error => console.log('error', error));
+     */}
 
   //Body: {set_id, word_id}
     const handleE = (e) => {
@@ -115,8 +116,8 @@ function FlashcardOptions(props){
   }
 
   return(
-      <Dropdown>
-        <Dropdown.Toggle variant="outline-danger" id="dropdown-basic">
+      <Dropdown className="w-100">
+        <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic" className="w-100">
           ☰
         </Dropdown.Toggle>
 
@@ -175,6 +176,9 @@ function FlashcardOptions(props){
             </Form>
 
             </Modal>
+
+            {/*Remove Function*/}
+            <Dropdown.Item >Remove</Dropdown.Item>
 
         </Dropdown.Menu>
       </Dropdown>
