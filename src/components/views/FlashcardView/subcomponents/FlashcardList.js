@@ -1,7 +1,7 @@
 import {FixedSizeList as List} from "react-window";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card"
-import {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "./FlashcardList.css"
 import {Spinner} from "react-bootstrap";
 import FlashcardOptions from "./FlashcardOptions";
@@ -9,6 +9,7 @@ import {Link} from "react-router-dom";
 import PopUp from "../../../sidebars/DocumentList/PopUp";
 import flashcardListLoader from "./FlashcardListLoader";
 import OptionButton from "../../../sidebars/DocumentList/OptionButton";
+import FlashCard from "./FlashCard";
 
 
 
@@ -19,6 +20,16 @@ function FlashcardList(props){
         //console.log(urls)
         props.chooseStudySet(topLevelID, urls);
     }
+
+    // function setCurrentCardDataByWordIndex(index) {
+    //     const cardObj = props.words[index];
+    //
+    //     setCurrentCardData({
+    //         word: String(cardObj.word),
+    //         trans: String(cardObj.translation),
+    //         def: String(cardObj.definition)
+    //     })
+    // }
 
     useEffect( () => {
         }, []);
@@ -54,7 +65,10 @@ function FlashcardList(props){
                         >Select</Button>
                     </div>
                     <div className="d-block w-100">
+
+
                         <FlashcardOptions
+                            // show={showWordModel} setShow={setShowWordModal} cardData={currentCardData}
                             studysetsid={props.studysets[index].id}
                             style={{width: "100%"}}
                         />
@@ -65,13 +79,25 @@ function FlashcardList(props){
         </div>
     );
 
+    // /*VIC add card to deck*/
+    // let [currentCardData, setCurrentCardData] = useState({word: "", trans: "", def: ""})
+    // let [showWordModel, setShowWordModal] = useState(false);
+    //
+    //     function setCurrentCardDataByWordIndex(index) {
+    //     const cardObj = props.words[index];
+    //
+    //     setCurrentCardData({
+    //         word: String(cardObj.word),
+    //         trans: String(cardObj.translation),
+    //         def: String(cardObj.definition)
+    //     })
+    // }
+
 
   return(
 
     <main className="container" style={{padding: "0", margin: "0 auto"}}>
         <h1 className="text-white text-uppercase text-center my-4">FlashCard List</h1>
-
-
 
         <div/>
         {props.isLoading && <Spinner animation="border"/>}
