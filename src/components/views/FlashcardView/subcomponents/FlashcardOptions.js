@@ -14,7 +14,6 @@ function FlashcardOptions(props){
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   return(
       <Dropdown>
         <Dropdown.Toggle variant="danger" id="dropdown-basic">

@@ -74,7 +74,7 @@ function OptionButton(props){
 
     setValidated(true);
     props.setDocUpdated(true);
-    e.reset()
+    e.target.reset()
     handleClose();
   }
 
