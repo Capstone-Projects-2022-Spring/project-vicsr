@@ -7,8 +7,31 @@ import CustomNavbar from "../DocumentView/CustomNavbar";
 import {Button, ButtonGroup} from "react-bootstrap";
 import {API_URL} from "../../../config";
 
+async function updateCardDifficulty(flashcardId, difficulty) {
+    try {
+        let apiString = API_URL + '/api/vocab/sets/words/update/' + flashcardId;
+
+        return fetch(apiString, {
+            method: 'POST',
+            headers: {
+                "Authorization": "Token " + sessionStorage.getItem('token')
+            },
+            body: {
+                "Ranking": "1"
+            },
+        })
+            .then(response => response.text)
+            .then(result => console.log(result))
+            .then(error => console.log('error', error));
+
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+
 export default function FlashCardView(){
-""
+
     let[data, setData] = useState({ currentDeskID: "", cards: [
         {id: 0, word: "School", translation: "Escuella", definition: "" },
         {id: 1, word: "Purpose", translation: "", definition: "Purpose2" },
@@ -65,9 +88,16 @@ export default function FlashCardView(){
         }
     }
 
+    async function updateCurrentCardDifficulty(difficulty) {
+        console.log(JSON.stringify(data.cards));
+        if (difficulty < 1 || difficulty > 3) {
+            console.log("Error: Invalid difficulty range. Please pass 0-2");
+        } else {
+            await updateCardDifficulty(data.cards[currentPage].id, difficulty);
+        }
+    }
 
     return(
-
 
         <div id="flashcardViewContainer" className="container-fluid">
 
@@ -85,9 +115,18 @@ export default function FlashCardView(){
                             })}
                         </div>
                         <div className="centerChildrenHorizontal my-2">
-                            <button className="btn btn-success btn-circle btn-xl border-white border-2 mx-2">I know it</button>
-                            <button className="btn btn-warning btn-circle btn-xl border-white border-2 mx-2">I'm not sure</button>
-                            <button className="btn btn-danger btn-circle btn-xl border-white border-2 mx-2">I don't know</button>
+                            <button
+                                className="btn btn-success btn-circle btn-xl border-white border-2 mx-2"
+                                onClick={() => updateCurrentCardDifficulty(1)}
+                                >I know it</button>
+                            <button
+                                className="btn btn-warning btn-circle btn-xl border-white border-2 mx-2"
+                                onClick={() => updateCurrentCardDifficulty(2)}
+                                >I'm not sure</button>
+                            <button
+                                className="btn btn-danger btn-circle btn-xl border-white border-2 mx-2"
+                                onClick={() => updateCurrentCardDifficulty(3)}
+                                >I don't know</button>
                         </div>
                         <div className="centerChildrenHorizontal">
                             <Button variant="warning" onClick = { () => previousPage()}>Previous card</Button>
