@@ -6,23 +6,37 @@ import {FixedSizeList as List} from "react-window";
 import Form from 'react-bootstrap/Form';
 import {API_URL} from "../../../../config";
 import FlashCard from "./FlashCard";
+import {add} from "react-modal/lib/helpers/classList";
 
 
 function FlashcardOptions(props){
 
-        const wordList = [
+      const wordList = [
         {id: 0, word: "School", translation: "Escuella", definition: "" },
         {id: 1, word: "Purpose", translation: "", definition: "Purpose2" },
         {id: 2, word: "Estimated", translation: "Estimated1", definition: "" },
         {id: 3, word: "Describing", translation: "", definition: "Describing2" },
         {id: 4, word: "Architecture", translation: "", definition: "Architecture2" }
-    ];
+      ];
+
+    //     let[wordList, setWordList] = useState({words: [
+    //     {id: 0, word: "School", translation: "Escuella", definition: "" },
+    //     {id: 1, word: "Purpose", translation: "", definition: "Purpose2" },
+    //     {id: 2, word: "Estimated", translation: "Estimated1", definition: "" },
+    //     {id: 3, word: "Describing", translation: "", definition: "Describing2" },
+    //     {id: 4, word: "Architecture", translation: "", definition: "Architecture2" }
+    // ]})
+
+    useEffect(() => {
+
+        }, [wordList.currentDeskID]);
 
 
   const [show, setShow] = useState(false);
   const [ShowModal2, setShowModal2] = useState(false);
   const [validated, setValidated] = useState(false);
   const [title, setTitle] = useState();
+  const [index, setIndex] = useState(1);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -30,7 +44,7 @@ function FlashcardOptions(props){
   const handleCloseModalTwo = () => setShowModal2(false);
   const handleShowModalTwo = () => setShowModal2(true);
 
-  const [addCards, setAddCards] = useState();
+
 
 
   let[shownWord, setShowWord] = useState("")
@@ -49,17 +63,14 @@ function FlashcardOptions(props){
         redirect: 'follow'
     };
 
-    let addWordString = API_URL + '/api/vocab/sets/addWord';
-    fetch(addWordString, requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+    const [addCards, setAddCards] = useState();
 
 
     /*Get all words*/
     let getWordString = API_URL + '/api/vocab/allWords';
     fetch(getWordString, requestOptions)
         .then(response => response.text())
+        // .then(result => setWordList({words: result}))
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 
@@ -99,6 +110,32 @@ function FlashcardOptions(props){
   let removeDeckString = API_URL + '/api/vocab/delete/'+props.studysetsid;
     function deleteDeck(){
         fetch(removeDeckString,requestOptionsRemove)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
+
+
+    function addCard(set_id, word_id){
+
+        let addWordString = API_URL + '/api/vocab/sets/addWord';
+
+            let myHeaders = new Headers();
+            myHeaders.append("Authorization", "Token " + sessionStorage.getItem('token'))
+
+            let formdata = new FormData();
+            formdata.append("set_id", set_id)
+            formdata.append("word_id", word_id)
+
+            let requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: formdata,
+                redirect: 'follow'
+            }
+
+
+        fetch(addWordString, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
@@ -157,30 +194,8 @@ function FlashcardOptions(props){
                 <Modal.Body>
                     <ListGroup>
 
-                    <ListGroupItem as="li" className="d-flex justify-content-between align-items-start">
-                        <div>
-                            {/*{props.cardData.word*/}
-                            {/*    ? <p>"{props.cardData.word}"</p>*/}
-                            {/*    : <p>No word selected</p>*/}
-                            {/*}*/}
 
-                            {/*{props.LIST.word}*/}
 
-                            {/*{wordList.words.map((cardsData,index) => {*/}
-                            {/*    return(*/}
-                            {/*         <FlashCard LIST = {cardsData}/>*/}
-                            {/*    )*/}
-                            {/*})}*/}
-
-                            {wordList.map(wordList => {
-                                return(
-                                    <div key={wordList.id}>
-                                        {wordList.word}
-                                    </div>
-                                )
-                            })}
-
-                        </div>
                         <div>
                             {/*{props.cardData.trans*/}
                             {/*    ? <p>Translation: {props.cardData.trans}</p>*/}
@@ -196,15 +211,21 @@ function FlashcardOptions(props){
 
                             {wordList.map(wordList => {
                                 return(
+                                      <ListGroupItem as="li" className="d-flex justify-content-between align-items-start">
                                     <div key={wordList.id}>
                                         {wordList.translation}{wordList.definition}
+                                        <br></br>
+                                        <Badge onClick={()=> addCard(props.studysetsid, wordList.id)} type="button"> + </Badge>
                                     </div>
+                                      </ListGroupItem>
                                 )
                             })}
 
                         </div>
-                        <Badge onClick={()=>console.log('You clicked submit.')} type="button"> + </Badge>
-                        </ListGroupItem>
+
+
+
+
 
 
                     </ListGroup>
@@ -217,7 +238,7 @@ function FlashcardOptions(props){
 
 
             {/*Remove Function*/}
-            <Dropdown.Item onClick={()=>deleteDeck(props.studysetsid)} >Remove</Dropdown.Item>
+            <Dropdown.Item onClick={()=>deleteDeck(props.studysetsid)}>Remove</Dropdown.Item>
             {/*<Dropdown.Item>Remove</Dropdown.Item>*/}
 
 

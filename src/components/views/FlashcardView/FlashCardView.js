@@ -69,9 +69,7 @@ export default function FlashCardView(props){
         }
     }
 
-
     return(
-
 
         <div id="flashcardViewContainer" className="container-fluid">
 
