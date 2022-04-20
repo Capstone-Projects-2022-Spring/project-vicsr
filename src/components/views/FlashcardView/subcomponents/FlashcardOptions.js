@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import {FixedSizeList as List} from "react-window";
 import Form from 'react-bootstrap/Form';
 import {API_URL} from "../../../../config";
+import FlashCard from "./FlashCard";
 
 
 function FlashcardOptions(props){
@@ -20,6 +21,8 @@ function FlashcardOptions(props){
 
   const handleCloseModalTwo = () => setShowModal2(false);
   const handleShowModalTwo = () => setShowModal2(true);
+
+  const [addCards, setAddCards] = useState();
 
 
   /* VIC-240 */
@@ -47,20 +50,69 @@ function FlashcardOptions(props){
         .catch(error => console.log('error', error));
 
 
-    // /*Get Remove Api*/
-    // var requestOptions3 = {
-    //     method: 'DELETE',
-    //     headers: myHeaders,
-    //     redirect: 'follow'
-    // };
-    //
-    // let removeDeskString = API_URL + '/api/docs/delete/'+props.studysetsid;
-    // function deleteDesk(){
-    //     fetch(removeDeskString,requestOptions3)
-    //     .then(response => response.text())
-    //     .then(result => console.log(result))
-    //     .catch(error => console.log('error', error));
-    // }
+  //Body: {set_id, word_id}
+    const handleE = (e) => {
+        e.preventDefault();
+
+
+    const form = e.target;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    const set_id = e.target.elements.formSet.value;
+    const word_id = e.target.elements.formWord.value;
+    }
+
+  /*Get Remove Api*/
+    var requestOptionsRemove = {
+        method: 'DELETE',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+  let removeDeckString = API_URL + '/api/vocab/delete/'+props.studysetsid;
+    function deleteDeck(){
+        fetch(removeDeckString,requestOptionsRemove)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
+
+
+    /*Get Rename Api*/
+    const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    // get user input
+    const title = e.target.elements.formTitleName.value;
+
+    const formdata = new FormData();
+        formdata.append('title', title);
+
+    var requestOptions2 = {
+        method: 'POST',
+        headers: myHeaders,
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    let RenameDeckString = API_URL + '/api/vocab/sets/update/'+props.studysetsid;
+    fetch(RenameDeckString, requestOptions2)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+    setValidated(true);
+    handleClose();
+  }
 
   return(
       <Dropdown>
@@ -79,28 +131,25 @@ function FlashcardOptions(props){
                 </Modal.Header>
 
                 <Modal.Body>
-                {/*/!*Card Name*!/*/}
-                {/*<Form.Group className="mb-0" controlId="formCardName">*/}
-                {/*    <Form.Label>Front</Form.Label>*/}
-                {/*    <Form.Control type="text" placeholder="Enter a Front word" inputRef={(ref) => {this.filename = ref}} required/>*/}
-                {/*    <Form.Control.Feedback type="invalid">*/}
-                {/*        Please provide a file name.*/}
-                {/*    </Form.Control.Feedback>*/}
-                {/*</Form.Group>*/}
-
-                {/*<Form.Group className="mb-3" controlId="formFileName">*/}
-                {/*    <Form.Label>Back</Form.Label>*/}
-                {/*    <Form.Control type="text" placeholder="Enter a Back word" inputRef={(ref) => {this.filename = ref}} required/>*/}
-                {/*    <Form.Control.Feedback type="invalid">*/}
-                {/*        Please provide a file name.*/}
-                {/*    </Form.Control.Feedback>*/}
-                {/*</Form.Group>*/}
-
-                <ListGroup>
+                    <ListGroup>
 
                     <ListGroupItem as="li" className="d-flex justify-content-between align-items-start">
-                        <div>Bye</div>
-                        <div>Wiedersehen</div>
+                        <div>
+                            {props.cardData.word
+                                ? <p>"{props.cardData.word}"</p>
+                                : <p>No word selected</p>
+                            }
+                        </div>
+                        <div>
+                            {props.cardData.trans
+                                ? <p>Translation: {props.cardData.trans}</p>
+                                : <p>No translation</p>
+                            }
+                            {props.cardData.def
+                                ? <p>Definition: {props.cardData.def}</p>
+                                : <p>No definition</p>
+                            }
+                        </div>
                         <Badge onClick={()=>console.log('You clicked submit.')} type="button"> + </Badge>
                         </ListGroupItem>
 
@@ -122,21 +171,22 @@ function FlashcardOptions(props){
 
 
             {/*Remove Function*/}
-            {/*<Dropdown.Item onClick={()=>deleteDesk(props.studysetsid)} >Remove</Dropdown.Item>*/}
-            <Dropdown.Item>Remove</Dropdown.Item>
+            <Dropdown.Item onClick={()=>deleteDeck(props.studysetsid)} >Remove</Dropdown.Item>
+            {/*<Dropdown.Item>Remove</Dropdown.Item>*/}
 
 
             {/*Rename Function*/}
-            <Dropdown.Item onClick={handleShow}>Rename</Dropdown.Item>
+            <Dropdown.Item href="#/action-1" onClick={handleShow}>Rename</Dropdown.Item>
 
             <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>
                     <Modal.Title>Rename</Modal.Title>
                 </Modal.Header>
 
+            <Form noValidate validated={validated} onSubmit={handleSubmit.bind(this)}>
                 {/*Form For Rename File Name*/}
-                <Form.Group className="mb-3" controlId="formDeskNameRename">
-                    <Form.Control type="text" placeholder="Please enter new deck name" inputRef={(ref) => {this.title = ref}} required/>
+                <Form.Group className="mb-3" controlId="formTitleName">
+                    <Form.Control type="text" placeholder="Please enter new file name" inputRef={(ref) => {this.title = ref}} required/>
                     <Form.Control.Feedback type="invalid">
                         Please provide a file name.
                     </Form.Control.Feedback>
@@ -150,6 +200,7 @@ function FlashcardOptions(props){
                         OK
                     </Button>
                 </Modal.Footer>
+            </Form>
 
             </Modal>
 

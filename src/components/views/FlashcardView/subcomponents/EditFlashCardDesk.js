@@ -33,7 +33,6 @@ function EditFlashCardDesk(props){
 
     const formdata = new FormData();
         formdata.append('title', title);
-        //formdata.append('title', title, title.name);
 
     var requestOptions = {
         method: 'POST',
@@ -71,9 +70,9 @@ function EditFlashCardDesk(props){
                 {/*File Name*/}
                 <Form.Group className="mb-3" controlId="formTitleName">
                     <Form.Label>Deck Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter file name" inputRef={(ref) => {this.title = ref}} required/>
+                    <Form.Control type="text" placeholder="Enter card name" inputRef={(ref) => {this.title = ref}} required/>
                     <Form.Control.Feedback type="invalid">
-                        Please provide a file name.
+                        Please provide a card name.
                     </Form.Control.Feedback>
                 </Form.Group>
 
