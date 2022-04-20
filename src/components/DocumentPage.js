@@ -20,7 +20,7 @@ export default function DocumentPage(props){
             console.log("attempting save")
             //get highlight from current view and send to backend to save
             let highlightData = canvas.current.getSaveData()
-            //console.log("save length is: " + highlightData.length)
+            console.log("save length is: " + highlightData.length)
             //console.log(typeof highlightData)
             let studySet;
 
@@ -40,7 +40,7 @@ export default function DocumentPage(props){
             try{
                 let saveHighlight = API_URL + "/api/files/update/" + lowLevelDocumentId
                 const response = await fetch(saveHighlight, requestOptions);
-                props.setNeedHighlight(true)
+                //props.setNeedHighlight(true)
                 props.setNeedVocab(true)
                 studySet = response
                 console.log(studySet)
@@ -76,7 +76,7 @@ export default function DocumentPage(props){
         return() =>{
             instanceCount -=1
             canvas.current.eraseAll()
-            console.log(instanceCount)
+            //console.log(instanceCount)
         }
 
 

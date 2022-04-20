@@ -20,6 +20,7 @@ export default function DocumentView() {
     let[pageHighlightData, setPageHighlightData] = useState(null)
     let[needHighlight, setNeedHighlight] = useState(true)
     let[needUpdatedVocabList, setNeedUpdatedVocabList] = useState(true)
+    let[docUpdatorCount, setDocUpdatorCount] = useState(0)
 
     useEffect(() => {
         if(data.pages){
@@ -27,12 +28,15 @@ export default function DocumentView() {
             let currentPageRef = data.pages[currentPageNumber]
             setShowPage(currentPageRef.file)
             setCurrentPageID(currentPageRef.id)
-            setPageHighlightData(currentPageRef.highlight)
+            if(!needHighlight){
+                console.log("this is the length in DocumentView: " + currentPageRef.highlight.length)
+                setPageHighlightData(currentPageRef.highlight)
+            }
 
         }
         //console.log("document: " + shownPage + " chosen");
         //console.log("current page number is: " + currentPageNumber)
-        }, [data.currentDocID, shownPage, currentPageNumber, needHighlight]);
+        }, [data.currentDocID, shownPage, currentPageNumber, needHighlight, docUpdatorCount]);
 
 
     function chooseDocument(topLevelID, urls) {
@@ -50,6 +54,7 @@ export default function DocumentView() {
         let currentPageRef = urls[currentPageNumber]
         setCurrentPageID(currentPageRef.id)
         setShowPage(currentPageRef.file)
+        setDocUpdatorCount(docUpdatorCount + 1)
     }
 
     function previousPage() {
