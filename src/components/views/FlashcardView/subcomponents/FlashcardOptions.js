@@ -43,11 +43,14 @@ function FlashcardOptions(props){
         redirect: 'follow'
     };
 
+    //Why is this here
+    {/*
     let addWordString = API_URL + '/api/vocab/sets/addWord';
     fetch(addWordString, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
+    */}
 
 
   //Body: {set_id, word_id}
