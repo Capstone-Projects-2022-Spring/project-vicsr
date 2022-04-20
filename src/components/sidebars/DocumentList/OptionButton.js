@@ -38,7 +38,9 @@ function OptionButton(props){
         fetch(removeDocumentString,requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
+        .then(() => {window.location.reload();})
         .catch(error => console.log('error', error));
+
     }
 
     /*Get Rename Api*/
@@ -71,6 +73,8 @@ function OptionButton(props){
         .catch(error => console.log('error', error));
 
     setValidated(true);
+    props.setDocUpdated(true);
+    e.reset()
     handleClose();
   }
 
