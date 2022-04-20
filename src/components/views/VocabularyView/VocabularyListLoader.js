@@ -6,9 +6,9 @@ function VocabularyListLoader(props) {
     let [data, setData] = useState({wordsFromServer:[], numWords:0, isFetching: false});
 
     useEffect( async () => {
-        console.log(props.needVocab)
+        //console.log(props.needVocab)
         if(props.needVocab){
-            console.log("fetching words")
+            //console.log("fetching words")
             await fetchWords();
             props.setNeedVocab(false)
         }
