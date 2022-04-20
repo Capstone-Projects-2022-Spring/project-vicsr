@@ -18,8 +18,15 @@ export default function CustomHeader(){
             border:"slategray",
             borderWidth: 2
         }}>
-            <div className="col-11 justify-content-start">
+            <div className="col-3 justify-content-start">
                 <h1>Welcome to VICSR</h1>
+            </div>
+            <div className="col-8">
+                <p1>Upload a png or pdf to begin (the PDF may be scanned without OCR!)</p1>
+                <br/>
+                <a style={{
+                    color: "black"
+                }} href="https://github.com/Capstone-Projects-2022-Spring/project-vicsr/blob/main/documentation/Getting_Started.md">Getting Started Guide</a>
             </div>
             <div className="col-1 justify-content-end">
                 <Button

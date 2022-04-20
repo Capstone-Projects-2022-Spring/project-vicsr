@@ -82,7 +82,7 @@ function FlashcardList(props){
         {props.isLoading && <Spinner animation="border"/>}
         <div id="flashcardList" className="">
             <List
-                height={600}
+                height={500}
                 itemCount={props.numberOfDesks}
                 itemSize={135}
                 width={300}

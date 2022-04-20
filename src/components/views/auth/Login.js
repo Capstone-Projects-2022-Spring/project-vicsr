@@ -72,6 +72,9 @@ export default function Login( {setToken} ) {
                         <form className="form-container" onSubmit={handleSubmit}>
                             <div id="loginTitle" className="form-group form-label py-3">
                                 VICSR
+                                <div id="loginSubTitle" >
+                                    <b>Vocabulary</b> In Context + Spaced Repetition
+                                </div>
                             </div>
                             {(error !== "")
                                 ?
