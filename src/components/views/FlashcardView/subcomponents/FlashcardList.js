@@ -1,13 +1,15 @@
 import {FixedSizeList as List} from "react-window";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card"
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import "./FlashcardList.css"
 import {Spinner} from "react-bootstrap";
 import FlashcardOptions from "./FlashcardOptions";
 import {Link} from "react-router-dom";
 import PopUp from "../../../sidebars/DocumentList/PopUp";
 import flashcardListLoader from "./FlashcardListLoader";
+import OptionButton from "../../../sidebars/DocumentList/OptionButton";
+
 
 
 function FlashcardList(props){
@@ -55,6 +57,20 @@ function FlashcardList(props){
             </Card>
         </div>
     );
+
+    /*VIC add card to deck*/
+    let [currentCardData, setCurrentCardData] = useState({word: "", trans: "", def: ""})
+    let [showWordModel, setShowWordModal] = useState(false);
+
+        function setCurrentCardDataByWordIndex(index) {
+        const cardObj = props.words[index];
+
+        setCurrentCardData({
+            word: String(cardObj.word),
+            trans: String(cardObj.translation),
+            def: String(cardObj.definition)
+        })
+    }
 
 
   return(

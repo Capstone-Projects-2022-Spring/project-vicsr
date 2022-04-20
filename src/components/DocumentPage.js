@@ -39,9 +39,9 @@ export default function DocumentPage(props){
 
             try{
                 let saveHighlight = API_URL + "/api/files/update/" + lowLevelDocumentId
-                //COMMENTED OUT SO IT DOESNT DDOS THE BACKEND
                 const response = await fetch(saveHighlight, requestOptions);
-                props.setNeedHighlight(true)
+                //props.setNeedHighlight(true)
+                props.setNeedVocab(true)
                 studySet = response
                 console.log(studySet)
             }catch (error){
@@ -72,11 +72,11 @@ export default function DocumentPage(props){
             canvas.current.eraseAll()
         }
         instanceCount +=1
-        console.log(instanceCount)
+        //console.log(instanceCount)
         return() =>{
             instanceCount -=1
             canvas.current.eraseAll()
-            console.log(instanceCount)
+            //console.log(instanceCount)
         }
 
 

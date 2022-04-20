@@ -6,6 +6,7 @@ import FlashcardListLoader from "./subcomponents/FlashcardListLoader";
 import CustomNavbar from "../DocumentView/CustomNavbar";
 import {Button, ButtonGroup} from "react-bootstrap";
 import {API_URL} from "../../../config";
+import EditFlashCardDesk from "./subcomponents/EditFlashCardDesk";
 
 async function updateCardDifficulty(flashcardId, difficulty) {
     try {
@@ -34,8 +35,7 @@ async function updateCardDifficulty(flashcardId, difficulty) {
     }
 }
 
-
-export default function FlashCardView(){
+export default function FlashCardView(props){
 
     let[data, setData] = useState({ currentDeskID: "", cards: [
         {id: 0, word: "School", translation: "Escuella", definition: "" },
@@ -108,16 +108,21 @@ export default function FlashCardView(){
 
             <div id="flashcardMainContent" className="row">
                 <div id="flashcardStudySetList" className="col-3 studySetList" >
+
+                    <EditFlashCardDesk/>
                     <FlashcardListLoader chooseDesk = {chooseStudySet}/>
                 </div>
                 <div id="flashcardContainer" className="col-6 canvas greenBorder">
                     <div id="flashcardCardAndButtons" className="">
                         <div id="flashcardCard" className="centerChildrenHorizontal">
+
+                            {/*data Loop*/}
                             {data.cards.map((cardsData,index) => {
                                 return(
                                      (currentPage === index) ? <FlashCard DATA = {cardsData}/> : <></>
                                 )
                             })}
+
                         </div>
                         <div className="centerChildrenHorizontal my-2">
                             <button
@@ -134,8 +139,8 @@ export default function FlashCardView(){
                                 >I don't know</button>
                         </div>
                         <div className="centerChildrenHorizontal">
-                            <Button variant="warning" onClick = { () => previousPage()}>Previous card</Button>
-                            <Button variant="warning" onClick = { () =>nextPage()}>Next card</Button>
+                            <Button variant="outline-warning" onClick = { () => previousPage()}>Previous card</Button>
+                            <Button variant="outline-warning" onClick = { () =>nextPage()}>Next card</Button>
                         </div>
                     </div>
                 </div>

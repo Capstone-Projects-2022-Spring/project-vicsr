@@ -6,6 +6,8 @@ function DocumentListLoader(props){
     let [data, setData] = useState({docsFromServer:[], numDocs:0, isFetching: false})
     let [index, setIndex] = useState(null)
 
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+
     function docPicker(topLevelID, urls){
         props.chooseDoc(topLevelID, urls);
     }
@@ -21,6 +23,7 @@ function DocumentListLoader(props){
             try {
                 setData({docsFromServer: data.docsFromServer, numDocs: data.numDocs, isFetching: false})
                 let docListGetDocsAPIstring = API_URL + "/api/docs/list/"
+                //await delay(5000)
                 const response = await fetch(docListGetDocsAPIstring, {
                     method: 'GET',
                     headers: {
@@ -29,9 +32,16 @@ function DocumentListLoader(props){
                     },
                 });
                 const docs = await response.json();
+                //console.log("DocumentListLoader: ")
+                //console.log(docs)
 
                 setData({docsFromServer: docs, numDocs: docs.length, isFetching: false})
-              
+                if(index){
+                    docUpdator(data.docsFromServer[index].files)
+                    console.log("Highlight length sent back by doc-updator: " + data.docsFromServer[index].files[0].highlight.length)
+                }
+                props.setNeedHighlight(false);
+                console.log('all done!')
             } catch (error) {
                 console.error(error);
                 setData({docsFromServer: data.docsFromServer, numDocs: data.numDocs, isFetching: false})
@@ -44,13 +54,9 @@ function DocumentListLoader(props){
         if(props.needHighlight && !index){
             console.log("Documents being fetched")
             fetchDocuments()
-            props.setNeedHighlight(false);
         }
         if(props.needHighlight && index){
-            let pageCallingForHighlight = props.currentPageID;
             fetchDocuments()
-            docUpdator(pageCallingForHighlight, data.docsFromServer[index].files)
-            props.setNeedHighlight(false);
         }
 
     }, [props.needHighlight]);

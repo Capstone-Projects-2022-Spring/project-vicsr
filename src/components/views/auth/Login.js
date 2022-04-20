@@ -8,6 +8,7 @@ import {LinkContainer} from "react-router-bootstrap"
 import Button from "react-bootstrap/Button";
 import "./Login.css"
 import { API_URL, REACT_URL } from '../../../config'
+import {Card} from "react-bootstrap";
 
 async function loginUser(credentials) {
     //login logic/talking to server goes here
@@ -30,7 +31,7 @@ export default function Login( {setToken} ) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [errors, setErrors] = useState(false);
+    const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
 
     const [registerClicked, setRegisterClicked] = useState(false);
@@ -48,9 +49,10 @@ export default function Login( {setToken} ) {
     const handleSubmit = async e => {
         e.preventDefault();
         const token = await loginUser( { email, password } );
-        setToken(token.key);
+        console.log(JSON.stringify(token));
         console.log("token in login.js: " + token.key)
         if(token.key){
+            setToken(token.key);
             console.log("replacing window")
             console.log("token in login.js before replacing window: " + token.key)
             let onSubmitString = REACT_URL+ '/docs/'
@@ -58,7 +60,7 @@ export default function Login( {setToken} ) {
         } else {
             setEmail('');
             setPassword('');
-            setErrors(true);
+            setError(Object.values(token)[0]);
         }
     }
 
@@ -71,6 +73,16 @@ export default function Login( {setToken} ) {
                             <div id="loginTitle" className="form-group form-label py-3">
                                 VICSR
                             </div>
+                            {(error !== "")
+                                ?
+                                    <Card className="bg-danger text-white">
+                                        <Card.Body>
+                                            {error}
+                                        </Card.Body>
+                                    </Card>
+                                : ""
+                            }
+
                             <div className="form-group py-4">
                                 <input className="form-control-lg w-100"
                                        type="email"
