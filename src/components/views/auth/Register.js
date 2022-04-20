@@ -26,6 +26,8 @@ export default function Register( {setRegisterClicked}, {setToken} ) {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(true);
 
+
+
   useEffect(() => {
     //had to check for literally the string "undefined", because sessionStorage.getitem returns a string if theres anything defined in its dict
     if ((sessionStorage.getItem('token') !== null) && sessionStorage.getItem('token') !== 'undefined') {
@@ -37,6 +39,7 @@ export default function Register( {setRegisterClicked}, {setToken} ) {
         setLoading(false);
     }
   }, [errorMessage]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
