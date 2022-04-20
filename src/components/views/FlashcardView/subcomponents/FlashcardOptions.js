@@ -133,34 +133,6 @@ function FlashcardOptions(props){
                 <Modal.Body>
                     <ListGroup>
 
-                    <ListGroupItem as="li" className="d-flex justify-content-between align-items-start">
-                        <div>
-                            {props.cardData.word
-                                ? <p>"{props.cardData.word}"</p>
-                                : <p>No word selected</p>
-                            }
-                        </div>
-                        <div>
-                            {props.cardData.trans
-                                ? <p>Translation: {props.cardData.trans}</p>
-                                : <p>No translation</p>
-                            }
-                            {props.cardData.def
-                                ? <p>Definition: {props.cardData.def}</p>
-                                : <p>No definition</p>
-                            }
-                        </div>
-                        <Badge onClick={()=>console.log('You clicked submit.')} type="button"> + </Badge>
-                        </ListGroupItem>
-
-                    <ListGroupItem as="li" className="d-flex justify-content-between align-items-start">
-                        <div>Hello</div>
-                        <div>你好</div>
-                        <Badge onClick={()=>console.log('You clicked submit.')} type="button"> + </Badge>
-
-                    </ListGroupItem>
-
-
                     </ListGroup>
                 </Modal.Body>
 
