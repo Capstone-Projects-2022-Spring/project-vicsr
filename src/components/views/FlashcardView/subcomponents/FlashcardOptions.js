@@ -114,7 +114,6 @@ function FlashcardOptions(props){
     setValidated(true);
     handleClose();
   }
-
   return(
       <Dropdown className="w-100">
         <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic" className="w-100">

@@ -1,7 +1,7 @@
 import {FixedSizeList as List} from "react-window";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card"
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import "./DocumentList.css"
 import {Spinner} from "react-bootstrap";
 import OptionButton from "./OptionButton";
@@ -10,13 +10,26 @@ import PopUp from "./PopUp";
 
 
 function DocumentList(props){
+
+
+    let [numDocs, setNumDocs] = useState(0)
+
     //on click, return the top level document id and the .files nested list to the DocumentView
     function clickDocChooseButtonHandler(topLevelID, urls, index){
         //console.log(urls)
         props.chooseDocument(topLevelID, urls);
         props.setIndex(index)
     }
-    useEffect( () => {}, []);
+
+    function setDocUpdated(val){
+         props.setDocUpdated(val)
+         console.log("function running in doc list")
+     }
+
+     useEffect( () => {
+         console.log("DocumentList.js being reloaded")
+         setNumDocs(props.numberOfDocs)
+     }, [props.documents, props.numberOfDocs]);
 
     const Row = ({index, style}) => (
         <div style ={style} className="documentListRowWrapper">
@@ -47,6 +60,7 @@ function DocumentList(props){
                         <OptionButton
                             documentid={props.documents[index].id}
                             style={{width: "100%"}}
+                            setDocUpdated = {setDocUpdated}
                         />
                     </div>
                 </Card.Body>
@@ -60,12 +74,12 @@ function DocumentList(props){
         <div className="centerChildren">
             <h2 className="text-white text-uppercase text-center my-4">Document List</h2>
         </div>
-        <PopUp/>
+        <PopUp setDocUpdated = {setDocUpdated}/>
         {props.isLoading && <Spinner animation="border"/>}
         <div id="documentList" className="centerChildren">
             <List
                 height={600}
-                itemCount={props.numberOfDocs}
+                itemCount={numDocs}
                 itemSize={150}
                 width={250}
             >

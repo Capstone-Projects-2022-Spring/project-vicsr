@@ -38,7 +38,9 @@ function OptionButton(props){
         fetch(removeDocumentString,requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
+        .then(() => {window.location.reload();})
         .catch(error => console.log('error', error));
+
     }
 
     /*Get Rename Api*/
@@ -73,6 +75,30 @@ function OptionButton(props){
         setValidated(true);
         handleClose();
     }
+    // get user input
+    const filename = e.target.elements.formFileNameRename.value;
+
+    const formdata = new FormData();
+        formdata.append('filename', filename);
+
+    var requestOptions2 = {
+        method: 'POST',
+        headers: myHeaders,
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    let RenameDocumentString = API_URL + '/api/docs/update/'+props.documentid;
+    fetch(RenameDocumentString, requestOptions2)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+    setValidated(true);
+    props.setDocUpdated(true);
+    e.target.reset()
+    handleClose();
+  }
 
 
   return(

@@ -5,6 +5,7 @@ import DocumentList from "./DocumentList";
 function DocumentListLoader(props){
     let [data, setData] = useState({docsFromServer:[], numDocs:0, isFetching: false})
     let [index, setIndex] = useState(null)
+    let [docUpdated, setDocUpdated] = useState(true)
 
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
@@ -59,10 +60,15 @@ function DocumentListLoader(props){
             fetchDocuments()
         }
 
-    }, [props.needHighlight]);
+        if(docUpdated){
+             console.log("Documents being fetched")
+             fetchDocuments()
+             setDocUpdated(false)
+         }
+    }, [props.needHighlight, docUpdated]);
 
     return(
-        <DocumentList documents = {data.docsFromServer} numberOfDocs = {data.numDocs} isLoading ={data.isFetching} chooseDocument = {docPicker} setIndex = {setIndex}/>
+        <DocumentList documents = {data.docsFromServer} numberOfDocs = {data.numDocs} isLoading ={data.isFetching} chooseDocument = {docPicker} setIndex = {setIndex} setDocUpdated = {setDocUpdated}/>
     )
 }
 
