@@ -6,7 +6,7 @@ VICSR even works with images and non-OCR PDFs.
 When you finish your reading, take advantage of VICSR's automatic flashcard generation feature, and study all the new words you highlighted in one flashacrd deck. 
 Hello, and welcome to VICSR! The days of being frustrated by new words in dense readings are over. Using VICSR's highlight to translate feature, you can now study new vocabulary when you first encounter it in one simple input. VICSR even works with images and non-OCR PDFs. When you finish your reading, take advantage of VICSR's automatic flashcard generation feature, and study all the new words 
 
-## Quick fixes
+## !!!Quick fixes!!!
 - If the Flashcard screen has content which is pushed off of the screen, try to lower the zoom setting on your browser. 
 - If a document does not process the words which you are highlighting, please delete the document and re-upload it. 
 
