@@ -4,11 +4,39 @@ import {Link} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import FlashcardListLoader from "./subcomponents/FlashcardListLoader";
 import CustomNavbar from "../DocumentView/CustomNavbar";
-import {Button} from "react-bootstrap";
+import {Button, ButtonGroup} from "react-bootstrap";
 import {API_URL} from "../../../config";
+import EditFlashCardDesk from "./subcomponents/EditFlashCardDesk";
 
-export default function FlashCardView(){
-""
+async function updateCardDifficulty(flashcardId, difficulty) {
+    try {
+        let apiString = API_URL + '/api/vocab/sets/words/update/' + flashcardId;
+
+        let requestHeader = new Headers();
+        requestHeader.append("Authorization", "Token " + sessionStorage.getItem('token'));
+
+        let requestData = new FormData();
+        requestData.append("ranking", difficulty);
+
+        let requestOptions = {
+            method: 'POST',
+            headers: requestHeader,
+            body: requestData,
+            redirect: 'follow'
+        }
+
+        return fetch(apiString, requestOptions)
+            .then(response => response.text)
+            .then(result => console.log(result))
+            .then(error => console.log('error', error));
+
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+export default function FlashCardView(props){
+
     let[data, setData] = useState({ currentDeskID: "", cards: [
         {id: 0, word: "School", translation: "Escuella", definition: "" },
         {id: 1, word: "Purpose", translation: "", definition: "Purpose2" },
@@ -16,13 +44,12 @@ export default function FlashCardView(){
         {id: 3, word: "Describing", translation: "", definition: "Describing2" },
         {id: 4, word: "Architecture", translation: "", definition: "Architecture2" }
     ]})
-    let[shownCard, setShowCard] = useState("")
     let[currentPage, setCurrentPage] = useState(0)
 
 
     useEffect(() => {
 
-        }, [data.currentDeskID, shownCard, currentPage]);
+    }, [data.currentDeskID, currentPage]);
 
     function chooseStudySet(topLevelID, urls) {
        // alert("HELLO IM CHOSEN DECK "+topLevelID)
@@ -49,8 +76,7 @@ export default function FlashCardView(){
         setCurrentPage(0)
     }
 
-    function previousPage() {
-        if(currentPage > 0){
+    function previousPage() {if(currentPage > 0){
             setCurrentPage(currentPage - 1)
         }
         else{
@@ -67,28 +93,54 @@ export default function FlashCardView(){
         }
     }
 
+    async function updateCurrentCardDifficulty(difficulty) {
+        console.log(JSON.stringify(data.cards));
+        if (difficulty < 1 || difficulty > 3) {
+            console.log("Error: Invalid difficulty range. Please pass 0-2");
+        } else {
+            await updateCardDifficulty(data.cards[currentPage].id, difficulty);
+        }
+    }
 
     return(
-
 
         <div id="flashcardViewContainer" className="container-fluid">
 
             <div id="flashcardMainContent" className="row">
                 <div id="flashcardStudySetList" className="col-3 studySetList" >
+
+                    <EditFlashCardDesk/>
                     <FlashcardListLoader chooseDesk = {chooseStudySet}/>
                 </div>
                 <div id="flashcardContainer" className="col-6 canvas greenBorder">
                     <div id="flashcardCardAndButtons" className="">
                         <div id="flashcardCard" className="centerChildrenHorizontal">
+
+                            {/*data Loop*/}
                             {data.cards.map((cardsData,index) => {
                                 return(
                                      (currentPage === index) ? <FlashCard DATA = {cardsData}/> : <></>
                                 )
                             })}
+
+                        </div>
+                        <div className="centerChildrenHorizontal my-2">
+                            <button
+                                className="btn btn-success btn-circle btn-xl border-white border-2 mx-2"
+                                onClick={() => updateCurrentCardDifficulty(1)}
+                                >I know it</button>
+                            <button
+                                className="btn btn-warning btn-circle btn-xl border-white border-2 mx-2"
+                                onClick={() => updateCurrentCardDifficulty(2)}
+                                >I'm not sure</button>
+                            <button
+                                className="btn btn-danger btn-circle btn-xl border-white border-2 mx-2"
+                                onClick={() => updateCurrentCardDifficulty(3)}
+                                >I don't know</button>
                         </div>
                         <div className="centerChildrenHorizontal">
-                            <Button variant="warning" onClick = { () => previousPage()}>Previous card</Button>
-                            <Button variant="warning" onClick = { () =>nextPage()}>Next card</Button>
+                            <Button variant="outline-warning" onClick = { () => previousPage()}>Previous card</Button>
+                            <Button variant="outline-warning" onClick = { () =>nextPage()}>Next card</Button>
                         </div>
                     </div>
                 </div>
