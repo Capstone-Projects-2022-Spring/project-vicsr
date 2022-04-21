@@ -75,33 +75,10 @@ function OptionButton(props){
         setValidated(true);
         handleClose();
     }
-    // get user input
-    const filename = e.target.elements.formFileNameRename.value;
-
-    const formdata = new FormData();
-        formdata.append('filename', filename);
-
-    var requestOptions2 = {
-        method: 'POST',
-        headers: myHeaders,
-        body: formdata,
-        redirect: 'follow'
-    };
-
-    let RenameDocumentString = API_URL + '/api/docs/update/'+props.documentid;
-    fetch(RenameDocumentString, requestOptions2)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-
-    setValidated(true);
+    
     props.setDocUpdated(true);
-    e.target.reset()
-    handleClose();
-  }
 
-
-  return(
+    return(
       <Dropdown>
         <Dropdown.Toggle className="w-100" variant="outline-success" id="dropdown-basic">
           ☰
@@ -143,6 +120,7 @@ function OptionButton(props){
         </Dropdown.Menu>
       </Dropdown>
   );
+
 }
 
 export default OptionButton
