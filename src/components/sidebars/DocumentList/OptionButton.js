@@ -70,13 +70,14 @@ function OptionButton(props){
         fetch(RenameDocumentString, requestOptions2)
             .then(response => response.text())
             .then(result => console.log(result))
+            .then(() => props.setDocUpdated(true))
             .catch(error => console.log('error', error));
 
         setValidated(true);
         handleClose();
     }
-    
-    props.setDocUpdated(true);
+
+    //props.setDocUpdated(true);
 
     return(
       <Dropdown>
